@@ -1,0 +1,509 @@
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
+import { Download, Search, Loader2, Server, Database, ExternalLink, FolderDown, Rocket, Link as LinkIcon } from "lucide-react";
+
+/**
+ * UI1 — updated for Scanner v19996ab & Downloader d5.7.8
+ *
+ * Scanner:
+ * - POST /v1/search/local (body = filters object)
+ * - POST /v1/search/server (body = filters object)
+ * filters fields:
+ * { servers?: string[], roles: ("scan"|"film")[], wafer?: string[], lot?: string[], film?: string[],
+ * exact?: boolean, regex?: boolean, case_sensitive?: boolean, link_recipe?: boolean }
+ * - Each hit (common):
+ * { server, role, kind, level, path, ...; (scan-film) may include
+ * recipe_linked, recipe_name, recipe_paths[], recipe_primary, recipe_server }
+ *
+ * Downloader d5.7.8:
+ * - Typical flow: export selected hits as JSON → CLI
+ * python d5.py ingest --file exported.json --dest-root D:/data
+ * - Local save layout uses search hit's absolute path:
+ * Split by '/', from the end → [ ... CLASS / WAFER / LOT / FILM_DATA (/ DATE?) ]
+ * If last token looks like date(YYYYMMDD or YYYY_MM_DD), date=last, film=prev; else date=""
+ * Film recipe will be saved under .../<WAFER>/<FILM_DATA>/_recipe/ (using hit.recipe_primary folder)
+ */
+
+// --- Types ---
+export type Hit = {
+  server: string;
+  role: "scan" | "film" | string;
+  kind?: string;
+  level?: string; // e.g., "lot" | "film" | "film_name" | "folder"
+  path: string; // absolute remote path
+  film?: string; // optional (scanner may not always provide)
+  lot?: string;
+  date?: string;
+  // recipe link fields (present when link_recipe=true and role=scan & level=film)
+  recipe_linked?: boolean;
+  recipe_name?: string;
+  recipe_paths?: string[];
+  recipe_primary?: string | null;
+  recipe_server?: string | null;
+};
+
+export type JobView = {
+  id: string;
+  type: string;
+  group: string;
+  status: string;
+  status_reason?: string;
+  created_at?: string;
+  updated_at?: string;
+  remote?: string;
+  role?: string;
+  logs?: string[];
+  result?: any;
+};
+
+// --- Helpers (d5.7.8 path → display pieces) ---
+const DATE_RX = /^\d{8}$|^\d{4}[_-]\d{2}[_-]\d{2}$/;
+
+function parseScanPath(absPath: string) {
+  const parts = (absPath || "").split("/").filter(Boolean);
+  let cls = "";
+  let wafer = "";
+  let lot = "";
+  let filmData = "";
+  let date = "";
+
+  if (parts.length === 0) {
+    return { classPath: "", wafer, lot, filmData, date };
+  }
+
+  // Decide if last segment is a date
+  const last = parts[parts.length - 1];
+  const hasDate = DATE_RX.test(last);
+
+  if (hasDate && parts.length >= 4) {
+    date = last;
+    filmData = parts[parts.length - 2] || "";
+    lot = parts[parts.length - 3] || "";
+    wafer = parts[parts.length - 4] || "";
+    cls = "/" + parts.slice(0, Math.max(0, parts.length - 4)).join("/");
+  } else {
+    // No date segment — take last as filmData
+    filmData = last || "";
+    lot = parts[parts.length - 2] || "";
+    wafer = parts[parts.length - 3] || "";
+    cls = "/" + parts.slice(0, Math.max(0, parts.length - 3)).join("/");
+  }
+  return { classPath: cls, wafer, lot, filmData, date };
+}
+
+function basename(p: string) {
+  const parts = (p || "").split("/").filter(Boolean);
+  return parts.length ? parts[parts.length - 1] : p;
+}
+
+export default function App() {
+  // ---- Endpoint config ----
+  const [scannerURL, setScannerURL] = useState("http://127.0.0.1:8081");
+  const [downloaderURL, setDownloaderURL] = useState("http://127.0.0.1:8766");
+  const [downloaderHasJobs, setDownloaderHasJobs] = useState<boolean | null>(null);
+
+  // ---- Search form ----
+  const [mode, setMode] = useState<"server" | "local">("server");
+  const [role, setRole] = useState<"scan" | "film">("scan");
+  const [serversCsv, setServersCsv] = useState(""); // optional filter by server names
+  const [wafer, setWafer] = useState("");
+  const [lot, setLot] = useState("");
+  const [film, setFilm] = useState("");
+  const [linkRecipe, setLinkRecipe] = useState(true);
+  const [exact, setExact] = useState(false);
+  const [regex, setRegex] = useState(false);
+  const [caseSensitive, setCaseSensitive] = useState(false);
+
+  const [searching, setSearching] = useState(false);
+  const [hits, setHits] = useState<Hit[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  // ---- Selection + download form ----
+  const [selected, setSelected] = useState<Record<string, boolean>>({});
+  const [group, setGroup] = useState(""); // servers.txt group (for d5 job API, if available)
+  const [destRoot, setDestRoot] = useState(""); // downloader-local absolute path
+  const [overwrite, setOverwrite] = useState<"resume" | "skip" | "replace">("resume");
+
+  const allSelected = useMemo(() => hits.length > 0 && hits.every((h) => selected[keyOf(h)]), [hits, selected]);
+
+  // ---- Jobs (optional, only if downloader exposes /v1/jobs) ----
+  const [jobs, setJobs] = useState<JobView[]>([]);
+  const pollTimer = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    // Detect downloader job API once.
+    (async () => {
+      try {
+        const r = await fetch(`${downloaderURL}/v1/jobs/___not_exist___`);
+        setDownloaderHasJobs(r.status !== 404);
+      } catch {
+        try {
+          const h = await fetch(`${downloaderURL}/health`);
+          setDownloaderHasJobs(h.ok ? false : null);
+        } catch {
+          setDownloaderHasJobs(null);
+        }
+      }
+    })();
+  }, [downloaderURL]);
+
+  useEffect(() => {
+    // simple poller for jobs when we actually have any
+    if (!downloaderHasJobs) return; // nothing to poll on health-only
+    if (jobs.length === 0) return;
+    if (pollTimer.current) clearInterval(pollTimer.current);
+    pollTimer.current = setInterval(async () => {
+      const updated: JobView[] = [];
+      for (const j of jobs) {
+        try {
+          const r = await fetch(`${downloaderURL}/v1/jobs/${j.id}`);
+          if (r.ok) updated.push((await r.json()) as JobView);
+          else updated.push(j);
+        } catch {
+          updated.push(j);
+        }
+      }
+      setJobs(updated);
+    }, 1600);
+    return () => {
+      if (pollTimer.current) clearInterval(pollTimer.current);
+    };
+  }, [jobs.length, downloaderURL, downloaderHasJobs]);
+
+  // ---- Helpers ----
+  function keyOf(h: Hit): string {
+    return `${h.server}|${h.role}|${h.path}`;
+  }
+
+  function toggleAll(v: boolean) {
+    const m: Record<string, boolean> = {};
+    if (v) for (const h of hits) m[keyOf(h)] = true;
+    setSelected(m);
+  }
+
+  async function doSearch() {
+    setSearching(true);
+    setError(null);
+    setHits([]);
+    setSelected({});
+
+    const servers = serversCsv
+      .split(/[,\s]+/)
+      .map((s) => s.trim())
+      .filter(Boolean);
+
+    // v19996ab expects the body itself to be the filter object
+    const payload: any = {
+      servers: servers.length ? servers : undefined,
+      roles: [role],
+      wafer: wafer ? [wafer] : [],
+      lot: lot ? [lot] : [],
+      film: film ? [film] : [],
+      exact,
+      regex,
+      case_sensitive: caseSensitive,
+      link_recipe: linkRecipe,
+    };
+
+    try {
+      const endpoint = `${scannerURL}/v1/search/${mode === "server" ? "server" : "local"}`;
+      const r = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!r.ok) throw new Error(`scanner HTTP ${r.status}`);
+      const js = await r.json();
+      const hh: Hit[] = Array.isArray(js?.hits) ? js.hits : [];
+      setHits(hh);
+    } catch (e: any) {
+      setError(`검색 실패: ${e?.message || e}`);
+    } finally {
+      setSearching(false);
+    }
+  }
+
+  function exportSelectedAsJSON() {
+    const chosen = hits.filter((h) => selected[keyOf(h)]);
+    if (chosen.length === 0) return alert("선택된 항목이 없습니다.");
+    const data = { generated_at: new Date().toISOString(), hits: chosen };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `search_selected_${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  async function startDownloadsViaJobs() {
+    if (!downloaderHasJobs) {
+      return alert("다운로더가 d5(잡 API) 모드가 아닙니다. JSON 내보내기 후 CLI ingest를 사용하세요.");
+    }
+    const chosen = hits.filter((h) => selected[keyOf(h)]);
+    if (chosen.length === 0) return alert("선택된 항목이 없습니다.");
+    if (!group.trim()) return alert("다운로드에 사용할 group 값을 입력하세요 (servers.txt의 group).");
+    if (!destRoot.trim()) return alert("저장할 dest_root 경로를 입력하세요 (다운로더 서버 기준 로컬 경로).");
+
+    const newJobs: JobView[] = [];
+    for (const h of chosen) {
+      const body = {
+        type: "path",
+        group: group.trim(),
+        role: h.role === "film" ? "film" : "scan",
+        remote: h.path,
+        dest_root: destRoot.trim(),
+        overwrite,
+        retry: 3,
+      } as any;
+      try {
+        const r = await fetch(`${downloaderURL}/v1/jobs`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const js = await r.json();
+        newJobs.push({ id: js.job_id, type: "path", group: body.group, status: "queued" } as any);
+      } catch (e: any) {
+        alert(`잡 생성 실패: ${e?.message || e}`);
+        return;
+      }
+    }
+    setJobs((cur) => [...newJobs, ...cur]);
+  }
+
+  // ---- UI ----
+  return (
+    <div className="min-h-screen w-full p-6 space-y-6 bg-gradient-to-b from-slate-50 to-white">
+      <header className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Server className="h-5 w-5" />
+          <h1 className="text-xl font-semibold">Scanner & Downloader Console</h1>
+          <Badge variant="secondary">v19996ab + d5.7.8</Badge>
+        </div>
+        <div className="flex items-center gap-2">
+          <Input value={scannerURL} onChange={(e)=>setScannerURL(e.target.value)} className="w-[280px]" placeholder="Scanner URL" />
+          <Input value={downloaderURL} onChange={(e)=>setDownloaderURL(e.target.value)} className="w-[280px]" placeholder="Downloader URL" />
+          {downloaderHasJobs===null ? (
+            <Badge>checking...</Badge>
+          ) : downloaderHasJobs ? (
+            <Badge className="bg-emerald-600 hover:bg-emerald-600">jobs API</Badge>
+          ) : (
+            <Badge variant="outline">health only</Badge>
+          )}
+        </div>
+      </header>
+
+      <Card className="shadow-sm">
+        <CardHeader className="pb-3">
+          <CardTitle className="flex items-center gap-2"><Search className="h-5 w-5"/>Search</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
+            <div className="md:col-span-2">
+              <Label>Mode</Label>
+              <Select value={mode} onValueChange={(v:any)=>setMode(v)}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="server">server</SelectItem>
+                  <SelectItem value="local">local</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="md:col-span-2">
+              <Label>Role</Label>
+              <Select value={role} onValueChange={(v:any)=>setRole(v)}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="scan">scan</SelectItem>
+                  <SelectItem value="film">film</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="md:col-span-8">
+              <Label>Servers (optional, comma/space-separated)</Label>
+              <Input value={serversCsv} onChange={(e)=>setServersCsv(e.target.value)} placeholder="S1,S2 or blank" />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
+            <div className="md:col-span-3"><Label>Wafer</Label><Input value={wafer} onChange={(e)=>setWafer(e.target.value)} /></div>
+            <div className="md:col-span-3"><Label>Lot</Label><Input value={lot} onChange={(e)=>setLot(e.target.value)} /></div>
+            <div className="md:col-span-3"><Label>Film</Label><Input value={film} onChange={(e)=>setFilm(e.target.value)} /></div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-4">
+            <label className="flex items-center gap-2 text-sm"><Checkbox checked={linkRecipe} onCheckedChange={(v)=>setLinkRecipe(!!v)} />link recipe</label>
+            <Separator orientation="vertical" className="h-5" />
+            <label className="flex items-center gap-2 text-sm"><Checkbox checked={exact} onCheckedChange={(v)=>setExact(!!v)} />exact</label>
+            <label className="flex items-center gap-2 text-sm"><Checkbox checked={regex} onCheckedChange={(v)=>setRegex(!!v)} />regex</label>
+            <label className="flex items-center gap-2 text-sm"><Checkbox checked={caseSensitive} onCheckedChange={(v)=>setCaseSensitive(!!v)} />case sensitive</label>
+            <div className="ml-auto flex items-center gap-2">
+              <Button onClick={doSearch} disabled={searching}>
+                {searching ? (<><Loader2 className="mr-2 h-4 w-4 animate-spin"/>Searching...</>) : (<><Search className="mr-2 h-4 w-4"/>Search</>)}
+              </Button>
+            </div>
+          </div>
+
+          {error && (
+            <div className="text-sm text-red-600">{error}</div>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card className="shadow-sm">
+        <CardHeader className="pb-3 flex items-center justify-between">
+          <CardTitle className="flex items-center gap-2"><Database className="h-5 w-5"/>Results ({hits.length})</CardTitle>
+          <div className="flex items-center gap-2">
+            <Button variant="secondary" onClick={exportSelectedAsJSON}><ExternalLink className="mr-2 h-4 w-4"/>Export selected JSON</Button>
+            <Button onClick={startDownloadsViaJobs} disabled={downloaderHasJobs===false}><Download className="mr-2 h-4 w-4"/>Start downloads</Button>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-wrap items-end gap-3 mb-3">
+            <div className="w-40">
+              <Label>Group</Label>
+              <Input value={group} onChange={(e)=>setGroup(e.target.value)} placeholder="servers.txt group" />
+            </div>
+            <div className="min-w-[320px] flex-1">
+              <Label>Dest root (downloader local path)</Label>
+              <Input value={destRoot} onChange={(e)=>setDestRoot(e.target.value)} placeholder="e.g. D:/data or /mnt/data" />
+            </div>
+            <div className="w-40">
+              <Label>Overwrite</Label>
+              <Select value={overwrite} onValueChange={(v:any)=>setOverwrite(v)}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="resume">resume</SelectItem>
+                  <SelectItem value="skip">skip</SelectItem>
+                  <SelectItem value="replace">replace</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="ml-auto text-xs text-slate-500 flex items-center gap-2">
+              <Rocket className="h-4 w-4"/>
+              {downloaderHasJobs ? "d5 job API active" : "use JSON + CLI ingest on d5.7.8"}
+            </div>
+          </div>
+
+          <div className="rounded-md border overflow-hidden">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-10">
+                    <Checkbox checked={allSelected} onCheckedChange={(v)=>toggleAll(!!v)} />
+                  </TableHead>
+                  <TableHead>Server</TableHead>
+                  <TableHead>Role</TableHead>
+                  <TableHead>Level</TableHead>
+                  <TableHead>Class</TableHead>
+                  <TableHead>Wafer</TableHead>
+                  <TableHead>Lot</TableHead>
+                  <TableHead>Film Data</TableHead>
+                  <TableHead>Date</TableHead>
+                  <TableHead>Path</TableHead>
+                  <TableHead>Recipe</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {hits.map((h) => {
+                  // Derive display fields from path for scan results
+                  const parsed = h.role === "scan" ? parseScanPath(h.path) : null;
+                  const classPath = parsed?.classPath || "";
+                  const wafer = parsed?.wafer || "";
+                  const lot = parsed?.lot || "";
+                  const filmData = parsed?.filmData || (h.role === "film" ? basename(h.path) : "");
+                  const date = parsed?.date || "";
+                  const recipeBadge =
+                    h.role === "scan" && h.level === "film" && h.recipe_linked
+                      ? (
+                        <div className="flex items-center gap-1">
+                          <Badge variant="secondary" className="flex items-center gap-1">
+                            <LinkIcon className="h-3 w-3" />
+                            {h.recipe_name || "linked"}
+                          </Badge>
+                        </div>
+                      )
+                      : h.role === "film"
+                        ? <Badge variant="outline">{h.level || "folder"}</Badge>
+                        : null;
+
+                  return (
+                    <TableRow key={keyOf(h)} className="hover:bg-slate-50">
+                      <TableCell>
+                        <Checkbox checked={!!selected[keyOf(h)]} onCheckedChange={(v)=>setSelected((m)=>({ ...m, [keyOf(h)]: !!v }))} />
+                      </TableCell>
+                      <TableCell className="font-medium">{h.server}</TableCell>
+                      <TableCell>
+                        <Badge variant={h.role==="film"?"secondary":"default"}>{h.role}</Badge>
+                      </TableCell>
+                      <TableCell className="text-xs text-slate-600">{h.level || ""}</TableCell>
+                      <TableCell className="text-xs font-mono break-all">{classPath}</TableCell>
+                      <TableCell className="text-xs">{wafer}</TableCell>
+                      <TableCell className="text-xs">{lot}</TableCell>
+                      <TableCell className="text-xs">{filmData}</TableCell>
+                      <TableCell className="text-xs">{date}</TableCell>
+                      <TableCell className="text-xs font-mono break-all">{h.path}</TableCell>
+                      <TableCell className="text-xs">{recipeBadge}</TableCell>
+                    </TableRow>
+                  );
+                })}
+                {hits.length===0 && (
+                  <TableRow>
+                    <TableCell colSpan={11} className="text-center text-sm text-slate-500 py-10">검색 결과가 비어 있습니다.</TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </div>
+        </CardContent>
+      </Card>
+
+      {downloaderHasJobs && jobs.length>0 && (
+        <Card className="shadow-sm">
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center gap-2"><FolderDown className="h-5 w-5"/>Jobs</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="rounded-md border overflow-hidden">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>ID</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Group</TableHead>
+                    <TableHead>Updated</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {jobs.map((j) => (
+                    <TableRow key={j.id}>
+                      <TableCell className="font-mono text-xs">{j.id}</TableCell>
+                      <TableCell className="text-xs">{j.status}{j.status_reason?` — ${j.status_reason}`:""}</TableCell>
+                      <TableCell className="text-xs">{j.group}</TableCell>
+                      <TableCell className="text-xs">{j.updated_at||""}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      <footer className="pt-2 text-xs text-slate-500 text-center">
+        Tip: d5.7.8만 구동 중이라면 "Export selected JSON"으로 파일을 내려받아 CLI에서{" "}
+        <code>python d5.py ingest --file exported.json --dest-root D:/data</code> 를 실행하세요.
+      </footer>
+    </div>
+  );
+}

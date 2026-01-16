@@ -1,0 +1,11 @@
+# name, ip, max_depth, save_level, user, pass, meta...
+# source=local: 로컬 파일시스템, source=network: 네트워크 드라이브(SMB/UNC), source=ftp: FTP 서버
+# 장비명_SCAN: scan data, 장비명_FILM: film data (as로 시작하는 폴더)
+
+# === MTMA01 장비 ===
+MTMA01_FILM,XXX,3,2,USER,PASS,role=film,group=MTMA01,root=\\XXX\MTMA01_FILM,prefix=as,source=network
+MTMA01_SCAN,XXX,3,2,USER,PASS,role=scan,group=MTMA01,root=\\XXX\MTMA01_SCAN,pool_size=4,source=network
+
+# === 로컬 테스트용 ===
+S_FILM_1,127.0.0.1,3,2,FTP_TEST,FTP_TEST,role=film,group=G1,root=D:\github\scanner-project_claude\scanner-project\sample\MOCK_ROOT\Film List,prefix=as,source=local
+S_SCAN_1,127.0.0.1,3,2,FTP_TEST,FTP_TEST,role=scan,group=G1,root=D:\github\scanner-project_claude\scanner-project\sample\MOCK_ROOT\auto scan data,pool_size=4,source=local

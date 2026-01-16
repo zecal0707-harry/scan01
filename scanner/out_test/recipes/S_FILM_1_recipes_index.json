@@ -1,0 +1,3514 @@
+{
+  "server": "S_FILM_1",
+  "recipes_root": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List",
+  "generated_at": "2026-01-11T20:47:31",
+  "updated_at": "2026-01-11T20:47:48",
+  "folders": {
+    "as0001": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0001",
+      "strategy": "WQKJ_ETCH_METALDEP1_240515"
+    },
+    "as0002": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0002",
+      "strategy": "GE_PHOTO_VIA_HOLE_240704"
+    },
+    "as0003": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0003",
+      "strategy": "UX8C_PHOTO_METALDEP1_240309"
+    },
+    "as0004": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0004",
+      "strategy": "GS_CLN_GAP_FILL_241208"
+    },
+    "as0005": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0005",
+      "strategy": "KYCD_PHOTO_GAP_FILL_240628"
+    },
+    "as0006": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0006",
+      "strategy": "CC_PHOTO_METALDEP1_240415"
+    },
+    "as0007": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0007",
+      "strategy": "WZPD_MI_STRIP_240530"
+    },
+    "as0008": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0008",
+      "strategy": "MC_CLN_POLY_GATE_241102"
+    },
+    "as0009": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0009",
+      "strategy": "JU_MI_HARD_MASK_241204"
+    },
+    "as0010": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0010",
+      "strategy": "FWYQ_CLN_HARD_MASK_240120"
+    },
+    "as0011": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0011",
+      "strategy": "EL9G_ETCH_GAP_FILL_240914"
+    },
+    "as0012": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0012",
+      "strategy": "JAMX_THIN_FILM_GAP_FILL_240328"
+    },
+    "as0013": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0013",
+      "strategy": "EJVR_CLN_GAP_FILL_240603"
+    },
+    "as0014": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0014",
+      "strategy": "VXZJ_ETCH_POLY_GATE_240615"
+    },
+    "as0015": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0015",
+      "strategy": "ZK_CMP_POLY_GATE_240124"
+    },
+    "as0016": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0016",
+      "strategy": "ZGYR_CLN_STRIP_241229"
+    },
+    "as0017": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0017",
+      "strategy": "FAUO_CMP_STRIP_240112"
+    },
+    "as0018": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0018",
+      "strategy": "ID9J_CMP_STRIP_240916"
+    },
+    "as0019": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0019",
+      "strategy": "QQFA_THIN_FILM_HARD_MASK_240214"
+    },
+    "as0020": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0020",
+      "strategy": "QZEI_CMP_METALDEP1_240808"
+    },
+    "as0021": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0021",
+      "strategy": "ITGI_CMP_METALDEP1_241020"
+    },
+    "as0022": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0022",
+      "strategy": "VL_CMP_VIA_HOLE_240509"
+    },
+    "as0023": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0023",
+      "strategy": "BWIO_CLN_GAP_FILL_240814"
+    },
+    "as0024": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0024",
+      "strategy": "JHFB_PHOTO_STRIP_240718"
+    },
+    "as0025": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0025",
+      "strategy": "DG_CLN_HARD_MASK_241017"
+    },
+    "as0026": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0026",
+      "strategy": "NY9J_THIN_FILM_METALDEP1_240222"
+    },
+    "as0027": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0027",
+      "strategy": "KK1O_THIN_FILM_STRIP_240816"
+    },
+    "as0028": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0028",
+      "strategy": "QI2N_CMP_HARD_MASK_240817"
+    },
+    "as0029": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0029",
+      "strategy": "EFZO_THIN_FILM_STRIP_240721"
+    },
+    "as0030": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0030",
+      "strategy": "UUCO_PHOTO_HARD_MASK_240216"
+    },
+    "as0031": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0031",
+      "strategy": "XL_MI_METALDEP1_241017"
+    },
+    "as0032": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0032",
+      "strategy": "PBUR_PHOTO_HARD_MASK_241110"
+    },
+    "as0033": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0033",
+      "strategy": "JZ4D_THIN_FILM_VIA_HOLE_240915"
+    },
+    "as0034": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0034",
+      "strategy": "SN3H_CMP_POLY_GATE_240521"
+    },
+    "as0035": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0035",
+      "strategy": "QBJQ_MI_METALDEP1_240312"
+    },
+    "as0036": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0036",
+      "strategy": "TC_THIN_FILM_POLY_GATE_240228"
+    },
+    "as0037": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0037",
+      "strategy": "ZB5C_ETCH_VIA_HOLE_240521"
+    },
+    "as0038": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0038",
+      "strategy": "OF_CLN_HARD_MASK_241218"
+    },
+    "as0039": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0039",
+      "strategy": "WIXX_PHOTO_GAP_FILL_241208"
+    },
+    "as0040": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0040",
+      "strategy": "UY_MI_METALDEP1_240120"
+    },
+    "as0041": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0041",
+      "strategy": "QKIG_MI_STRIP_240625"
+    },
+    "as0042": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0042",
+      "strategy": "ETAF_CMP_STRIP_240410"
+    },
+    "as0043": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0043",
+      "strategy": "XCJU_PHOTO_HARD_MASK_240817"
+    },
+    "as0044": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0044",
+      "strategy": "GDIJ_CLN_VIA_HOLE_241201"
+    },
+    "as0045": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0045",
+      "strategy": "NWWE_CMP_POLY_GATE_240826"
+    },
+    "as0046": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0046",
+      "strategy": "TASS_CLN_METALDEP1_240123"
+    },
+    "as0047": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0047",
+      "strategy": "UC7I_PHOTO_METALDEP1_240602"
+    },
+    "as0048": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0048",
+      "strategy": "XKRR_MI_STRIP_241225"
+    },
+    "as0049": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0049",
+      "strategy": "NF_CLN_VIA_HOLE_240904"
+    },
+    "as0050": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0050",
+      "strategy": "WDTF_ETCH_METALDEP1_240521"
+    },
+    "as0051": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0051",
+      "strategy": "APTR_THIN_FILM_VIA_HOLE_240613"
+    },
+    "as0052": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0052",
+      "strategy": "IGGV_MI_STRIP_241223"
+    },
+    "as0053": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0053",
+      "strategy": "IVHW_CMP_METALDEP1_240525"
+    },
+    "as0054": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0054",
+      "strategy": "YM_ETCH_VIA_HOLE_240605"
+    },
+    "as0055": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0055",
+      "strategy": "WLHZ_THIN_FILM_HARD_MASK_241128"
+    },
+    "as0056": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0056",
+      "strategy": "OJ7J_CMP_HARD_MASK_241202"
+    },
+    "as0057": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0057",
+      "strategy": "TPLH_THIN_FILM_POLY_GATE_240624"
+    },
+    "as0058": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0058",
+      "strategy": "QG1Q_PHOTO_VIA_HOLE_240626"
+    },
+    "as0059": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0059",
+      "strategy": "HEBB_THIN_FILM_POLY_GATE_240812"
+    },
+    "as0060": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0060",
+      "strategy": "NTVI_MI_GAP_FILL_241211"
+    },
+    "as0061": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0061",
+      "strategy": "UYJE_CMP_GAP_FILL_240127"
+    },
+    "as0062": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0062",
+      "strategy": "ICVW_CLN_VIA_HOLE_240503"
+    },
+    "as0063": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0063",
+      "strategy": "YOXF_THIN_FILM_HARD_MASK_241004"
+    },
+    "as0064": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0064",
+      "strategy": "BSME_PHOTO_VIA_HOLE_240913"
+    },
+    "as0065": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0065",
+      "strategy": "SX_THIN_FILM_VIA_HOLE_240725"
+    },
+    "as0066": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0066",
+      "strategy": "UJFX_MI_POLY_GATE_240209"
+    },
+    "as0067": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0067",
+      "strategy": "KR_ETCH_VIA_HOLE_240504"
+    },
+    "as0068": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0068",
+      "strategy": "AV_MI_POLY_GATE_240420"
+    },
+    "as0069": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0069",
+      "strategy": "HU8D_ETCH_STRIP_240914"
+    },
+    "as0070": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0070",
+      "strategy": "IPFK_THIN_FILM_METALDEP1_240406"
+    },
+    "as0071": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0071",
+      "strategy": "QPEN_PHOTO_VIA_HOLE_240501"
+    },
+    "as0072": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0072",
+      "strategy": "CA0N_ETCH_HARD_MASK_240911"
+    },
+    "as0073": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0073",
+      "strategy": "PG_MI_GAP_FILL_240303"
+    },
+    "as0074": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0074",
+      "strategy": "RV_MI_POLY_GATE_240614"
+    },
+    "as0075": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0075",
+      "strategy": "HZCX_CMP_HARD_MASK_241019"
+    },
+    "as0076": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0076",
+      "strategy": "ZVTE_PHOTO_STRIP_240711"
+    },
+    "as0077": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0077",
+      "strategy": "ZN_ETCH_POLY_GATE_240610"
+    },
+    "as0078": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0078",
+      "strategy": "NC7R_THIN_FILM_POLY_GATE_241216"
+    },
+    "as0079": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0079",
+      "strategy": "KP_THIN_FILM_VIA_HOLE_241004"
+    },
+    "as0080": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0080",
+      "strategy": "EZ_MI_VIA_HOLE_240403"
+    },
+    "as0081": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0081",
+      "strategy": "FQYS_CMP_GAP_FILL_240515"
+    },
+    "as0082": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0082",
+      "strategy": "CV_ETCH_VIA_HOLE_240726"
+    },
+    "as0083": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0083",
+      "strategy": "RA_CMP_GAP_FILL_240307"
+    },
+    "as0084": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0084",
+      "strategy": "GLXB_ETCH_POLY_GATE_240422"
+    },
+    "as0085": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0085",
+      "strategy": "AD_CLN_VIA_HOLE_240708"
+    },
+    "as0086": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0086",
+      "strategy": "FGCT_CLN_STRIP_241116"
+    },
+    "as0087": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0087",
+      "strategy": "KC1N_CMP_VIA_HOLE_240909"
+    },
+    "as0088": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0088",
+      "strategy": "EFSZ_THIN_FILM_METALDEP1_240113"
+    },
+    "as0089": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0089",
+      "strategy": "UR_THIN_FILM_STRIP_240125"
+    },
+    "as0090": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0090",
+      "strategy": "PW_MI_POLY_GATE_240612"
+    },
+    "as0091": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0091",
+      "strategy": "PU_CMP_VIA_HOLE_240821"
+    },
+    "as0092": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0092",
+      "strategy": "HJ_CMP_STRIP_240515"
+    },
+    "as0093": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0093",
+      "strategy": "VQ5P_THIN_FILM_METALDEP1_240423"
+    },
+    "as0094": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0094",
+      "strategy": "HIIL_PHOTO_METALDEP1_240412"
+    },
+    "as0095": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0095",
+      "strategy": "UR1Y_MI_METALDEP1_241211"
+    },
+    "as0096": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0096",
+      "strategy": "MP_PHOTO_VIA_HOLE_240828"
+    },
+    "as0097": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0097",
+      "strategy": "ZMRY_CMP_STRIP_241015"
+    },
+    "as0098": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0098",
+      "strategy": "FFIA_CLN_STRIP_240609"
+    },
+    "as0099": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0099",
+      "strategy": "CSWU_MI_HARD_MASK_241222"
+    },
+    "as0100": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0100",
+      "strategy": "BD_MI_STRIP_240419"
+    },
+    "as0101": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0101",
+      "strategy": "OTRK_THIN_FILM_HARD_MASK_241004"
+    },
+    "as0102": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0102",
+      "strategy": "PO4C_MI_STRIP_240322"
+    },
+    "as0103": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0103",
+      "strategy": "LM_PHOTO_POLY_GATE_241214"
+    },
+    "as0104": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0104",
+      "strategy": "WTMD_CLN_VIA_HOLE_240319"
+    },
+    "as0105": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0105",
+      "strategy": "QGGX_ETCH_HARD_MASK_240323"
+    },
+    "as0106": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0106",
+      "strategy": "EQYO_CMP_HARD_MASK_240617"
+    },
+    "as0107": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0107",
+      "strategy": "BP_ETCH_HARD_MASK_241223"
+    },
+    "as0108": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0108",
+      "strategy": "UU_MI_HARD_MASK_240803"
+    },
+    "as0109": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0109",
+      "strategy": "LAMI_MI_METALDEP1_240924"
+    },
+    "as0110": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0110",
+      "strategy": "SDFA_CMP_POLY_GATE_240420"
+    },
+    "as0111": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0111",
+      "strategy": "TL_CMP_STRIP_241231"
+    },
+    "as0112": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0112",
+      "strategy": "DC9Z_PHOTO_HARD_MASK_240630"
+    },
+    "as0113": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0113",
+      "strategy": "HAXI_THIN_FILM_VIA_HOLE_240921"
+    },
+    "as0114": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0114",
+      "strategy": "DY_CLN_METALDEP1_240915"
+    },
+    "as0115": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0115",
+      "strategy": "FKGV_THIN_FILM_HARD_MASK_240225"
+    },
+    "as0116": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0116",
+      "strategy": "SP3Y_MI_VIA_HOLE_240620"
+    },
+    "as0117": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0117",
+      "strategy": "FB0A_CMP_METALDEP1_240226"
+    },
+    "as0118": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0118",
+      "strategy": "NAHY_CMP_GAP_FILL_240720"
+    },
+    "as0119": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0119",
+      "strategy": "FNDN_THIN_FILM_METALDEP1_240203"
+    },
+    "as0120": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0120",
+      "strategy": "GP_PHOTO_STRIP_240420"
+    },
+    "as0121": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0121",
+      "strategy": "LA_ETCH_HARD_MASK_240707"
+    },
+    "as0122": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0122",
+      "strategy": "VEXZ_ETCH_HARD_MASK_240707"
+    },
+    "as0123": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0123",
+      "strategy": "HBXE_CMP_GAP_FILL_240625"
+    },
+    "as0124": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0124",
+      "strategy": "KPMO_MI_GAP_FILL_240415"
+    },
+    "as0125": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0125",
+      "strategy": "QK0E_MI_METALDEP1_240926"
+    },
+    "as0126": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0126",
+      "strategy": "ZI8Q_CMP_VIA_HOLE_240323"
+    },
+    "as0127": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0127",
+      "strategy": "LVXE_MI_POLY_GATE_240127"
+    },
+    "as0128": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0128",
+      "strategy": "LI_ETCH_METALDEP1_240705"
+    },
+    "as0129": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0129",
+      "strategy": "SCHV_PHOTO_METALDEP1_240525"
+    },
+    "as0130": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0130",
+      "strategy": "BD_CMP_VIA_HOLE_240610"
+    },
+    "as0131": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0131",
+      "strategy": "YD_MI_POLY_GATE_240710"
+    },
+    "as0132": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0132",
+      "strategy": "BL2A_CLN_GAP_FILL_240404"
+    },
+    "as0133": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0133",
+      "strategy": "WF4L_ETCH_POLY_GATE_241102"
+    },
+    "as0134": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0134",
+      "strategy": "JJDE_CMP_STRIP_240709"
+    },
+    "as0135": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0135",
+      "strategy": "OU0A_MI_METALDEP1_240202"
+    },
+    "as0136": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0136",
+      "strategy": "SIQF_ETCH_STRIP_240731"
+    },
+    "as0137": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0137",
+      "strategy": "MI8H_CMP_METALDEP1_240110"
+    },
+    "as0138": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0138",
+      "strategy": "OR_CMP_HARD_MASK_240318"
+    },
+    "as0139": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0139",
+      "strategy": "KHOK_ETCH_VIA_HOLE_240820"
+    },
+    "as0140": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0140",
+      "strategy": "YP_MI_METALDEP1_240203"
+    },
+    "as0141": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0141",
+      "strategy": "QM8D_PHOTO_GAP_FILL_240128"
+    },
+    "as0142": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0142",
+      "strategy": "FUVQ_CMP_HARD_MASK_240910"
+    },
+    "as0143": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0143",
+      "strategy": "HMOQ_ETCH_GAP_FILL_240827"
+    },
+    "as0144": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0144",
+      "strategy": "RXHF_ETCH_VIA_HOLE_240720"
+    },
+    "as0145": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0145",
+      "strategy": "DVQH_THIN_FILM_HARD_MASK_240404"
+    },
+    "as0146": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0146",
+      "strategy": "ARMN_THIN_FILM_GAP_FILL_241225"
+    },
+    "as0147": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0147",
+      "strategy": "IW6S_MI_HARD_MASK_241005"
+    },
+    "as0148": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0148",
+      "strategy": "TYNJ_PHOTO_POLY_GATE_240704"
+    },
+    "as0149": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0149",
+      "strategy": "CMPN_CLN_GAP_FILL_240515"
+    },
+    "as0150": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0150",
+      "strategy": "ZUYV_ETCH_STRIP_241028"
+    },
+    "as0151": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0151",
+      "strategy": "JPXL_CLN_VIA_HOLE_240713"
+    },
+    "as0152": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0152",
+      "strategy": "EI5N_CLN_GAP_FILL_240904"
+    },
+    "as0153": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0153",
+      "strategy": "QUER_ETCH_METALDEP1_240525"
+    },
+    "as0154": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0154",
+      "strategy": "FF_ETCH_POLY_GATE_240117"
+    },
+    "as0155": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0155",
+      "strategy": "JHQP_MI_POLY_GATE_240721"
+    },
+    "as0156": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0156",
+      "strategy": "EW4S_MI_STRIP_240718"
+    },
+    "as0157": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0157",
+      "strategy": "HHRQ_ETCH_HARD_MASK_241030"
+    },
+    "as0158": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0158",
+      "strategy": "YABK_PHOTO_METALDEP1_240117"
+    },
+    "as0159": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0159",
+      "strategy": "SPTL_CMP_GAP_FILL_240313"
+    },
+    "as0160": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0160",
+      "strategy": "JGXN_ETCH_STRIP_241007"
+    },
+    "as0161": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0161",
+      "strategy": "TEVI_ETCH_POLY_GATE_241202"
+    },
+    "as0162": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0162",
+      "strategy": "KQ_MI_STRIP_240413"
+    },
+    "as0163": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0163",
+      "strategy": "MYKU_MI_POLY_GATE_240321"
+    },
+    "as0164": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0164",
+      "strategy": "FZNR_THIN_FILM_METALDEP1_240802"
+    },
+    "as0165": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0165",
+      "strategy": "ENPL_MI_HARD_MASK_240503"
+    },
+    "as0166": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0166",
+      "strategy": "SMXF_ETCH_POLY_GATE_240521"
+    },
+    "as0167": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0167",
+      "strategy": "DR_CMP_VIA_HOLE_240108"
+    },
+    "as0168": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0168",
+      "strategy": "YOIW_CLN_GAP_FILL_240914"
+    },
+    "as0169": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0169",
+      "strategy": "IYSN_CLN_VIA_HOLE_241225"
+    },
+    "as0170": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0170",
+      "strategy": "YE5F_CLN_METALDEP1_240325"
+    },
+    "as0171": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0171",
+      "strategy": "AQ_THIN_FILM_STRIP_240410"
+    },
+    "as0172": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0172",
+      "strategy": "GN_ETCH_POLY_GATE_240101"
+    },
+    "as0173": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0173",
+      "strategy": "LU4C_MI_METALDEP1_241112"
+    },
+    "as0174": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0174",
+      "strategy": "BV_MI_VIA_HOLE_240808"
+    },
+    "as0175": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0175",
+      "strategy": "VW_ETCH_METALDEP1_240827"
+    },
+    "as0176": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0176",
+      "strategy": "BMHH_CLN_GAP_FILL_240702"
+    },
+    "as0177": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0177",
+      "strategy": "CM5W_CLN_VIA_HOLE_240512"
+    },
+    "as0178": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0178",
+      "strategy": "WJZG_CLN_STRIP_240123"
+    },
+    "as0179": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0179",
+      "strategy": "IDTG_CMP_STRIP_240706"
+    },
+    "as0180": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0180",
+      "strategy": "QLUT_CLN_METALDEP1_240813"
+    },
+    "as0181": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0181",
+      "strategy": "NLEH_PHOTO_METALDEP1_240710"
+    },
+    "as0182": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0182",
+      "strategy": "FA_PHOTO_POLY_GATE_240613"
+    },
+    "as0183": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0183",
+      "strategy": "JMSS_THIN_FILM_HARD_MASK_241114"
+    },
+    "as0184": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0184",
+      "strategy": "BG_CMP_VIA_HOLE_240718"
+    },
+    "as0185": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0185",
+      "strategy": "SVJC_CMP_METALDEP1_240126"
+    },
+    "as0186": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0186",
+      "strategy": "XH_THIN_FILM_GAP_FILL_240111"
+    },
+    "as0187": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0187",
+      "strategy": "KGWA_MI_POLY_GATE_241025"
+    },
+    "as0188": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0188",
+      "strategy": "RRLI_THIN_FILM_GAP_FILL_240727"
+    },
+    "as0189": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0189",
+      "strategy": "YSVF_MI_GAP_FILL_240205"
+    },
+    "as0190": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0190",
+      "strategy": "NRRP_THIN_FILM_STRIP_240504"
+    },
+    "as0191": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0191",
+      "strategy": "JR_CMP_POLY_GATE_240411"
+    },
+    "as0192": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0192",
+      "strategy": "DL_PHOTO_HARD_MASK_240625"
+    },
+    "as0193": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0193",
+      "strategy": "IM2V_MI_HARD_MASK_241202"
+    },
+    "as0194": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0194",
+      "strategy": "AEXH_MI_STRIP_240311"
+    },
+    "as0195": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0195",
+      "strategy": "FVJB_CLN_POLY_GATE_240312"
+    },
+    "as0196": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0196",
+      "strategy": "YK6D_CLN_GAP_FILL_241102"
+    },
+    "as0197": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0197",
+      "strategy": "YPJI_CMP_POLY_GATE_240211"
+    },
+    "as0198": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0198",
+      "strategy": "TK7L_CMP_GAP_FILL_240913"
+    },
+    "as0199": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0199",
+      "strategy": "CLHD_CLN_HARD_MASK_240615"
+    },
+    "as0200": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0200",
+      "strategy": "FBBU_CLN_GAP_FILL_241224"
+    },
+    "as0201": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0201",
+      "strategy": "LXBT_PHOTO_VIA_HOLE_240828"
+    },
+    "as0202": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0202",
+      "strategy": "DUPW_PHOTO_VIA_HOLE_240506"
+    },
+    "as0203": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0203",
+      "strategy": "JH_CLN_HARD_MASK_240208"
+    },
+    "as0204": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0204",
+      "strategy": "EK2E_THIN_FILM_METALDEP1_240712"
+    },
+    "as0205": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0205",
+      "strategy": "AI_CLN_VIA_HOLE_240128"
+    },
+    "as0206": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0206",
+      "strategy": "CJ_CLN_METALDEP1_240221"
+    },
+    "as0207": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0207",
+      "strategy": "HQ6D_CLN_HARD_MASK_240817"
+    },
+    "as0208": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0208",
+      "strategy": "HSYB_CLN_HARD_MASK_240916"
+    },
+    "as0209": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0209",
+      "strategy": "DW_ETCH_HARD_MASK_240119"
+    },
+    "as0210": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0210",
+      "strategy": "ULVY_ETCH_STRIP_240416"
+    },
+    "as0211": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0211",
+      "strategy": "HWCW_THIN_FILM_POLY_GATE_240323"
+    },
+    "as0212": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0212",
+      "strategy": "GZYZ_CMP_HARD_MASK_240605"
+    },
+    "as0213": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0213",
+      "strategy": "NJ3E_CLN_POLY_GATE_240718"
+    },
+    "as0214": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0214",
+      "strategy": "ZYNR_PHOTO_POLY_GATE_240603"
+    },
+    "as0215": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0215",
+      "strategy": "FIDY_CMP_POLY_GATE_240719"
+    },
+    "as0216": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0216",
+      "strategy": "NH_MI_HARD_MASK_241013"
+    },
+    "as0217": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0217",
+      "strategy": "OBNY_CMP_POLY_GATE_240327"
+    },
+    "as0218": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0218",
+      "strategy": "RC_ETCH_HARD_MASK_240423"
+    },
+    "as0219": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0219",
+      "strategy": "ZSKC_ETCH_METALDEP1_240524"
+    },
+    "as0220": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0220",
+      "strategy": "WH2J_ETCH_POLY_GATE_240129"
+    },
+    "as0221": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0221",
+      "strategy": "PI_PHOTO_VIA_HOLE_241209"
+    },
+    "as0222": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0222",
+      "strategy": "OPQJ_MI_STRIP_240104"
+    },
+    "as0223": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0223",
+      "strategy": "IZBZ_CLN_GAP_FILL_240624"
+    },
+    "as0224": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0224",
+      "strategy": "OS_MI_GAP_FILL_241023"
+    },
+    "as0225": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0225",
+      "strategy": "CU_PHOTO_POLY_GATE_240625"
+    },
+    "as0226": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0226",
+      "strategy": "IW_CMP_HARD_MASK_241025"
+    },
+    "as0227": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0227",
+      "strategy": "HC_ETCH_POLY_GATE_240423"
+    },
+    "as0228": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0228",
+      "strategy": "YGDR_PHOTO_STRIP_240209"
+    },
+    "as0229": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0229",
+      "strategy": "OWWN_ETCH_VIA_HOLE_240130"
+    },
+    "as0230": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0230",
+      "strategy": "DTJG_CLN_POLY_GATE_240920"
+    },
+    "as0231": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0231",
+      "strategy": "MC_MI_HARD_MASK_240629"
+    },
+    "as0232": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0232",
+      "strategy": "QS_CMP_STRIP_240205"
+    },
+    "as0233": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0233",
+      "strategy": "URDS_ETCH_VIA_HOLE_241127"
+    },
+    "as0234": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0234",
+      "strategy": "FNRX_CMP_METALDEP1_240816"
+    },
+    "as0235": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0235",
+      "strategy": "MX_CMP_HARD_MASK_240802"
+    },
+    "as0236": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0236",
+      "strategy": "YDOV_CMP_HARD_MASK_240906"
+    },
+    "as0237": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0237",
+      "strategy": "HD7L_MI_METALDEP1_240621"
+    },
+    "as0238": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0238",
+      "strategy": "ICCY_CLN_POLY_GATE_240409"
+    },
+    "as0239": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0239",
+      "strategy": "ACQC_PHOTO_HARD_MASK_240217"
+    },
+    "as0240": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0240",
+      "strategy": "EZ5N_CLN_POLY_GATE_240906"
+    },
+    "as0241": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0241",
+      "strategy": "EB_CMP_POLY_GATE_240206"
+    },
+    "as0242": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0242",
+      "strategy": "IV_PHOTO_POLY_GATE_240811"
+    },
+    "as0243": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0243",
+      "strategy": "VF_CLN_GAP_FILL_240319"
+    },
+    "as0244": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0244",
+      "strategy": "HMWO_THIN_FILM_HARD_MASK_240403"
+    },
+    "as0245": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0245",
+      "strategy": "DELD_MI_POLY_GATE_240601"
+    },
+    "as0246": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0246",
+      "strategy": "HR4P_THIN_FILM_VIA_HOLE_240619"
+    },
+    "as0247": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0247",
+      "strategy": "FWBV_CLN_GAP_FILL_240731"
+    },
+    "as0248": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0248",
+      "strategy": "ID2L_ETCH_HARD_MASK_240126"
+    },
+    "as0249": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0249",
+      "strategy": "MARE_THIN_FILM_VIA_HOLE_241029"
+    },
+    "as0250": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0250",
+      "strategy": "MIAY_CLN_METALDEP1_241005"
+    },
+    "as0251": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0251",
+      "strategy": "KMSV_MI_VIA_HOLE_241015"
+    },
+    "as0252": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0252",
+      "strategy": "NQYY_THIN_FILM_POLY_GATE_240202"
+    },
+    "as0253": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0253",
+      "strategy": "GG_PHOTO_GAP_FILL_240909"
+    },
+    "as0254": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0254",
+      "strategy": "RLOS_CMP_STRIP_240828"
+    },
+    "as0255": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0255",
+      "strategy": "HBYJ_CMP_VIA_HOLE_241013"
+    },
+    "as0256": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0256",
+      "strategy": "LI_ETCH_POLY_GATE_240202"
+    },
+    "as0257": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0257",
+      "strategy": "YE_MI_STRIP_240115"
+    },
+    "as0258": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0258",
+      "strategy": "IDUD_PHOTO_METALDEP1_240822"
+    },
+    "as0259": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0259",
+      "strategy": "MZ0C_MI_GAP_FILL_241020"
+    },
+    "as0260": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0260",
+      "strategy": "CAZO_PHOTO_GAP_FILL_240711"
+    },
+    "as0261": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0261",
+      "strategy": "MK_ETCH_METALDEP1_240201"
+    },
+    "as0262": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0262",
+      "strategy": "HZHO_CMP_POLY_GATE_240909"
+    },
+    "as0263": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0263",
+      "strategy": "NNAQ_CMP_VIA_HOLE_240501"
+    },
+    "as0264": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0264",
+      "strategy": "IW_THIN_FILM_POLY_GATE_240206"
+    },
+    "as0265": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0265",
+      "strategy": "PNFL_PHOTO_METALDEP1_241015"
+    },
+    "as0266": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0266",
+      "strategy": "KU9A_PHOTO_HARD_MASK_241011"
+    },
+    "as0267": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0267",
+      "strategy": "TFZK_CMP_POLY_GATE_241003"
+    },
+    "as0268": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0268",
+      "strategy": "VXEW_THIN_FILM_VIA_HOLE_240721"
+    },
+    "as0269": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0269",
+      "strategy": "JI_PHOTO_STRIP_241118"
+    },
+    "as0270": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0270",
+      "strategy": "HTWQ_CMP_HARD_MASK_240620"
+    },
+    "as0271": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0271",
+      "strategy": "MC_ETCH_STRIP_241129"
+    },
+    "as0272": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0272",
+      "strategy": "FIOZ_PHOTO_VIA_HOLE_240814"
+    },
+    "as0273": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0273",
+      "strategy": "SCPP_THIN_FILM_VIA_HOLE_241106"
+    },
+    "as0274": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0274",
+      "strategy": "EHKB_ETCH_VIA_HOLE_241017"
+    },
+    "as0275": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0275",
+      "strategy": "DQ_ETCH_METALDEP1_240721"
+    },
+    "as0276": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0276",
+      "strategy": "UF_CLN_METALDEP1_240627"
+    },
+    "as0277": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0277",
+      "strategy": "LJDQ_MI_GAP_FILL_241222"
+    },
+    "as0278": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0278",
+      "strategy": "CURV_MI_GAP_FILL_241213"
+    },
+    "as0279": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0279",
+      "strategy": "KJ2W_MI_METALDEP1_240207"
+    },
+    "as0280": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0280",
+      "strategy": "HI_PHOTO_VIA_HOLE_240123"
+    },
+    "as0281": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0281",
+      "strategy": "WHVG_PHOTO_POLY_GATE_241213"
+    },
+    "as0282": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0282",
+      "strategy": "IX_ETCH_METALDEP1_240804"
+    },
+    "as0283": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0283",
+      "strategy": "JXWD_CMP_STRIP_241019"
+    },
+    "as0284": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0284",
+      "strategy": "IHLF_CLN_POLY_GATE_241008"
+    },
+    "as0285": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0285",
+      "strategy": "RY_CLN_HARD_MASK_240117"
+    },
+    "as0286": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0286",
+      "strategy": "YTMG_THIN_FILM_GAP_FILL_240205"
+    },
+    "as0287": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0287",
+      "strategy": "NT_ETCH_VIA_HOLE_240303"
+    },
+    "as0288": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0288",
+      "strategy": "XY_THIN_FILM_METALDEP1_241124"
+    },
+    "as0289": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0289",
+      "strategy": "YRTK_CMP_POLY_GATE_240206"
+    },
+    "as0290": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0290",
+      "strategy": "RC_THIN_FILM_METALDEP1_240902"
+    },
+    "as0291": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0291",
+      "strategy": "UY_CLN_VIA_HOLE_240918"
+    },
+    "as0292": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0292",
+      "strategy": "NIUV_MI_METALDEP1_241011"
+    },
+    "as0293": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0293",
+      "strategy": "TETP_MI_HARD_MASK_241224"
+    },
+    "as0294": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0294",
+      "strategy": "HI_CLN_GAP_FILL_241010"
+    },
+    "as0295": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0295",
+      "strategy": "YA4V_ETCH_VIA_HOLE_240306"
+    },
+    "as0296": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0296",
+      "strategy": "SBHL_ETCH_POLY_GATE_241217"
+    },
+    "as0297": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0297",
+      "strategy": "WJ7K_MI_VIA_HOLE_241031"
+    },
+    "as0298": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0298",
+      "strategy": "HN_CMP_POLY_GATE_240213"
+    },
+    "as0299": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0299",
+      "strategy": "MFTF_MI_GAP_FILL_241231"
+    },
+    "as0300": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0300",
+      "strategy": "AARJ_MI_STRIP_240316"
+    },
+    "as0301": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0301",
+      "strategy": "BJZD_ETCH_METALDEP1_240101"
+    },
+    "as0302": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0302",
+      "strategy": "DCAI_THIN_FILM_STRIP_240927"
+    },
+    "as0303": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0303",
+      "strategy": "TR_CMP_VIA_HOLE_240215"
+    },
+    "as0304": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0304",
+      "strategy": "FKMX_MI_STRIP_241206"
+    },
+    "as0305": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0305",
+      "strategy": "YVLE_PHOTO_METALDEP1_240418"
+    },
+    "as0306": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0306",
+      "strategy": "PPFA_ETCH_POLY_GATE_240528"
+    },
+    "as0307": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0307",
+      "strategy": "NA_CLN_HARD_MASK_240616"
+    },
+    "as0308": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0308",
+      "strategy": "LJ2K_CMP_VIA_HOLE_241220"
+    },
+    "as0309": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0309",
+      "strategy": "SK_CMP_METALDEP1_240924"
+    },
+    "as0310": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0310",
+      "strategy": "MQ_PHOTO_GAP_FILL_240521"
+    },
+    "as0311": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0311",
+      "strategy": "MN_MI_GAP_FILL_240122"
+    },
+    "as0312": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0312",
+      "strategy": "SMWB_CMP_HARD_MASK_240614"
+    },
+    "as0313": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0313",
+      "strategy": "GZXS_PHOTO_METALDEP1_240307"
+    },
+    "as0314": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0314",
+      "strategy": "RWXE_CLN_HARD_MASK_240202"
+    },
+    "as0315": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0315",
+      "strategy": "UHPA_CMP_HARD_MASK_240702"
+    },
+    "as0316": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0316",
+      "strategy": "IIYB_THIN_FILM_HARD_MASK_241011"
+    },
+    "as0317": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0317",
+      "strategy": "LICY_MI_POLY_GATE_240817"
+    },
+    "as0318": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0318",
+      "strategy": "EP_ETCH_STRIP_241227"
+    },
+    "as0319": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0319",
+      "strategy": "HG8M_CMP_VIA_HOLE_240102"
+    },
+    "as0320": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0320",
+      "strategy": "PB3A_PHOTO_HARD_MASK_240720"
+    },
+    "as0321": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0321",
+      "strategy": "CISD_CLN_STRIP_240212"
+    },
+    "as0322": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0322",
+      "strategy": "HI_ETCH_POLY_GATE_241111"
+    },
+    "as0323": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0323",
+      "strategy": "CQSW_PHOTO_GAP_FILL_240330"
+    },
+    "as0324": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0324",
+      "strategy": "WBCE_ETCH_STRIP_240629"
+    },
+    "as0325": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0325",
+      "strategy": "LOYB_CMP_POLY_GATE_240711"
+    },
+    "as0326": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0326",
+      "strategy": "TWIT_ETCH_GAP_FILL_241210"
+    },
+    "as0327": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0327",
+      "strategy": "IRNM_MI_VIA_HOLE_240917"
+    },
+    "as0328": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0328",
+      "strategy": "TR7T_PHOTO_VIA_HOLE_240127"
+    },
+    "as0329": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0329",
+      "strategy": "ML_ETCH_METALDEP1_240327"
+    },
+    "as0330": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0330",
+      "strategy": "JERM_CLN_STRIP_241113"
+    },
+    "as0331": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0331",
+      "strategy": "RDQN_ETCH_HARD_MASK_240614"
+    },
+    "as0332": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0332",
+      "strategy": "QGJA_PHOTO_POLY_GATE_240116"
+    },
+    "as0333": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0333",
+      "strategy": "XV_PHOTO_METALDEP1_241013"
+    },
+    "as0334": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0334",
+      "strategy": "ECWA_ETCH_GAP_FILL_240911"
+    },
+    "as0335": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0335",
+      "strategy": "HHFY_CLN_GAP_FILL_241219"
+    },
+    "as0336": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0336",
+      "strategy": "STAC_MI_POLY_GATE_241207"
+    },
+    "as0337": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0337",
+      "strategy": "DX_CLN_HARD_MASK_240815"
+    },
+    "as0338": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0338",
+      "strategy": "JBBX_MI_HARD_MASK_241015"
+    },
+    "as0339": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0339",
+      "strategy": "UC_THIN_FILM_STRIP_240916"
+    },
+    "as0340": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0340",
+      "strategy": "EW_ETCH_GAP_FILL_240326"
+    },
+    "as0341": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0341",
+      "strategy": "VQ_MI_HARD_MASK_240329"
+    },
+    "as0342": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0342",
+      "strategy": "OE_MI_VIA_HOLE_240819"
+    },
+    "as0343": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0343",
+      "strategy": "LR6D_THIN_FILM_VIA_HOLE_241101"
+    },
+    "as0344": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0344",
+      "strategy": "RA_MI_POLY_GATE_240108"
+    },
+    "as0345": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0345",
+      "strategy": "YSPT_THIN_FILM_GAP_FILL_240603"
+    },
+    "as0346": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0346",
+      "strategy": "HADX_ETCH_METALDEP1_240418"
+    },
+    "as0347": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0347",
+      "strategy": "KPAO_PHOTO_METALDEP1_241106"
+    },
+    "as0348": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0348",
+      "strategy": "IV1E_MI_POLY_GATE_240803"
+    },
+    "as0349": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0349",
+      "strategy": "AU_THIN_FILM_METALDEP1_240807"
+    },
+    "as0350": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0350",
+      "strategy": "SN5P_ETCH_HARD_MASK_240202"
+    },
+    "as0351": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0351",
+      "strategy": "PDZY_MI_METALDEP1_241021"
+    },
+    "as0352": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0352",
+      "strategy": "WP6R_CMP_HARD_MASK_240102"
+    },
+    "as0353": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0353",
+      "strategy": "RWWQ_PHOTO_HARD_MASK_240603"
+    },
+    "as0354": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0354",
+      "strategy": "KNNX_CMP_HARD_MASK_241028"
+    },
+    "as0355": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0355",
+      "strategy": "JU_PHOTO_POLY_GATE_240719"
+    },
+    "as0356": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0356",
+      "strategy": "OT_MI_HARD_MASK_241215"
+    },
+    "as0357": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0357",
+      "strategy": "SGPV_CLN_POLY_GATE_241104"
+    },
+    "as0358": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0358",
+      "strategy": "HC4O_MI_HARD_MASK_240804"
+    },
+    "as0359": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0359",
+      "strategy": "KKOV_CMP_STRIP_240718"
+    },
+    "as0360": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0360",
+      "strategy": "UDKW_CMP_HARD_MASK_240911"
+    },
+    "as0361": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0361",
+      "strategy": "YHFJ_PHOTO_POLY_GATE_241209"
+    },
+    "as0362": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0362",
+      "strategy": "COND_MI_STRIP_240630"
+    },
+    "as0363": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0363",
+      "strategy": "XK_CLN_GAP_FILL_240209"
+    },
+    "as0364": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0364",
+      "strategy": "BS_PHOTO_METALDEP1_240520"
+    },
+    "as0365": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0365",
+      "strategy": "HE2P_CLN_METALDEP1_241009"
+    },
+    "as0366": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0366",
+      "strategy": "VIXD_MI_POLY_GATE_240706"
+    },
+    "as0367": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0367",
+      "strategy": "SISX_MI_METALDEP1_240321"
+    },
+    "as0368": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0368",
+      "strategy": "ZEUK_MI_GAP_FILL_240408"
+    },
+    "as0369": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0369",
+      "strategy": "MGVC_MI_METALDEP1_240918"
+    },
+    "as0370": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0370",
+      "strategy": "CCXI_PHOTO_HARD_MASK_240813"
+    },
+    "as0371": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0371",
+      "strategy": "SV_THIN_FILM_GAP_FILL_240217"
+    },
+    "as0372": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0372",
+      "strategy": "JH7J_CLN_VIA_HOLE_240505"
+    },
+    "as0373": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0373",
+      "strategy": "UF0I_THIN_FILM_METALDEP1_240106"
+    },
+    "as0374": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0374",
+      "strategy": "MB0S_MI_STRIP_240322"
+    },
+    "as0375": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0375",
+      "strategy": "LM6N_CMP_STRIP_240908"
+    },
+    "as0376": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0376",
+      "strategy": "SC_CMP_POLY_GATE_240627"
+    },
+    "as0377": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0377",
+      "strategy": "BA_THIN_FILM_METALDEP1_240402"
+    },
+    "as0378": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0378",
+      "strategy": "DERB_CLN_HARD_MASK_240907"
+    },
+    "as0379": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0379",
+      "strategy": "IK7T_CMP_GAP_FILL_240312"
+    },
+    "as0380": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0380",
+      "strategy": "USFV_CMP_POLY_GATE_240228"
+    },
+    "as0381": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0381",
+      "strategy": "MA2L_THIN_FILM_VIA_HOLE_240518"
+    },
+    "as0382": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0382",
+      "strategy": "VEJK_PHOTO_STRIP_240513"
+    },
+    "as0383": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0383",
+      "strategy": "TO_THIN_FILM_HARD_MASK_240430"
+    },
+    "as0384": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0384",
+      "strategy": "AUAJ_CLN_POLY_GATE_240408"
+    },
+    "as0385": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0385",
+      "strategy": "MS0C_PHOTO_HARD_MASK_240518"
+    },
+    "as0386": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0386",
+      "strategy": "RATL_ETCH_HARD_MASK_240803"
+    },
+    "as0387": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0387",
+      "strategy": "IM_CLN_VIA_HOLE_240904"
+    },
+    "as0388": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0388",
+      "strategy": "LXLQ_MI_HARD_MASK_240706"
+    },
+    "as0389": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0389",
+      "strategy": "ULOJ_ETCH_HARD_MASK_241229"
+    },
+    "as0390": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0390",
+      "strategy": "AT_CMP_GAP_FILL_241012"
+    },
+    "as0391": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0391",
+      "strategy": "XOJW_CMP_GAP_FILL_240425"
+    },
+    "as0392": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0392",
+      "strategy": "SKMV_THIN_FILM_GAP_FILL_240115"
+    },
+    "as0393": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0393",
+      "strategy": "YN_PHOTO_HARD_MASK_241126"
+    },
+    "as0394": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0394",
+      "strategy": "UC_MI_STRIP_240617"
+    },
+    "as0395": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0395",
+      "strategy": "QMFQ_PHOTO_POLY_GATE_241002"
+    },
+    "as0396": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0396",
+      "strategy": "KKKD_PHOTO_STRIP_241027"
+    },
+    "as0397": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0397",
+      "strategy": "GT2J_PHOTO_STRIP_240528"
+    },
+    "as0398": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0398",
+      "strategy": "FN_ETCH_VIA_HOLE_240513"
+    },
+    "as0399": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0399",
+      "strategy": "LW8V_THIN_FILM_GAP_FILL_240719"
+    },
+    "as0400": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0400",
+      "strategy": "FL_PHOTO_STRIP_240824"
+    },
+    "as0401": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0401",
+      "strategy": "YOFU_MI_METALDEP1_240409"
+    },
+    "as0402": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0402",
+      "strategy": "LN_THIN_FILM_HARD_MASK_240622"
+    },
+    "as0403": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0403",
+      "strategy": "ZY_MI_METALDEP1_240719"
+    },
+    "as0404": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0404",
+      "strategy": "ZQ4Z_THIN_FILM_POLY_GATE_240227"
+    },
+    "as0405": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0405",
+      "strategy": "AE_THIN_FILM_HARD_MASK_240621"
+    },
+    "as0406": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0406",
+      "strategy": "KBWH_CLN_STRIP_240306"
+    },
+    "as0407": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0407",
+      "strategy": "QA3A_MI_GAP_FILL_240813"
+    },
+    "as0408": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0408",
+      "strategy": "VBMQ_CLN_POLY_GATE_240929"
+    },
+    "as0409": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0409",
+      "strategy": "EVKR_CMP_STRIP_240123"
+    },
+    "as0410": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0410",
+      "strategy": "NL2D_CMP_VIA_HOLE_241114"
+    },
+    "as0411": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0411",
+      "strategy": "SHNV_CLN_METALDEP1_240504"
+    },
+    "as0412": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0412",
+      "strategy": "CB_ETCH_POLY_GATE_241222"
+    },
+    "as0413": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0413",
+      "strategy": "CL_THIN_FILM_HARD_MASK_240215"
+    },
+    "as0414": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0414",
+      "strategy": "MQRQ_MI_HARD_MASK_240124"
+    },
+    "as0415": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0415",
+      "strategy": "LQ8Y_PHOTO_HARD_MASK_240617"
+    },
+    "as0416": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0416",
+      "strategy": "URHQ_ETCH_GAP_FILL_240320"
+    },
+    "as0417": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0417",
+      "strategy": "PUPU_PHOTO_GAP_FILL_240810"
+    },
+    "as0418": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0418",
+      "strategy": "OF3A_CMP_VIA_HOLE_240827"
+    },
+    "as0419": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0419",
+      "strategy": "TLEF_ETCH_STRIP_240422"
+    },
+    "as0420": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0420",
+      "strategy": "QJZL_PHOTO_VIA_HOLE_240217"
+    },
+    "as0421": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0421",
+      "strategy": "MLZF_MI_HARD_MASK_240330"
+    },
+    "as0422": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0422",
+      "strategy": "CDHX_MI_GAP_FILL_241110"
+    },
+    "as0423": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0423",
+      "strategy": "GZ6G_ETCH_METALDEP1_240129"
+    },
+    "as0424": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0424",
+      "strategy": "GFGN_CLN_METALDEP1_240313"
+    },
+    "as0425": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0425",
+      "strategy": "OBPZ_CLN_GAP_FILL_241209"
+    },
+    "as0426": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0426",
+      "strategy": "AO7K_THIN_FILM_STRIP_240109"
+    },
+    "as0427": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0427",
+      "strategy": "YYHT_CMP_GAP_FILL_240615"
+    },
+    "as0428": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0428",
+      "strategy": "LJ_CLN_HARD_MASK_240109"
+    },
+    "as0429": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0429",
+      "strategy": "KFQU_MI_METALDEP1_241219"
+    },
+    "as0430": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0430",
+      "strategy": "IAMZ_THIN_FILM_HARD_MASK_240108"
+    },
+    "as0431": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0431",
+      "strategy": "JRHM_MI_GAP_FILL_240104"
+    },
+    "as0432": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0432",
+      "strategy": "BAEB_CMP_GAP_FILL_240904"
+    },
+    "as0433": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0433",
+      "strategy": "JSMS_ETCH_VIA_HOLE_241223"
+    },
+    "as0434": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0434",
+      "strategy": "QMFP_PHOTO_STRIP_240319"
+    },
+    "as0435": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0435",
+      "strategy": "FATI_ETCH_VIA_HOLE_241011"
+    },
+    "as0436": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0436",
+      "strategy": "KA9I_THIN_FILM_STRIP_240912"
+    },
+    "as0437": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0437",
+      "strategy": "CJVW_PHOTO_STRIP_241227"
+    },
+    "as0438": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0438",
+      "strategy": "MZ0B_MI_POLY_GATE_241122"
+    },
+    "as0439": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0439",
+      "strategy": "OI9T_ETCH_POLY_GATE_240719"
+    },
+    "as0440": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0440",
+      "strategy": "TUWL_THIN_FILM_HARD_MASK_241229"
+    },
+    "as0441": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0441",
+      "strategy": "GQ_CLN_STRIP_240130"
+    },
+    "as0442": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0442",
+      "strategy": "AP_PHOTO_POLY_GATE_240523"
+    },
+    "as0443": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0443",
+      "strategy": "AM_THIN_FILM_METALDEP1_240527"
+    },
+    "as0444": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0444",
+      "strategy": "KJNW_CLN_VIA_HOLE_241027"
+    },
+    "as0445": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0445",
+      "strategy": "JJGD_THIN_FILM_GAP_FILL_240103"
+    },
+    "as0446": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0446",
+      "strategy": "GF3X_THIN_FILM_METALDEP1_240925"
+    },
+    "as0447": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0447",
+      "strategy": "JPCT_PHOTO_POLY_GATE_241124"
+    },
+    "as0448": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0448",
+      "strategy": "KDNP_CMP_VIA_HOLE_240923"
+    },
+    "as0449": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0449",
+      "strategy": "MCQN_CMP_METALDEP1_240816"
+    },
+    "as0450": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0450",
+      "strategy": "FY4N_PHOTO_GAP_FILL_240131"
+    },
+    "as0451": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0451",
+      "strategy": "KV_MI_POLY_GATE_241203"
+    },
+    "as0452": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0452",
+      "strategy": "SH_PHOTO_VIA_HOLE_240223"
+    },
+    "as0453": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0453",
+      "strategy": "EB_CMP_GAP_FILL_240201"
+    },
+    "as0454": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0454",
+      "strategy": "RCLF_CLN_GAP_FILL_240430"
+    },
+    "as0455": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0455",
+      "strategy": "DJ7K_THIN_FILM_POLY_GATE_241205"
+    },
+    "as0456": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0456",
+      "strategy": "NOFJ_PHOTO_HARD_MASK_240816"
+    },
+    "as0457": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0457",
+      "strategy": "EF5K_MI_HARD_MASK_240916"
+    },
+    "as0458": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0458",
+      "strategy": "QK_CMP_METALDEP1_240917"
+    },
+    "as0459": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0459",
+      "strategy": "YSTW_CMP_METALDEP1_240405"
+    },
+    "as0460": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0460",
+      "strategy": "PTMM_CLN_HARD_MASK_240912"
+    },
+    "as0461": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0461",
+      "strategy": "VNYT_THIN_FILM_STRIP_240430"
+    },
+    "as0462": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0462",
+      "strategy": "VBTF_ETCH_VIA_HOLE_240527"
+    },
+    "as0463": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0463",
+      "strategy": "WUHD_THIN_FILM_STRIP_240701"
+    },
+    "as0464": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0464",
+      "strategy": "RV_CLN_GAP_FILL_240308"
+    },
+    "as0465": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0465",
+      "strategy": "VOYX_CLN_HARD_MASK_241109"
+    },
+    "as0466": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0466",
+      "strategy": "RJZC_PHOTO_STRIP_240801"
+    },
+    "as0467": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0467",
+      "strategy": "EB_ETCH_GAP_FILL_240523"
+    },
+    "as0468": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0468",
+      "strategy": "KM6E_MI_VIA_HOLE_240823"
+    },
+    "as0469": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0469",
+      "strategy": "WO_MI_GAP_FILL_240107"
+    },
+    "as0470": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0470",
+      "strategy": "GR_CLN_VIA_HOLE_240821"
+    },
+    "as0471": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0471",
+      "strategy": "DKAC_CMP_POLY_GATE_240726"
+    },
+    "as0472": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0472",
+      "strategy": "EYUG_CMP_POLY_GATE_240422"
+    },
+    "as0473": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0473",
+      "strategy": "CZ_ETCH_GAP_FILL_240430"
+    },
+    "as0474": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0474",
+      "strategy": "ZR9O_PHOTO_GAP_FILL_241020"
+    },
+    "as0475": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0475",
+      "strategy": "NQ_CLN_STRIP_240915"
+    },
+    "as0476": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0476",
+      "strategy": "WBTR_CMP_POLY_GATE_241205"
+    },
+    "as0477": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0477",
+      "strategy": "ZZTF_THIN_FILM_VIA_HOLE_240528"
+    },
+    "as0478": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0478",
+      "strategy": "GY_CMP_HARD_MASK_240825"
+    },
+    "as0479": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0479",
+      "strategy": "TM_ETCH_GAP_FILL_241010"
+    },
+    "as0480": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0480",
+      "strategy": "EI_ETCH_VIA_HOLE_240802"
+    },
+    "as0481": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0481",
+      "strategy": "IH9X_THIN_FILM_HARD_MASK_240101"
+    },
+    "as0482": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0482",
+      "strategy": "IGCL_ETCH_METALDEP1_240311"
+    },
+    "as0483": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0483",
+      "strategy": "ETVY_THIN_FILM_POLY_GATE_240311"
+    },
+    "as0484": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0484",
+      "strategy": "IXRA_CMP_STRIP_241015"
+    },
+    "as0485": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0485",
+      "strategy": "NA_ETCH_GAP_FILL_240522"
+    },
+    "as0486": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0486",
+      "strategy": "JO_THIN_FILM_METALDEP1_240114"
+    },
+    "as0487": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0487",
+      "strategy": "PSDT_MI_STRIP_240415"
+    },
+    "as0488": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0488",
+      "strategy": "ZT_CMP_VIA_HOLE_240719"
+    },
+    "as0489": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0489",
+      "strategy": "XU_PHOTO_METALDEP1_240909"
+    },
+    "as0490": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0490",
+      "strategy": "YTYE_CLN_STRIP_240807"
+    },
+    "as0491": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0491",
+      "strategy": "EGIO_THIN_FILM_VIA_HOLE_240806"
+    },
+    "as0492": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0492",
+      "strategy": "UG_PHOTO_METALDEP1_241011"
+    },
+    "as0493": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0493",
+      "strategy": "UDNC_ETCH_STRIP_240805"
+    },
+    "as0494": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0494",
+      "strategy": "BC_ETCH_METALDEP1_240121"
+    },
+    "as0495": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0495",
+      "strategy": "AM3Y_CMP_VIA_HOLE_240724"
+    },
+    "as0496": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0496",
+      "strategy": "CF_ETCH_STRIP_241128"
+    },
+    "as0497": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0497",
+      "strategy": "BQIJ_CLN_STRIP_240914"
+    },
+    "as0498": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0498",
+      "strategy": "TW8B_CLN_GAP_FILL_241020"
+    },
+    "as0499": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0499",
+      "strategy": "JK_PHOTO_METALDEP1_240625"
+    },
+    "as0500": {
+      "path": "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0500",
+      "strategy": "YSHR_CMP_METALDEP1_240609"
+    }
+  },
+  "by_recipe": {
+    "WQKJ_ETCH_METALDEP1_240515": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0001"
+    ],
+    "GE_PHOTO_VIA_HOLE_240704": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0002"
+    ],
+    "UX8C_PHOTO_METALDEP1_240309": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0003"
+    ],
+    "GS_CLN_GAP_FILL_241208": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0004"
+    ],
+    "KYCD_PHOTO_GAP_FILL_240628": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0005"
+    ],
+    "CC_PHOTO_METALDEP1_240415": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0006"
+    ],
+    "WZPD_MI_STRIP_240530": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0007"
+    ],
+    "MC_CLN_POLY_GATE_241102": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0008"
+    ],
+    "JU_MI_HARD_MASK_241204": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0009"
+    ],
+    "FWYQ_CLN_HARD_MASK_240120": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0010"
+    ],
+    "EL9G_ETCH_GAP_FILL_240914": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0011"
+    ],
+    "JAMX_THIN_FILM_GAP_FILL_240328": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0012"
+    ],
+    "EJVR_CLN_GAP_FILL_240603": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0013"
+    ],
+    "VXZJ_ETCH_POLY_GATE_240615": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0014"
+    ],
+    "ZK_CMP_POLY_GATE_240124": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0015"
+    ],
+    "ZGYR_CLN_STRIP_241229": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0016"
+    ],
+    "FAUO_CMP_STRIP_240112": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0017"
+    ],
+    "ID9J_CMP_STRIP_240916": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0018"
+    ],
+    "QQFA_THIN_FILM_HARD_MASK_240214": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0019"
+    ],
+    "QZEI_CMP_METALDEP1_240808": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0020"
+    ],
+    "ITGI_CMP_METALDEP1_241020": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0021"
+    ],
+    "VL_CMP_VIA_HOLE_240509": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0022"
+    ],
+    "BWIO_CLN_GAP_FILL_240814": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0023"
+    ],
+    "JHFB_PHOTO_STRIP_240718": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0024"
+    ],
+    "DG_CLN_HARD_MASK_241017": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0025"
+    ],
+    "NY9J_THIN_FILM_METALDEP1_240222": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0026"
+    ],
+    "KK1O_THIN_FILM_STRIP_240816": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0027"
+    ],
+    "QI2N_CMP_HARD_MASK_240817": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0028"
+    ],
+    "EFZO_THIN_FILM_STRIP_240721": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0029"
+    ],
+    "UUCO_PHOTO_HARD_MASK_240216": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0030"
+    ],
+    "XL_MI_METALDEP1_241017": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0031"
+    ],
+    "PBUR_PHOTO_HARD_MASK_241110": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0032"
+    ],
+    "JZ4D_THIN_FILM_VIA_HOLE_240915": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0033"
+    ],
+    "SN3H_CMP_POLY_GATE_240521": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0034"
+    ],
+    "QBJQ_MI_METALDEP1_240312": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0035"
+    ],
+    "TC_THIN_FILM_POLY_GATE_240228": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0036"
+    ],
+    "ZB5C_ETCH_VIA_HOLE_240521": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0037"
+    ],
+    "OF_CLN_HARD_MASK_241218": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0038"
+    ],
+    "WIXX_PHOTO_GAP_FILL_241208": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0039"
+    ],
+    "UY_MI_METALDEP1_240120": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0040"
+    ],
+    "QKIG_MI_STRIP_240625": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0041"
+    ],
+    "ETAF_CMP_STRIP_240410": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0042"
+    ],
+    "XCJU_PHOTO_HARD_MASK_240817": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0043"
+    ],
+    "GDIJ_CLN_VIA_HOLE_241201": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0044"
+    ],
+    "NWWE_CMP_POLY_GATE_240826": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0045"
+    ],
+    "TASS_CLN_METALDEP1_240123": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0046"
+    ],
+    "UC7I_PHOTO_METALDEP1_240602": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0047"
+    ],
+    "XKRR_MI_STRIP_241225": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0048"
+    ],
+    "NF_CLN_VIA_HOLE_240904": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0049"
+    ],
+    "WDTF_ETCH_METALDEP1_240521": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0050"
+    ],
+    "APTR_THIN_FILM_VIA_HOLE_240613": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0051"
+    ],
+    "IGGV_MI_STRIP_241223": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0052"
+    ],
+    "IVHW_CMP_METALDEP1_240525": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0053"
+    ],
+    "YM_ETCH_VIA_HOLE_240605": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0054"
+    ],
+    "WLHZ_THIN_FILM_HARD_MASK_241128": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0055"
+    ],
+    "OJ7J_CMP_HARD_MASK_241202": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0056"
+    ],
+    "TPLH_THIN_FILM_POLY_GATE_240624": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0057"
+    ],
+    "QG1Q_PHOTO_VIA_HOLE_240626": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0058"
+    ],
+    "HEBB_THIN_FILM_POLY_GATE_240812": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0059"
+    ],
+    "NTVI_MI_GAP_FILL_241211": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0060"
+    ],
+    "UYJE_CMP_GAP_FILL_240127": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0061"
+    ],
+    "ICVW_CLN_VIA_HOLE_240503": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0062"
+    ],
+    "YOXF_THIN_FILM_HARD_MASK_241004": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0063"
+    ],
+    "BSME_PHOTO_VIA_HOLE_240913": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0064"
+    ],
+    "SX_THIN_FILM_VIA_HOLE_240725": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0065"
+    ],
+    "UJFX_MI_POLY_GATE_240209": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0066"
+    ],
+    "KR_ETCH_VIA_HOLE_240504": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0067"
+    ],
+    "AV_MI_POLY_GATE_240420": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0068"
+    ],
+    "HU8D_ETCH_STRIP_240914": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0069"
+    ],
+    "IPFK_THIN_FILM_METALDEP1_240406": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0070"
+    ],
+    "QPEN_PHOTO_VIA_HOLE_240501": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0071"
+    ],
+    "CA0N_ETCH_HARD_MASK_240911": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0072"
+    ],
+    "PG_MI_GAP_FILL_240303": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0073"
+    ],
+    "RV_MI_POLY_GATE_240614": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0074"
+    ],
+    "HZCX_CMP_HARD_MASK_241019": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0075"
+    ],
+    "ZVTE_PHOTO_STRIP_240711": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0076"
+    ],
+    "ZN_ETCH_POLY_GATE_240610": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0077"
+    ],
+    "NC7R_THIN_FILM_POLY_GATE_241216": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0078"
+    ],
+    "KP_THIN_FILM_VIA_HOLE_241004": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0079"
+    ],
+    "EZ_MI_VIA_HOLE_240403": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0080"
+    ],
+    "FQYS_CMP_GAP_FILL_240515": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0081"
+    ],
+    "CV_ETCH_VIA_HOLE_240726": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0082"
+    ],
+    "RA_CMP_GAP_FILL_240307": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0083"
+    ],
+    "GLXB_ETCH_POLY_GATE_240422": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0084"
+    ],
+    "AD_CLN_VIA_HOLE_240708": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0085"
+    ],
+    "FGCT_CLN_STRIP_241116": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0086"
+    ],
+    "KC1N_CMP_VIA_HOLE_240909": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0087"
+    ],
+    "EFSZ_THIN_FILM_METALDEP1_240113": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0088"
+    ],
+    "UR_THIN_FILM_STRIP_240125": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0089"
+    ],
+    "PW_MI_POLY_GATE_240612": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0090"
+    ],
+    "PU_CMP_VIA_HOLE_240821": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0091"
+    ],
+    "HJ_CMP_STRIP_240515": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0092"
+    ],
+    "VQ5P_THIN_FILM_METALDEP1_240423": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0093"
+    ],
+    "HIIL_PHOTO_METALDEP1_240412": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0094"
+    ],
+    "UR1Y_MI_METALDEP1_241211": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0095"
+    ],
+    "MP_PHOTO_VIA_HOLE_240828": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0096"
+    ],
+    "ZMRY_CMP_STRIP_241015": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0097"
+    ],
+    "FFIA_CLN_STRIP_240609": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0098"
+    ],
+    "CSWU_MI_HARD_MASK_241222": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0099"
+    ],
+    "BD_MI_STRIP_240419": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0100"
+    ],
+    "OTRK_THIN_FILM_HARD_MASK_241004": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0101"
+    ],
+    "PO4C_MI_STRIP_240322": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0102"
+    ],
+    "LM_PHOTO_POLY_GATE_241214": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0103"
+    ],
+    "WTMD_CLN_VIA_HOLE_240319": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0104"
+    ],
+    "QGGX_ETCH_HARD_MASK_240323": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0105"
+    ],
+    "EQYO_CMP_HARD_MASK_240617": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0106"
+    ],
+    "BP_ETCH_HARD_MASK_241223": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0107"
+    ],
+    "UU_MI_HARD_MASK_240803": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0108"
+    ],
+    "LAMI_MI_METALDEP1_240924": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0109"
+    ],
+    "SDFA_CMP_POLY_GATE_240420": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0110"
+    ],
+    "TL_CMP_STRIP_241231": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0111"
+    ],
+    "DC9Z_PHOTO_HARD_MASK_240630": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0112"
+    ],
+    "HAXI_THIN_FILM_VIA_HOLE_240921": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0113"
+    ],
+    "DY_CLN_METALDEP1_240915": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0114"
+    ],
+    "FKGV_THIN_FILM_HARD_MASK_240225": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0115"
+    ],
+    "SP3Y_MI_VIA_HOLE_240620": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0116"
+    ],
+    "FB0A_CMP_METALDEP1_240226": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0117"
+    ],
+    "NAHY_CMP_GAP_FILL_240720": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0118"
+    ],
+    "FNDN_THIN_FILM_METALDEP1_240203": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0119"
+    ],
+    "GP_PHOTO_STRIP_240420": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0120"
+    ],
+    "LA_ETCH_HARD_MASK_240707": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0121"
+    ],
+    "VEXZ_ETCH_HARD_MASK_240707": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0122"
+    ],
+    "HBXE_CMP_GAP_FILL_240625": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0123"
+    ],
+    "KPMO_MI_GAP_FILL_240415": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0124"
+    ],
+    "QK0E_MI_METALDEP1_240926": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0125"
+    ],
+    "ZI8Q_CMP_VIA_HOLE_240323": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0126"
+    ],
+    "LVXE_MI_POLY_GATE_240127": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0127"
+    ],
+    "LI_ETCH_METALDEP1_240705": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0128"
+    ],
+    "SCHV_PHOTO_METALDEP1_240525": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0129"
+    ],
+    "BD_CMP_VIA_HOLE_240610": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0130"
+    ],
+    "YD_MI_POLY_GATE_240710": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0131"
+    ],
+    "BL2A_CLN_GAP_FILL_240404": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0132"
+    ],
+    "WF4L_ETCH_POLY_GATE_241102": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0133"
+    ],
+    "JJDE_CMP_STRIP_240709": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0134"
+    ],
+    "OU0A_MI_METALDEP1_240202": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0135"
+    ],
+    "SIQF_ETCH_STRIP_240731": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0136"
+    ],
+    "MI8H_CMP_METALDEP1_240110": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0137"
+    ],
+    "OR_CMP_HARD_MASK_240318": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0138"
+    ],
+    "KHOK_ETCH_VIA_HOLE_240820": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0139"
+    ],
+    "YP_MI_METALDEP1_240203": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0140"
+    ],
+    "QM8D_PHOTO_GAP_FILL_240128": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0141"
+    ],
+    "FUVQ_CMP_HARD_MASK_240910": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0142"
+    ],
+    "HMOQ_ETCH_GAP_FILL_240827": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0143"
+    ],
+    "RXHF_ETCH_VIA_HOLE_240720": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0144"
+    ],
+    "DVQH_THIN_FILM_HARD_MASK_240404": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0145"
+    ],
+    "ARMN_THIN_FILM_GAP_FILL_241225": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0146"
+    ],
+    "IW6S_MI_HARD_MASK_241005": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0147"
+    ],
+    "TYNJ_PHOTO_POLY_GATE_240704": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0148"
+    ],
+    "CMPN_CLN_GAP_FILL_240515": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0149"
+    ],
+    "ZUYV_ETCH_STRIP_241028": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0150"
+    ],
+    "JPXL_CLN_VIA_HOLE_240713": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0151"
+    ],
+    "EI5N_CLN_GAP_FILL_240904": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0152"
+    ],
+    "QUER_ETCH_METALDEP1_240525": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0153"
+    ],
+    "FF_ETCH_POLY_GATE_240117": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0154"
+    ],
+    "JHQP_MI_POLY_GATE_240721": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0155"
+    ],
+    "EW4S_MI_STRIP_240718": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0156"
+    ],
+    "HHRQ_ETCH_HARD_MASK_241030": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0157"
+    ],
+    "YABK_PHOTO_METALDEP1_240117": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0158"
+    ],
+    "SPTL_CMP_GAP_FILL_240313": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0159"
+    ],
+    "JGXN_ETCH_STRIP_241007": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0160"
+    ],
+    "TEVI_ETCH_POLY_GATE_241202": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0161"
+    ],
+    "KQ_MI_STRIP_240413": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0162"
+    ],
+    "MYKU_MI_POLY_GATE_240321": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0163"
+    ],
+    "FZNR_THIN_FILM_METALDEP1_240802": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0164"
+    ],
+    "ENPL_MI_HARD_MASK_240503": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0165"
+    ],
+    "SMXF_ETCH_POLY_GATE_240521": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0166"
+    ],
+    "DR_CMP_VIA_HOLE_240108": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0167"
+    ],
+    "YOIW_CLN_GAP_FILL_240914": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0168"
+    ],
+    "IYSN_CLN_VIA_HOLE_241225": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0169"
+    ],
+    "YE5F_CLN_METALDEP1_240325": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0170"
+    ],
+    "AQ_THIN_FILM_STRIP_240410": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0171"
+    ],
+    "GN_ETCH_POLY_GATE_240101": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0172"
+    ],
+    "LU4C_MI_METALDEP1_241112": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0173"
+    ],
+    "BV_MI_VIA_HOLE_240808": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0174"
+    ],
+    "VW_ETCH_METALDEP1_240827": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0175"
+    ],
+    "BMHH_CLN_GAP_FILL_240702": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0176"
+    ],
+    "CM5W_CLN_VIA_HOLE_240512": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0177"
+    ],
+    "WJZG_CLN_STRIP_240123": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0178"
+    ],
+    "IDTG_CMP_STRIP_240706": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0179"
+    ],
+    "QLUT_CLN_METALDEP1_240813": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0180"
+    ],
+    "NLEH_PHOTO_METALDEP1_240710": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0181"
+    ],
+    "FA_PHOTO_POLY_GATE_240613": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0182"
+    ],
+    "JMSS_THIN_FILM_HARD_MASK_241114": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0183"
+    ],
+    "BG_CMP_VIA_HOLE_240718": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0184"
+    ],
+    "SVJC_CMP_METALDEP1_240126": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0185"
+    ],
+    "XH_THIN_FILM_GAP_FILL_240111": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0186"
+    ],
+    "KGWA_MI_POLY_GATE_241025": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0187"
+    ],
+    "RRLI_THIN_FILM_GAP_FILL_240727": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0188"
+    ],
+    "YSVF_MI_GAP_FILL_240205": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0189"
+    ],
+    "NRRP_THIN_FILM_STRIP_240504": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0190"
+    ],
+    "JR_CMP_POLY_GATE_240411": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0191"
+    ],
+    "DL_PHOTO_HARD_MASK_240625": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0192"
+    ],
+    "IM2V_MI_HARD_MASK_241202": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0193"
+    ],
+    "AEXH_MI_STRIP_240311": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0194"
+    ],
+    "FVJB_CLN_POLY_GATE_240312": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0195"
+    ],
+    "YK6D_CLN_GAP_FILL_241102": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0196"
+    ],
+    "YPJI_CMP_POLY_GATE_240211": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0197"
+    ],
+    "TK7L_CMP_GAP_FILL_240913": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0198"
+    ],
+    "CLHD_CLN_HARD_MASK_240615": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0199"
+    ],
+    "FBBU_CLN_GAP_FILL_241224": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0200"
+    ],
+    "LXBT_PHOTO_VIA_HOLE_240828": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0201"
+    ],
+    "DUPW_PHOTO_VIA_HOLE_240506": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0202"
+    ],
+    "JH_CLN_HARD_MASK_240208": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0203"
+    ],
+    "EK2E_THIN_FILM_METALDEP1_240712": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0204"
+    ],
+    "AI_CLN_VIA_HOLE_240128": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0205"
+    ],
+    "CJ_CLN_METALDEP1_240221": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0206"
+    ],
+    "HQ6D_CLN_HARD_MASK_240817": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0207"
+    ],
+    "HSYB_CLN_HARD_MASK_240916": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0208"
+    ],
+    "DW_ETCH_HARD_MASK_240119": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0209"
+    ],
+    "ULVY_ETCH_STRIP_240416": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0210"
+    ],
+    "HWCW_THIN_FILM_POLY_GATE_240323": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0211"
+    ],
+    "GZYZ_CMP_HARD_MASK_240605": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0212"
+    ],
+    "NJ3E_CLN_POLY_GATE_240718": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0213"
+    ],
+    "ZYNR_PHOTO_POLY_GATE_240603": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0214"
+    ],
+    "FIDY_CMP_POLY_GATE_240719": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0215"
+    ],
+    "NH_MI_HARD_MASK_241013": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0216"
+    ],
+    "OBNY_CMP_POLY_GATE_240327": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0217"
+    ],
+    "RC_ETCH_HARD_MASK_240423": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0218"
+    ],
+    "ZSKC_ETCH_METALDEP1_240524": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0219"
+    ],
+    "WH2J_ETCH_POLY_GATE_240129": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0220"
+    ],
+    "PI_PHOTO_VIA_HOLE_241209": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0221"
+    ],
+    "OPQJ_MI_STRIP_240104": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0222"
+    ],
+    "IZBZ_CLN_GAP_FILL_240624": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0223"
+    ],
+    "OS_MI_GAP_FILL_241023": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0224"
+    ],
+    "CU_PHOTO_POLY_GATE_240625": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0225"
+    ],
+    "IW_CMP_HARD_MASK_241025": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0226"
+    ],
+    "HC_ETCH_POLY_GATE_240423": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0227"
+    ],
+    "YGDR_PHOTO_STRIP_240209": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0228"
+    ],
+    "OWWN_ETCH_VIA_HOLE_240130": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0229"
+    ],
+    "DTJG_CLN_POLY_GATE_240920": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0230"
+    ],
+    "MC_MI_HARD_MASK_240629": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0231"
+    ],
+    "QS_CMP_STRIP_240205": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0232"
+    ],
+    "URDS_ETCH_VIA_HOLE_241127": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0233"
+    ],
+    "FNRX_CMP_METALDEP1_240816": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0234"
+    ],
+    "MX_CMP_HARD_MASK_240802": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0235"
+    ],
+    "YDOV_CMP_HARD_MASK_240906": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0236"
+    ],
+    "HD7L_MI_METALDEP1_240621": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0237"
+    ],
+    "ICCY_CLN_POLY_GATE_240409": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0238"
+    ],
+    "ACQC_PHOTO_HARD_MASK_240217": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0239"
+    ],
+    "EZ5N_CLN_POLY_GATE_240906": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0240"
+    ],
+    "EB_CMP_POLY_GATE_240206": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0241"
+    ],
+    "IV_PHOTO_POLY_GATE_240811": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0242"
+    ],
+    "VF_CLN_GAP_FILL_240319": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0243"
+    ],
+    "HMWO_THIN_FILM_HARD_MASK_240403": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0244"
+    ],
+    "DELD_MI_POLY_GATE_240601": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0245"
+    ],
+    "HR4P_THIN_FILM_VIA_HOLE_240619": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0246"
+    ],
+    "FWBV_CLN_GAP_FILL_240731": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0247"
+    ],
+    "ID2L_ETCH_HARD_MASK_240126": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0248"
+    ],
+    "MARE_THIN_FILM_VIA_HOLE_241029": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0249"
+    ],
+    "MIAY_CLN_METALDEP1_241005": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0250"
+    ],
+    "KMSV_MI_VIA_HOLE_241015": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0251"
+    ],
+    "NQYY_THIN_FILM_POLY_GATE_240202": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0252"
+    ],
+    "GG_PHOTO_GAP_FILL_240909": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0253"
+    ],
+    "RLOS_CMP_STRIP_240828": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0254"
+    ],
+    "HBYJ_CMP_VIA_HOLE_241013": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0255"
+    ],
+    "LI_ETCH_POLY_GATE_240202": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0256"
+    ],
+    "YE_MI_STRIP_240115": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0257"
+    ],
+    "IDUD_PHOTO_METALDEP1_240822": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0258"
+    ],
+    "MZ0C_MI_GAP_FILL_241020": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0259"
+    ],
+    "CAZO_PHOTO_GAP_FILL_240711": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0260"
+    ],
+    "MK_ETCH_METALDEP1_240201": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0261"
+    ],
+    "HZHO_CMP_POLY_GATE_240909": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0262"
+    ],
+    "NNAQ_CMP_VIA_HOLE_240501": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0263"
+    ],
+    "IW_THIN_FILM_POLY_GATE_240206": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0264"
+    ],
+    "PNFL_PHOTO_METALDEP1_241015": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0265"
+    ],
+    "KU9A_PHOTO_HARD_MASK_241011": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0266"
+    ],
+    "TFZK_CMP_POLY_GATE_241003": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0267"
+    ],
+    "VXEW_THIN_FILM_VIA_HOLE_240721": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0268"
+    ],
+    "JI_PHOTO_STRIP_241118": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0269"
+    ],
+    "HTWQ_CMP_HARD_MASK_240620": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0270"
+    ],
+    "MC_ETCH_STRIP_241129": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0271"
+    ],
+    "FIOZ_PHOTO_VIA_HOLE_240814": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0272"
+    ],
+    "SCPP_THIN_FILM_VIA_HOLE_241106": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0273"
+    ],
+    "EHKB_ETCH_VIA_HOLE_241017": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0274"
+    ],
+    "DQ_ETCH_METALDEP1_240721": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0275"
+    ],
+    "UF_CLN_METALDEP1_240627": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0276"
+    ],
+    "LJDQ_MI_GAP_FILL_241222": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0277"
+    ],
+    "CURV_MI_GAP_FILL_241213": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0278"
+    ],
+    "KJ2W_MI_METALDEP1_240207": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0279"
+    ],
+    "HI_PHOTO_VIA_HOLE_240123": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0280"
+    ],
+    "WHVG_PHOTO_POLY_GATE_241213": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0281"
+    ],
+    "IX_ETCH_METALDEP1_240804": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0282"
+    ],
+    "JXWD_CMP_STRIP_241019": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0283"
+    ],
+    "IHLF_CLN_POLY_GATE_241008": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0284"
+    ],
+    "RY_CLN_HARD_MASK_240117": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0285"
+    ],
+    "YTMG_THIN_FILM_GAP_FILL_240205": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0286"
+    ],
+    "NT_ETCH_VIA_HOLE_240303": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0287"
+    ],
+    "XY_THIN_FILM_METALDEP1_241124": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0288"
+    ],
+    "YRTK_CMP_POLY_GATE_240206": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0289"
+    ],
+    "RC_THIN_FILM_METALDEP1_240902": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0290"
+    ],
+    "UY_CLN_VIA_HOLE_240918": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0291"
+    ],
+    "NIUV_MI_METALDEP1_241011": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0292"
+    ],
+    "TETP_MI_HARD_MASK_241224": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0293"
+    ],
+    "HI_CLN_GAP_FILL_241010": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0294"
+    ],
+    "YA4V_ETCH_VIA_HOLE_240306": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0295"
+    ],
+    "SBHL_ETCH_POLY_GATE_241217": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0296"
+    ],
+    "WJ7K_MI_VIA_HOLE_241031": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0297"
+    ],
+    "HN_CMP_POLY_GATE_240213": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0298"
+    ],
+    "MFTF_MI_GAP_FILL_241231": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0299"
+    ],
+    "AARJ_MI_STRIP_240316": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0300"
+    ],
+    "BJZD_ETCH_METALDEP1_240101": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0301"
+    ],
+    "DCAI_THIN_FILM_STRIP_240927": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0302"
+    ],
+    "TR_CMP_VIA_HOLE_240215": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0303"
+    ],
+    "FKMX_MI_STRIP_241206": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0304"
+    ],
+    "YVLE_PHOTO_METALDEP1_240418": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0305"
+    ],
+    "PPFA_ETCH_POLY_GATE_240528": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0306"
+    ],
+    "NA_CLN_HARD_MASK_240616": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0307"
+    ],
+    "LJ2K_CMP_VIA_HOLE_241220": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0308"
+    ],
+    "SK_CMP_METALDEP1_240924": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0309"
+    ],
+    "MQ_PHOTO_GAP_FILL_240521": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0310"
+    ],
+    "MN_MI_GAP_FILL_240122": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0311"
+    ],
+    "SMWB_CMP_HARD_MASK_240614": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0312"
+    ],
+    "GZXS_PHOTO_METALDEP1_240307": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0313"
+    ],
+    "RWXE_CLN_HARD_MASK_240202": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0314"
+    ],
+    "UHPA_CMP_HARD_MASK_240702": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0315"
+    ],
+    "IIYB_THIN_FILM_HARD_MASK_241011": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0316"
+    ],
+    "LICY_MI_POLY_GATE_240817": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0317"
+    ],
+    "EP_ETCH_STRIP_241227": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0318"
+    ],
+    "HG8M_CMP_VIA_HOLE_240102": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0319"
+    ],
+    "PB3A_PHOTO_HARD_MASK_240720": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0320"
+    ],
+    "CISD_CLN_STRIP_240212": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0321"
+    ],
+    "HI_ETCH_POLY_GATE_241111": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0322"
+    ],
+    "CQSW_PHOTO_GAP_FILL_240330": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0323"
+    ],
+    "WBCE_ETCH_STRIP_240629": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0324"
+    ],
+    "LOYB_CMP_POLY_GATE_240711": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0325"
+    ],
+    "TWIT_ETCH_GAP_FILL_241210": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0326"
+    ],
+    "IRNM_MI_VIA_HOLE_240917": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0327"
+    ],
+    "TR7T_PHOTO_VIA_HOLE_240127": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0328"
+    ],
+    "ML_ETCH_METALDEP1_240327": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0329"
+    ],
+    "JERM_CLN_STRIP_241113": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0330"
+    ],
+    "RDQN_ETCH_HARD_MASK_240614": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0331"
+    ],
+    "QGJA_PHOTO_POLY_GATE_240116": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0332"
+    ],
+    "XV_PHOTO_METALDEP1_241013": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0333"
+    ],
+    "ECWA_ETCH_GAP_FILL_240911": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0334"
+    ],
+    "HHFY_CLN_GAP_FILL_241219": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0335"
+    ],
+    "STAC_MI_POLY_GATE_241207": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0336"
+    ],
+    "DX_CLN_HARD_MASK_240815": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0337"
+    ],
+    "JBBX_MI_HARD_MASK_241015": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0338"
+    ],
+    "UC_THIN_FILM_STRIP_240916": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0339"
+    ],
+    "EW_ETCH_GAP_FILL_240326": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0340"
+    ],
+    "VQ_MI_HARD_MASK_240329": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0341"
+    ],
+    "OE_MI_VIA_HOLE_240819": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0342"
+    ],
+    "LR6D_THIN_FILM_VIA_HOLE_241101": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0343"
+    ],
+    "RA_MI_POLY_GATE_240108": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0344"
+    ],
+    "YSPT_THIN_FILM_GAP_FILL_240603": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0345"
+    ],
+    "HADX_ETCH_METALDEP1_240418": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0346"
+    ],
+    "KPAO_PHOTO_METALDEP1_241106": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0347"
+    ],
+    "IV1E_MI_POLY_GATE_240803": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0348"
+    ],
+    "AU_THIN_FILM_METALDEP1_240807": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0349"
+    ],
+    "SN5P_ETCH_HARD_MASK_240202": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0350"
+    ],
+    "PDZY_MI_METALDEP1_241021": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0351"
+    ],
+    "WP6R_CMP_HARD_MASK_240102": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0352"
+    ],
+    "RWWQ_PHOTO_HARD_MASK_240603": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0353"
+    ],
+    "KNNX_CMP_HARD_MASK_241028": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0354"
+    ],
+    "JU_PHOTO_POLY_GATE_240719": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0355"
+    ],
+    "OT_MI_HARD_MASK_241215": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0356"
+    ],
+    "SGPV_CLN_POLY_GATE_241104": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0357"
+    ],
+    "HC4O_MI_HARD_MASK_240804": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0358"
+    ],
+    "KKOV_CMP_STRIP_240718": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0359"
+    ],
+    "UDKW_CMP_HARD_MASK_240911": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0360"
+    ],
+    "YHFJ_PHOTO_POLY_GATE_241209": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0361"
+    ],
+    "COND_MI_STRIP_240630": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0362"
+    ],
+    "XK_CLN_GAP_FILL_240209": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0363"
+    ],
+    "BS_PHOTO_METALDEP1_240520": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0364"
+    ],
+    "HE2P_CLN_METALDEP1_241009": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0365"
+    ],
+    "VIXD_MI_POLY_GATE_240706": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0366"
+    ],
+    "SISX_MI_METALDEP1_240321": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0367"
+    ],
+    "ZEUK_MI_GAP_FILL_240408": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0368"
+    ],
+    "MGVC_MI_METALDEP1_240918": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0369"
+    ],
+    "CCXI_PHOTO_HARD_MASK_240813": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0370"
+    ],
+    "SV_THIN_FILM_GAP_FILL_240217": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0371"
+    ],
+    "JH7J_CLN_VIA_HOLE_240505": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0372"
+    ],
+    "UF0I_THIN_FILM_METALDEP1_240106": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0373"
+    ],
+    "MB0S_MI_STRIP_240322": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0374"
+    ],
+    "LM6N_CMP_STRIP_240908": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0375"
+    ],
+    "SC_CMP_POLY_GATE_240627": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0376"
+    ],
+    "BA_THIN_FILM_METALDEP1_240402": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0377"
+    ],
+    "DERB_CLN_HARD_MASK_240907": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0378"
+    ],
+    "IK7T_CMP_GAP_FILL_240312": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0379"
+    ],
+    "USFV_CMP_POLY_GATE_240228": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0380"
+    ],
+    "MA2L_THIN_FILM_VIA_HOLE_240518": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0381"
+    ],
+    "VEJK_PHOTO_STRIP_240513": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0382"
+    ],
+    "TO_THIN_FILM_HARD_MASK_240430": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0383"
+    ],
+    "AUAJ_CLN_POLY_GATE_240408": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0384"
+    ],
+    "MS0C_PHOTO_HARD_MASK_240518": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0385"
+    ],
+    "RATL_ETCH_HARD_MASK_240803": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0386"
+    ],
+    "IM_CLN_VIA_HOLE_240904": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0387"
+    ],
+    "LXLQ_MI_HARD_MASK_240706": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0388"
+    ],
+    "ULOJ_ETCH_HARD_MASK_241229": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0389"
+    ],
+    "AT_CMP_GAP_FILL_241012": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0390"
+    ],
+    "XOJW_CMP_GAP_FILL_240425": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0391"
+    ],
+    "SKMV_THIN_FILM_GAP_FILL_240115": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0392"
+    ],
+    "YN_PHOTO_HARD_MASK_241126": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0393"
+    ],
+    "UC_MI_STRIP_240617": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0394"
+    ],
+    "QMFQ_PHOTO_POLY_GATE_241002": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0395"
+    ],
+    "KKKD_PHOTO_STRIP_241027": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0396"
+    ],
+    "GT2J_PHOTO_STRIP_240528": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0397"
+    ],
+    "FN_ETCH_VIA_HOLE_240513": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0398"
+    ],
+    "LW8V_THIN_FILM_GAP_FILL_240719": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0399"
+    ],
+    "FL_PHOTO_STRIP_240824": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0400"
+    ],
+    "YOFU_MI_METALDEP1_240409": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0401"
+    ],
+    "LN_THIN_FILM_HARD_MASK_240622": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0402"
+    ],
+    "ZY_MI_METALDEP1_240719": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0403"
+    ],
+    "ZQ4Z_THIN_FILM_POLY_GATE_240227": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0404"
+    ],
+    "AE_THIN_FILM_HARD_MASK_240621": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0405"
+    ],
+    "KBWH_CLN_STRIP_240306": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0406"
+    ],
+    "QA3A_MI_GAP_FILL_240813": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0407"
+    ],
+    "VBMQ_CLN_POLY_GATE_240929": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0408"
+    ],
+    "EVKR_CMP_STRIP_240123": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0409"
+    ],
+    "NL2D_CMP_VIA_HOLE_241114": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0410"
+    ],
+    "SHNV_CLN_METALDEP1_240504": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0411"
+    ],
+    "CB_ETCH_POLY_GATE_241222": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0412"
+    ],
+    "CL_THIN_FILM_HARD_MASK_240215": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0413"
+    ],
+    "MQRQ_MI_HARD_MASK_240124": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0414"
+    ],
+    "LQ8Y_PHOTO_HARD_MASK_240617": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0415"
+    ],
+    "URHQ_ETCH_GAP_FILL_240320": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0416"
+    ],
+    "PUPU_PHOTO_GAP_FILL_240810": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0417"
+    ],
+    "OF3A_CMP_VIA_HOLE_240827": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0418"
+    ],
+    "TLEF_ETCH_STRIP_240422": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0419"
+    ],
+    "QJZL_PHOTO_VIA_HOLE_240217": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0420"
+    ],
+    "MLZF_MI_HARD_MASK_240330": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0421"
+    ],
+    "CDHX_MI_GAP_FILL_241110": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0422"
+    ],
+    "GZ6G_ETCH_METALDEP1_240129": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0423"
+    ],
+    "GFGN_CLN_METALDEP1_240313": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0424"
+    ],
+    "OBPZ_CLN_GAP_FILL_241209": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0425"
+    ],
+    "AO7K_THIN_FILM_STRIP_240109": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0426"
+    ],
+    "YYHT_CMP_GAP_FILL_240615": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0427"
+    ],
+    "LJ_CLN_HARD_MASK_240109": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0428"
+    ],
+    "KFQU_MI_METALDEP1_241219": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0429"
+    ],
+    "IAMZ_THIN_FILM_HARD_MASK_240108": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0430"
+    ],
+    "JRHM_MI_GAP_FILL_240104": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0431"
+    ],
+    "BAEB_CMP_GAP_FILL_240904": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0432"
+    ],
+    "JSMS_ETCH_VIA_HOLE_241223": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0433"
+    ],
+    "QMFP_PHOTO_STRIP_240319": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0434"
+    ],
+    "FATI_ETCH_VIA_HOLE_241011": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0435"
+    ],
+    "KA9I_THIN_FILM_STRIP_240912": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0436"
+    ],
+    "CJVW_PHOTO_STRIP_241227": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0437"
+    ],
+    "MZ0B_MI_POLY_GATE_241122": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0438"
+    ],
+    "OI9T_ETCH_POLY_GATE_240719": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0439"
+    ],
+    "TUWL_THIN_FILM_HARD_MASK_241229": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0440"
+    ],
+    "GQ_CLN_STRIP_240130": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0441"
+    ],
+    "AP_PHOTO_POLY_GATE_240523": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0442"
+    ],
+    "AM_THIN_FILM_METALDEP1_240527": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0443"
+    ],
+    "KJNW_CLN_VIA_HOLE_241027": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0444"
+    ],
+    "JJGD_THIN_FILM_GAP_FILL_240103": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0445"
+    ],
+    "GF3X_THIN_FILM_METALDEP1_240925": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0446"
+    ],
+    "JPCT_PHOTO_POLY_GATE_241124": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0447"
+    ],
+    "KDNP_CMP_VIA_HOLE_240923": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0448"
+    ],
+    "MCQN_CMP_METALDEP1_240816": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0449"
+    ],
+    "FY4N_PHOTO_GAP_FILL_240131": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0450"
+    ],
+    "KV_MI_POLY_GATE_241203": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0451"
+    ],
+    "SH_PHOTO_VIA_HOLE_240223": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0452"
+    ],
+    "EB_CMP_GAP_FILL_240201": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0453"
+    ],
+    "RCLF_CLN_GAP_FILL_240430": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0454"
+    ],
+    "DJ7K_THIN_FILM_POLY_GATE_241205": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0455"
+    ],
+    "NOFJ_PHOTO_HARD_MASK_240816": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0456"
+    ],
+    "EF5K_MI_HARD_MASK_240916": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0457"
+    ],
+    "QK_CMP_METALDEP1_240917": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0458"
+    ],
+    "YSTW_CMP_METALDEP1_240405": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0459"
+    ],
+    "PTMM_CLN_HARD_MASK_240912": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0460"
+    ],
+    "VNYT_THIN_FILM_STRIP_240430": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0461"
+    ],
+    "VBTF_ETCH_VIA_HOLE_240527": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0462"
+    ],
+    "WUHD_THIN_FILM_STRIP_240701": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0463"
+    ],
+    "RV_CLN_GAP_FILL_240308": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0464"
+    ],
+    "VOYX_CLN_HARD_MASK_241109": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0465"
+    ],
+    "RJZC_PHOTO_STRIP_240801": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0466"
+    ],
+    "EB_ETCH_GAP_FILL_240523": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0467"
+    ],
+    "KM6E_MI_VIA_HOLE_240823": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0468"
+    ],
+    "WO_MI_GAP_FILL_240107": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0469"
+    ],
+    "GR_CLN_VIA_HOLE_240821": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0470"
+    ],
+    "DKAC_CMP_POLY_GATE_240726": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0471"
+    ],
+    "EYUG_CMP_POLY_GATE_240422": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0472"
+    ],
+    "CZ_ETCH_GAP_FILL_240430": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0473"
+    ],
+    "ZR9O_PHOTO_GAP_FILL_241020": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0474"
+    ],
+    "NQ_CLN_STRIP_240915": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0475"
+    ],
+    "WBTR_CMP_POLY_GATE_241205": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0476"
+    ],
+    "ZZTF_THIN_FILM_VIA_HOLE_240528": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0477"
+    ],
+    "GY_CMP_HARD_MASK_240825": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0478"
+    ],
+    "TM_ETCH_GAP_FILL_241010": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0479"
+    ],
+    "EI_ETCH_VIA_HOLE_240802": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0480"
+    ],
+    "IH9X_THIN_FILM_HARD_MASK_240101": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0481"
+    ],
+    "IGCL_ETCH_METALDEP1_240311": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0482"
+    ],
+    "ETVY_THIN_FILM_POLY_GATE_240311": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0483"
+    ],
+    "IXRA_CMP_STRIP_241015": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0484"
+    ],
+    "NA_ETCH_GAP_FILL_240522": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0485"
+    ],
+    "JO_THIN_FILM_METALDEP1_240114": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0486"
+    ],
+    "PSDT_MI_STRIP_240415": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0487"
+    ],
+    "ZT_CMP_VIA_HOLE_240719": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0488"
+    ],
+    "XU_PHOTO_METALDEP1_240909": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0489"
+    ],
+    "YTYE_CLN_STRIP_240807": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0490"
+    ],
+    "EGIO_THIN_FILM_VIA_HOLE_240806": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0491"
+    ],
+    "UG_PHOTO_METALDEP1_241011": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0492"
+    ],
+    "UDNC_ETCH_STRIP_240805": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0493"
+    ],
+    "BC_ETCH_METALDEP1_240121": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0494"
+    ],
+    "AM3Y_CMP_VIA_HOLE_240724": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0495"
+    ],
+    "CF_ETCH_STRIP_241128": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0496"
+    ],
+    "BQIJ_CLN_STRIP_240914": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0497"
+    ],
+    "TW8B_CLN_GAP_FILL_241020": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0498"
+    ],
+    "JK_PHOTO_METALDEP1_240625": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0499"
+    ],
+    "YSHR_CMP_METALDEP1_240609": [
+      "D:\\github\\scanner-project_claude\\scanner-project\\sample\\MOCK_ROOT\\Film List/as0500"
+    ]
+  },
+  "stats": {
+    "folders": 500,
+    "recipes": 500
+  }
+}

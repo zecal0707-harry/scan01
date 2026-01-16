@@ -1,0 +1,4 @@
+
+--- Testing Search: Wafer='None', Lot='POFX8999', Film='ECWA_ETCH_GAP_FILL_240911' ---
+INFO:test:[search-server] kind=scan hits=0
+Hits: 0

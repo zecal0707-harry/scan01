@@ -1,0 +1,13 @@
+{
+    "generated_at": "2026-01-02T12:50:00+09:00",
+    "hits": [
+        {
+            "server": "S_FILM_FTP",
+            "role": "film",
+            "level": "folder",
+            "path": "Film List/as0001",
+            "recipe_name": "WQKJ_ETCH_METALDEP1_240515",
+            "kind": "recipe"
+        }
+    ]
+}

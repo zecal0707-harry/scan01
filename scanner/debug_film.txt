@@ -1,0 +1,69 @@
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: nlst() no-args failed: RobustFTP.nlst() missing 1 required positional argument: 'pattern'
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: filtered size=0
+DEBUG: nlst() no-args failed: RobustFTP.nlst() missing 1 required positional argument: 'pattern'
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: nlst() no-args failed: RobustFTP.nlst() missing 1 required positional argument: 'pattern'
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: nlst() no-args failed: RobustFTP.nlst() missing 1 required positional argument: 'pattern'
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: nlst() no-args failed: RobustFTP.nlst() missing 1 required positional argument: 'pattern'
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: nlst() no-args failed: RobustFTP.nlst() missing 1 required positional argument: 'pattern'
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: nlst() no-args failed: RobustFTP.nlst() missing 1 required positional argument: 'pattern'
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: nlst() no-args failed: RobustFTP.nlst() missing 1 required positional argument: 'pattern'
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: nlst() no-args failed: RobustFTP.nlst() missing 1 required positional argument: 'pattern'
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: nlst() no-args failed: RobustFTP.nlst() missing 1 required positional argument: 'pattern'
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: full list size=500 sample=['as0001', 'as0002', 'as0003']
+DEBUG: filtered size=0
+DEBUG: full list size=500 sample=['as0001', 'as0002', 'as0003']
+DEBUG: filtered size=0
+DEBUG: filtered size=0
+DEBUG: full list size=500 sample=['as0001', 'as0002', 'as0003']
+DEBUG: filtered size=0
+DEBUG: full list size=500 sample=['as0001', 'as0002', 'as0003']
+DEBUG: filtered size=0
+0 sample=['as0001', 'as0002', 'as0003']
+DEBUG: filtered size=500
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: full list size=500 sample=['as0001', 'as0002', 'as0003']
+DEBUG: filtered size=0
+DEBUG: full list size=500 sample=['as0001', 'as0002', 'as0003']
+DEBUG: full list size=500 sample=['as0001', 'as0002', 'as0003']
+DEBUG: filtered size=0
+DEBUG: filtered size=0
+DEBUG: full list size=500 sample=['as0001', 'as0002', 'as0003']
+DEBUG: filtered size=0

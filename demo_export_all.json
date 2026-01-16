@@ -1,0 +1,20 @@
+{
+    "generated_at": "2026-01-03T13:00:00+09:00",
+    "hits": [
+        {
+            "server": "S_FILM_FTP",
+            "role": "film",
+            "level": "folder",
+            "path": "Film List/as0001",
+            "recipe_name": "RE_TEST_FILM",
+            "kind": "recipe"
+        },
+        {
+            "server": "S_SCAN_FTP",
+            "role": "scan",
+            "level": "folder",
+            "path": "auto scan data/ETCH/BC6C_ETCH_VIA_HOLE_TEST",
+            "kind": "image"
+        }
+    ]
+}

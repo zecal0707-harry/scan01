@@ -1,0 +1,460 @@
+스캐너(scanner_61999abx4) 후임자용 운영/개발 가이드
+
+이 문서는 현재 스캐너의 구조, 과거 문제점과 수정 내역, 테스트 체크리스트, 성능/안정화 포인트, 그리고 코드 분할(모듈화) 전략을 한 번에 파악할 수 있게 정리했습니다. 마지막에 “수정은 여기만 건드리면 된다”를 목표로 한 단일 커스터마이징 파일 제안도 포함합니다.
+
+
+---
+
+1) 큰 그림: 역할과 데이터 흐름
+
+입력
+
+servers.txt v2: film/scan 서버, 그룹, root, prefix, list_method 등 메타.
+
+CLI 옵션: --mode bootstrap|update|search-local|search-server|serve 등.
+
+
+핵심 컴포넌트
+
+1. RobustFTP / ManagedFTPPool
+
+FTP 세션 데드라인/타임아웃, 풀링, warm 세션 관리.
+
+
+
+2. Film 인덱싱 (recipes)
+
+film_list_names_adaptive()로 as* 폴더명 나열 → 각 폴더 strategy.ini에서 StrategyName 파싱 →
+recipes/{server}_recipes_index.json (folders, by_recipe) 생성/갱신.
+
+
+
+3. Scan 인덱싱 (wafers/lots/films)
+
+얕은 BFS로 wafer 경로 수집 → wafer 하위 lot 디렉터리만 열거 →
+required/{server}_Full.json, ..._lots_index.json, ..._films_index.json(옵션) 생성/갱신.
+
+
+
+4. 검색
+
+local: 캐시만 사용(가능하면 films_index(map) 기반으로 film 레벨 결과 즉시).
+
+server: wafer/lot 후보만 서버에서 확장(디렉터리만), film 레벨 결과.
+
+
+
+5. HTTP API
+
+헬스체크/부하관리(풀 drain/resume), bootstrap/update 트리거, 검색 API.
+
+
+
+
+출력 아티팩트(중요 파일)
+
+out/recipes/{server}_recipes_index.json
+
+out/required/{server}_Full.json
+
+out/required/{server}_lots_index.json
+
+out/required/{server}_films_index.json
+
+out/logs/scanner.log, out/recipes/logs/*, out/required/*_update_*.json
+
+out/groups/{group}_manifest.json
+
+out/search_results/*.json
+
+
+
+
+---
+
+2) 과거 이슈 & 현재 상태
+
+1. --exact가 흔들림
+
+원인: 경로 문자열까지 부분일치로 보던 구 매칭 로직.
+
+조치: match_name_strict()/lot_match()로 “이름 완전일치” 규칙 추가.
+
+테스트 포인트: --exact --wafer AAA 시 AAA만 hit.
+
+
+
+2. 파일(.tif)을 디렉터리로 오인
+
+원인: NLST 결과를 그대로 폴더로 간주.
+
+조치: scan_list_dir()에서 디렉터리만 수집(MLSD→LIST→NLST+cwd 판정).
+
+테스트 포인트: 서버 검색 시 film 레벨에 파일명이 끼어들지 않음.
+
+
+
+3. namespace object 에러 (bootstrap_budget 등 누락)
+
+원인: CLI 인자 정의 누락/이름 변경.
+
+조치: parse_args() 복구 + 내부 getattr 가드.
+
+테스트 포인트: --mode bootstrap 정상 실행, 누락 인자 없이도 동작.
+
+
+
+4. dropped bad session 로그 남발
+
+원인: scan_list_dir() 내부 예외가 풀 컨텍스트 밖으로 새어 나와 세션을 bad로 표시.
+
+조치: scan_list_dir() 절대 예외 전파 금지(실패 시 []/None → 폴백), NLST는 RobustFTP.nlst() 사용.
+
+테스트 포인트: --mode update --verbose에서 해당 로그 빈도 급감.
+
+
+
+5. Bootstrap film 한 번에 목록 미수집(간헐 타임아웃)
+
+원인 후보:
+
+서버 MLSD/LIST 응답 지연/부분 반환(특히 stat-first/NLST 혼합 시).
+
+풀 세션 초기 워밍 업/네트워크 순간 부하.
+
+
+관찰: 동일 명령 반복 시 두 번째/세 번째에 성공(레벨1/2까지 출력).
+
+조치/가이드:
+
+film_list_names_adaptive()는 **재시도 + 분할(prefix depth 확장)**로 설계.
+
+list_method=nlst(기본) 유지 권장, film 서버 pool_size 8300, 백오프 (0.2,0.6,1.2) 유지.
+
+실패 시 다시 시도하면 캐시/세션 풀 워밍 효과로 성공률/속도 상승.
+
+
+
+
+6. films_index.json이 bootstrap에서 비어 보임
+
+의도: bootstrap은 wafer/lot 개요만 빠르게 구성, films_index는 update에서 생성/보강.
+
+테스트 포인트: bootstrap 직후 update 실행 → mode:"map" + 내용 채워짐 확인.
+
+
+
+
+
+---
+
+3) 운영 테스트 체크리스트(명령 & 기대 결과)
+
+A. Film 인덱스
+
+python3 scanner_61999abx4.py --mode bootstrap --role film --server-file servers.txt --out out --verbose
+# 기대: "[film:list] total unique=XXXX", "bootstrap: folders=..., recipes=..." 로그
+
+python3 scanner_61999abx4.py --mode update --role film --server-file servers.txt --out out
+# 기대: "[FILM✓] update: +N -M total=K" 로그, recipes_index.json 갱신
+
+B. Scan 인덱스
+
+python3 scanner_61999abx4.py --mode bootstrap --role scan --server-file servers.txt --out out --verbose
+# 기대: wafers 수, lots 수 요약 및 Full.json, lots_index.json 생성
+
+python3 scanner_61999abx4.py --mode update --role scan --server-file servers.txt --out out
+# 기대: lots 증감 반영, films_index(map) 생성/보강
+
+C. 검색 정확도 / 링크
+
+# wafer 이름 엄격일치 테스트
+python3 scanner_61999abx4.py --mode search-server --role scan --wafer AAA --exact --out out
+
+# film 이름 regex/부분일치/엄격 비교 각각
+python3 scanner_61999abx4.py --mode search-server --role scan --film as123
+python3 scanner_61999abx4.py --mode search-server --role scan --film '^as[0-9]{3}$' --regex
+python3 scanner_61999abx4.py --mode search-server --role scan --film as123 --exact
+
+# 레시피 링크 포함
+python3 scanner_61999abx4.py --mode search-server --role scan --film as123 --link-recipe --out out
+
+D. 안정화(세션/타임아웃)
+
+--verbose로 dropped bad session 빈도 확인(패치 후 현저히 감소해야 정상).
+
+실패 재현 시 같은 명령 2~3회 반복 → 성공 전환 여부 체크.
+
+film 서버 list_method를 stat-first → nlst로 바꿔 재시도(서버 특성에 따라 차이 큼).
+
+
+
+---
+
+4) 성능/안정화 튜닝 포인트
+
+풀 사이즈(pool_size)
+
+film 서버: 86 권장. 과도하면 서버가 제한 걸 수도 있음.
+
+
+풀 TTL(pool_ttl)
+
+180~300초. 너무 짧으면 매번 연결 비용↑, 너무 길면 죽은 세션 방치.
+
+
+리스트 방법(list_method)
+
+기본 nlst 권장. stat-first는 서버가 잘 지원할 때만 이득.
+
+
+백오프(FILM_BACKOFF_S)
+
+(0.2, 0.6, 1.2) 정도가 체감상 안정/속도 균형.
+
+
+server 검색 가드레일
+
+--max-lots-expand(기본 5000)·--max-workers-expand(기본 12) 조절로 폭주 방지.
+
+
+디렉터리 전용 열거
+
+scan_list_dir()에서 MLSD→LIST→NLST+cwd 폴백. 어떤 실패도 예외를 밖에 내보내지 않는 것이 핵심.
+
+
+
+
+---
+
+5) 자주 겪는 에러 & 대처
+
+타임아웃(bootstrap film)
+
+동일 명령 재시도 시 성공 → 일시적 부하/워밍 이슈.
+
+조치: film 서버 pool_size↑, pool_ttl↑, list_method 점검.
+
+
+dropped bad session 반복
+
+패치된 scan_list_dir() 적용 여부 확인(실패는 빈 리스트로 흡수).
+
+여전하면 서버가 강제로 소켓을 닫는 케이스 → 정상적인 수준이면 무시 가능.
+
+
+films_index.json 비어 있음
+
+설계상 bootstrap은 mode:"skip". update 실행 필요.
+
+
+
+
+---
+
+6) 코드 분할(모듈화) 제안
+
+현재 단일 파일이 길어 유지보수가 어렵습니다. 아래처럼 6개 코어 모듈 + 1개 커스터마이징 전용 단일 파일로 쪼개면, 후임자는 사실상 그 한 파일만 수정하면 됩니다.
+
+scanner/
+  core/
+    cfg.py # servers.txt 파서, CLI 공통 옵션
+    ftp_pool.py # RobustFTP, ManagedFTPPool, PoolRegistry
+    film_index.py # film_list_names_adaptive, film_bootstrap/update, recipes I/O
+    scan_index.py # scan_bootstrap/update, scan_list_dir, DirCache, Full/Lots/Films I/O
+    search.py # search_local/server, link_recipe, group lookup
+    http_api.py # APIServer, 라우팅
+  policy.py # ← 여기만 고치면 됨 (튜닝/매칭/임계값/전략 훅)
+  main.py # 엔트리포인트 (현재 CLI ↔ core 연결)
+
+policy.py에 넣을 것(모두 한 파일에 집중)
+
+튜닝 상수: DEFAULT_*, 백오프, 가드레일 값.
+
+매칭 로직: match_name_strict, lot_match (필요 시 옵션 플래그로 동작 전환).
+
+디렉터리 열거 전략: MLSD/LIST/NLST 사용 순서, NLST→cwd 판정, 예외 처리 정책.
+
+Films index 생성 시점: bootstrap에서도 mode:"map"을 만들지 여부 플래그(기본 off).
+
+로그 레벨/샘플링: 재시도/서브디바이드 로그의 레벨 조정.
+
+
+핵심 원칙
+
+core 모듈은 로직을 “호출”만 하고, 실제 정책 결정은 모두 policy.py에서 import 해 적용.
+
+후임자는 policy.py만 수정해서 매칭/성능/안정화 정책을 즉시 바꿀 수 있음.
+
+
+policy.py 스켈레톤 예시
+
+# scanner/policy.py
+# (후임자는 여기만 바꾸면 됩니다)
+
+# --- 튜닝 상수 ---
+FILM_BACKOFF_S = (0.2, 0.6, 1.2)
+DEFAULT_MAX_LOTS_EXPAND = 5000
+DEFAULT_MAX_WORKERS_EXPAND = 12
+DIR_ENUM_ORDER = ("mlsd", "list", "nlst_probe") # 변경 가능
+STRICT_EXACT = True
+DIR_ONLY = True
+BUILD_FILMS_INDEX_IN_BOOTSTRAP = False # True로 바꾸면 bootstrap 때도 map 생성
+
+# --- 매칭 ---
+from .core.util import ws_norm, posixpath
+
+def equals_norm(a, b, cs=False):
+    a = ws_norm(a or ""); b = ws_norm(b or "")
+    if not cs: a = a.casefold(); b = b.casefold()
+    return a == b
+
+def match_name_strict(name, path, pats, exact, regex, cs):
+    if not pats: return True
+    if exact and not regex:
+        for p in pats:
+            if not p: continue
+            if "/" not in p:
+                if equals_norm(name, p, cs): return True
+            else:
+                if equals_norm(path, p, cs): return True
+        return False
+    # exact=False or regex=True → 코어의 느슨 매칭 사용
+    from .core.util import match_name_or_path
+    return match_name_or_path(name, path, pats, exact, regex, cs)
+
+def lot_match(name, path, patterns, exact, regex, cs):
+    if not patterns: return True
+    if exact and not regex:
+        for p in patterns:
+            if not p: continue
+            if "/" not in p:
+                if equals_norm(name, p, cs): return True
+            else:
+                if equals_norm(path, p, cs): return True
+        return False
+    # smart stem match (코어 util 사용)
+    from .core.util import lot_match_smart
+    return lot_match_smart(name, path, patterns, cs)
+
+# --- 디렉터리 열거 정책 ---
+def list_dirs(conn, path):
+    """
+    실패를 절대 예외로 던지지 않음.
+    DIR_ENUM_ORDER에 따라 mlsd→list→nlst_probe 폴백.
+    """
+    from .core.scan_index_helpers import dir_mlsd, dir_list, nlst_probe
+    order = {
+        "mlsd": dir_mlsd,
+        "list": dir_list,
+        "nlst_probe": nlst_probe,
+    }
+    for key in DIR_ENUM_ORDER:
+        fn = order.get(key)
+        try:
+            subs = fn(conn, path)
+        except Exception:
+            subs = None
+        if subs is not None:
+            return subs
+    return []
+
+> 코어 모듈들은 policy.py의 함수/상수를 import 하여 사용합니다. 이렇게 하면 **정책 변경(성능/정확도 조정)**이 전부 한 파일에서 끝납니다.
+
+
+
+
+---
+
+7) 단계적 리팩터 플랜(안전하게 쪼개는 순서)
+
+1. util 추출: 경로/문자열 유틸, JSON I/O, 로거 → core/util.py
+
+
+2. FTP/풀 추출: RobustFTP, ManagedFTPPool, PoolRegistry → core/ftp_pool.py
+
+
+3. scan_list_dir 분리: 구현 + helper(dir_mlsd/dir_list/nlst_probe)를 core/scan_index_helpers.py로.
+
+
+4. film_index / scan_index / search / http_api를 파일별로 쪼개기.
+
+
+5. policy.py 도입: 기존 코드의 매칭/튜닝 상수/열거 정책 참조 부분을 policy import로 교체.
+
+
+6. main.py: parse_args와 모드 라우팅만 남긴 경량 엔트리.
+
+
+
+> 이 순서면 기능 리스크 없이 천천히 쪼갤 수 있고, 도중에도 배포 가능.
+
+
+
+
+---
+
+8) 성능 개선 아이디어(중·단기)
+
+서버 특성에 따른 list_method 자동 전환
+
+MLSD 오류율 감지 시 NLST로 고정, 안정화되면 복귀.
+
+
+film prefix 분할 히스토리 캐시
+
+이전 run의 분할 깊이/사이즈 통계를 저장 → 다음 run에서 바로 최적 분할.
+
+
+세션 품질 점수화
+
+타임아웃/오류 비율 높은 세션은 우선 폐기, 새 세션 프리워밍.
+
+
+검색 서버 측 candidate 최소화
+
+lot 후보 선정에 최근 날짜/패턴 등 추가 필터 옵션 제공(현행은 lot 이름 기반).
+
+
+로깅 샘플링
+
+대량 환경에서 로그 I/O가 병목될 경우 샘플링/레벨 하향.
+
+
+
+
+---
+
+9) 후임자에게 남기는 “빠른 점검” 루틴
+
+1. servers.txt에 film/scan 구분·group·root/prefix 확인
+
+
+2. --mode bootstrap(film/scan 각각) → 바로 --mode update 실행
+
+
+3. --mode search-server --role scan --wafer {test} --exact --link-recipe
+
+
+4. 로그에서
+
+film list unique N, dropped bad session 빈도, subdivide/timeout 패턴 체크
+
+
+
+5. 실패 시
+
+film: pool_size↑, list_method=nlst
+
+scan: max_workers_expand↑/max_lots_expand↓, DIR_ENUM_ORDER 조정(policy)
+
+
+
+
+
+---
+
+마지막 한 줄 요약
+
+운영은 지금 그대로 쓰되, 유지보수/성능 튜닝은 policy.py 한 파일에서 끝내는 구조로 쪼개세요.
+그 파일에 매칭/디렉터리열거/백오프/가드레일을 모두 모아두면, 후임자는 다른 코드를 안 건드려도 됩니다.

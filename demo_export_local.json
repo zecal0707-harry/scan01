@@ -1,0 +1,12 @@
+{
+    "generated_at": "2026-01-03T15:10:00+09:00",
+    "hits": [
+        {
+            "server": "LOCAL_SCAN",
+            "role": "scan",
+            "level": "folder",
+            "path": "auto scan data/ETCH/BC6C_ETCH_VIA_HOLE_TEST",
+            "kind": "image"
+        }
+    ]
+}

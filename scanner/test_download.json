@@ -1,0 +1,10 @@
+{
+    "hits": [
+        {
+            "server": "S_FILM_FTP",
+            "role": "film",
+            "path": "Film List/as0001",
+            "level": "folder"
+        }
+    ]
+}

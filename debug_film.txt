@@ -1,0 +1,90 @@
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: NLST glob failed (550 Invalid argument.), fallback
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0
+DEBUG: filtered size=0
+DEBUG: full list size=2 sample=['Film List', 'auto scan data']
+DEBUG: filtered size=0

@@ -1,0 +1,532 @@
+좋아—새 채팅창에서 바로 이어받아도 전부 이해·재현될 수 있도록 “핸드오프 패키지”를 정리했어.
+(버전 기준: Scanner v19996ab.exe, Downloader d5.7.8.exe, UI(React+Vite+TS))
+
+
+---
+
+1) 구성/역할 개요 (버전 정합성)
+
+Scanner (v19996ab.exe)
+
+HTTP 서버 제공: /health, /v1/search/local, /v1/search/server
+
+검색 역할:
+
+role=scan → LOT/film(폴더) 검색 (film 지정 시 LOT는 제외)
+
+role=film → 레시피 인덱스(by_recipe)로 검색
+
+
+--link-recipe(UI에서 체크박스) 효과: film 폴더명 ↔ 레시피(by_recipe) 매칭해서 recipe_paths[], recipe_primary, recipe_server를 hit에 포함
+
+
+Downloader (d5.7.8.exe)
+
+CLI 전용: 하위명령은 ingest만 지원 (※ serve 없음 → 에러 메시지와 일치)
+
+입력: UI에서 “Export selected JSON”으로 받은 파일
+
+저장 경로 규칙(d5.7.8):
+class 경로 / wafer 데이터 / film 데이터 / lot / date /
+film recipe는 film 데이터와 같은 레벨의 _recipe/에 폴더째 저장 (search.json의 recipe_primary 기준 폴더 전체)
+
+
+UI
+
+Scanner에 /v1/search/local 또는 /v1/search/server로 POST
+
+선택 결과를 JSON으로 내보내고, d5.7.8.exe의 ingest에 바로 넣어 사용
+
+
+
+
+---
+
+2) 실행 순서 (exe 기준)
+
+2.1 Scanner 실행
+
+동일 폴더에 servers.txt와 out 폴더 준비 후:
+
+.\v19996ab.exe --mode serve --server-file .\servers.txt --out .\out --http-addr 127.0.0.1 --http-port 8081
+
+정상: listening on http://127.0.0.1:8081
+
+헬스체크: 브라우저에서 http://127.0.0.1:8081/health
+
+
+> 참고: 최초 사용 전, 필요하면
+.\v19996ab.exe --mode bootstrap --server-file .\servers.txt --out .\out --role film
+로 레시피 인덱스(필름 서버) 생성 → 이후 --mode update 주기 실행 가능.
+
+
+
+2.2 Downloader 실행(ingest)
+
+UI에서 내보낸 JSON(예: selected.json)과 저장 루트 준비:
+
+.\d5.7.8.exe ingest `
+  --server-file .\servers.txt `
+  --out .\out `
+  --file .\selected.json `
+  --dest-root "D:\DATA_ROOT" `
+  --per-server 3 --overwrite resume --retry 3
+
+결과 리포트: .\\out\\downloader\\reports\\ingest_*.json
+
+실제 저장 경로 예시는 아래 5번 참고
+
+
+
+---
+
+3) servers.txt (v2) 샘플
+
+# name, ip, max_depth, save_level, user, pass, meta...
+S_FILM_1,10.0.0.11,3,2,FTP_TEST,FTP_TEST,role=film,group=G1,root=/Film List,prefix=as
+S_SCAN_1,10.0.0.21,3,2,FTP_TEST,FTP_TEST,role=scan,group=G1,root=/auto scan data,pool_size=4
+
+role=film: 레시피 서버 (root 예: /Film List)
+
+role=scan: 스캔 데이터 서버 (root 예: /auto scan data)
+
+group: UI/Scanner가 같은 그룹에서 레시피를 링크할 때 사용
+
+
+
+---
+
+4) 검색 결과(JSON) 구조(핵심 필드)
+
+Scanner /v1/search/server 또는 /v1/search/local 응답 중 hit 예:
+
+{
+  "server": "S_SCAN_1",
+  "role": "scan",
+  "kind": "scan",
+  "level": "film",
+  "path": "/auto scan data/CLASS_X/WAFER_01/LOT_123/FILM_ABC/20250101",
+  "recipe_linked": true,
+  "recipe_name": "FILM_ABC",
+  "recipe_paths": ["/Film List/as0001", "/Film List/as0001_variant"],
+  "recipe_primary": "/Film List/as0001",
+  "recipe_server": "S_FILM_1"
+}
+
+폴더 구조 파싱 규칙(v19996ab):
+path를 /로 나눠 맨 뒤부터 → film 데이터, lot, wafer 데이터, 그 앞은 class 로 해석
+
+
+
+---
+
+5) 실제 저장 경로 예시(d5.7.8)
+
+예: hit의 path = /auto scan data/CLS1/WAF1/LOT9/FILM7/20250115, recipe_primary=/Film List/as0001
+
+저장 루트: D:\DATA_ROOT
+
+스캔 데이터
+D:\DATA_ROOT\CLS1\WAF1\FILM7\LOT9\20250115\...
+
+필름 레시피(폴더 전체)
+D:\DATA_ROOT\CLS1\WAF1\FILM7\_recipe\as0001\...
+(strategy.ini 단독이 아니라 as0001 폴더 전체)
+
+
+
+---
+
+6) UI(React) 신규 프로젝트 생성·빌드
+
+> PowerShell 정책 오류가 나면 먼저 1회:
+
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+
+VSCode 재실행 후 진행.
+
+
+
+6.1 프로젝트 만들기
+
+# 1) Vite + React + TypeScript 템플릿
+npm create vite@latest ui1 -- --template react-ts
+cd ui1
+
+# 2) 의존성
+npm install
+npm install -D tailwindcss postcss autoprefixer
+npm install lucide-react
+npx tailwindcss init -p
+
+# 3) shadcn/ui (선택지만) — 컴포넌트 설치
+npm install class-variance-authority clsx tailwind-merge
+npx shadcn-ui@latest init --framework=vite
+npx shadcn-ui@latest add button input checkbox card table tabs badge label select separator
+
+6.2 Tailwind 설정
+
+tailwind.config.js 수정:
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{ts,tsx,js,jsx}",
+    "./components/**/*.{ts,tsx}",
+  ],
+  theme: { extend: {} },
+  plugins: [],
+};
+
+src/index.css 교체:
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* optional: app-wide tweaks */
+html,body,#root{height:100%;}
+
+6.3 경로 별칭(@ → src) & Vite 프록시(CORS 회피 강추)
+
+vite.config.ts 교체:
+
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "path";
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: { alias: { "@": path.resolve(__dirname, "src") } },
+  server: {
+    port: 5173,
+    proxy: {
+      // 브라우저 → Vite dev 서버 → (프록시) → 로컬 exe
+      "/scanner": {
+        target: "http://127.0.0.1:8081",
+        changeOrigin: true,
+        rewrite: (p) => p.replace(/^\/scanner/, ""),
+      },
+      "/downloader": {
+        target: "http://127.0.0.1:8766",
+        changeOrigin: true,
+        rewrite: (p) => p.replace(/^\/downloader/, ""),
+      },
+    },
+  },
+});
+
+> 이렇게 하면 UI 코드에서 fetch("/scanner/v1/search/server", ...)처럼 상대경로로 호출 → CORS 걱정 없음.
+
+
+
+6.4 메인 엔트리
+
+src/main.tsx 교체:
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+6.5 App.tsx (UI 본체) — Scanner v19996ab + d5.7.8 정합판
+
+> 아래 코드를 그대로 src/App.tsx에 붙여넣기.
+(프록시를 쓰므로 기본 엔드포인트는 /scanner, /downloader로 고정되어 동작)
+
+
+
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
+import { Download, Search, Loader2, Server, Database, ExternalLink, Rocket, Link } from "lucide-react";
+
+type Hit = {
+  server: string;
+  role: "scan" | "film" | string;
+  kind?: string; // "scan" | "recipe" | "mixed"
+  level?: string; // "lot" | "film" | "film_name" | "folder"
+  path: string;
+  wafer?: string;
+  lot?: string;
+  film?: string;
+  date?: string;
+  recipe_linked?: boolean;
+  recipe_name?: string;
+  recipe_paths?: string[];
+  recipe_primary?: string;
+  recipe_server?: string;
+};
+
+export default function App() {
+  // ---- Endpoints (프록시 사용: /scanner, /downloader) ----
+  const [scannerBase] = useState("/scanner");
+  const [downloaderBase] = useState("/downloader"); // d5.7.8은 serve 없음 → health 미사용
+
+  // ---- Search form ----
+  const [mode, setMode] = useState<"server" | "local">("server");
+  const [role, setRole] = useState<"scan" | "film">("scan");
+  const [serversCsv, setServersCsv] = useState("");
+  const [wafer, setWafer] = useState("");
+  const [lot, setLot] = useState("");
+  const [film, setFilm] = useState("");
+  const [linkRecipe, setLinkRecipe] = useState(true);
+  const [exact, setExact] = useState(false);
+  const [regex, setRegex] = useState(false);
+  const [caseSensitive, setCaseSensitive] = useState(false);
+  const [expandCap] = useState(0); // v19996ab는 films_index map/names 정책 → UI cap은 보류
+
+  const [searching, setSearching] = useState(false);
+  const [hits, setHits] = useState<Hit[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  // ---- Selection ----
+  const [selected, setSelected] = useState<Record<string, boolean>>({});
+  const allSelected = useMemo(() => hits.length > 0 && hits.every((h) => selected[key(h)]), [hits, selected]);
+
+  function key(h: Hit) { return `${h.server}|${h.role}|${h.path}`; }
+
+  async function doSearch() {
+    setSearching(true);
+    setError(null);
+    setHits([]);
+    setSelected({});
+
+    const servers = serversCsv.split(/[,\s]+/).map(s=>s.trim()).filter(Boolean);
+
+    const body = {
+      servers: servers.length ? servers : undefined,
+      roles: [role],
+      wafer: wafer ? [wafer] : [],
+      lot: lot ? [lot] : [],
+      film: film ? [film] : [],
+      exact,
+      regex,
+      case_sensitive: caseSensitive,
+      link_recipe: linkRecipe,
+    };
+
+    const url = `${scannerBase}/v1/search/${mode}`;
+    try {
+      const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+      if (!r.ok) throw new Error(`scanner HTTP ${r.status}`);
+      const js = await r.json();
+      const hh: Hit[] = Array.isArray(js?.hits) ? js.hits : [];
+      setHits(hh);
+    } catch (e:any) {
+      setError(`검색 실패: ${e?.message || e}`);
+    } finally {
+      setSearching(false);
+    }
+  }
+
+  function exportSelectedAsJSON() {
+    const chosen = hits.filter((h) => selected[key(h)]);
+    if (chosen.length === 0) return alert("선택된 항목이 없습니다.");
+    const data = { generated_at: new Date().toISOString(), hits: chosen };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `search_selected_${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  return (
+    <div className="min-h-screen w-full p-6 space-y-6 bg-gradient-to-b from-slate-50 to-white">
+      <header className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Server className="h-5 w-5" />
+          <h1 className="text-xl font-semibold">Scanner & Downloader Console</h1>
+          <Badge variant="secondary">Scanner v19996ab + d5.7.8</Badge>
+        </div>
+        <div className="text-xs text-slate-600">proxy: /scanner → 127.0.0.1:8081</div>
+      </header>
+
+      <Card className="shadow-sm">
+        <CardHeader className="pb-3">
+          <CardTitle className="flex items-center gap-2"><Search className="h-5 w-5"/>Search</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
+            <div className="md:col-span-2">
+              <Label>Mode</Label>
+              <Select value={mode} onValueChange={(v:any)=>setMode(v)}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="server">server</SelectItem>
+                  <SelectItem value="local">local</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="md:col-span-2">
+              <Label>Role</Label>
+              <Select value={role} onValueChange={(v:any)=>setRole(v)}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="scan">scan</SelectItem>
+                  <SelectItem value="film">film</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="md:col-span-8">
+              <Label>Servers (optional, comma/space-separated)</Label>
+              <Input value={serversCsv} onChange={(e)=>setServersCsv(e.target.value)} placeholder="S1,S2 or blank" />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
+            <div className="md:col-span-3"><Label>Wafer</Label><Input value={wafer} onChange={(e)=>setWafer(e.target.value)} /></div>
+            <div className="md:col-span-3"><Label>Lot</Label><Input value={lot} onChange={(e)=>setLot(e.target.value)} /></div>
+            <div className="md:col-span-3"><Label>Film</Label><Input value={film} onChange={(e)=>setFilm(e.target.value)} /></div>
+            <div className="md:col-span-3 opacity-50"><Label>Expand (n/a)</Label><Input disabled value={0} /></div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-4">
+            <label className="flex items-center gap-2 text-sm"><Checkbox checked={linkRecipe} onCheckedChange={(v)=>setLinkRecipe(!!v)} />link recipe</label>
+            <Separator orientation="vertical" className="h-5" />
+            <label className="flex items-center gap-2 text-sm"><Checkbox checked={exact} onCheckedChange={(v)=>setExact(!!v)} />exact</label>
+            <label className="flex items-center gap-2 text-sm"><Checkbox checked={regex} onCheckedChange={(v)=>setRegex(!!v)} />regex</label>
+            <label className="flex items-center gap-2 text-sm"><Checkbox checked={caseSensitive} onCheckedChange={(v)=>setCaseSensitive(!!v)} />case sensitive</label>
+            <div className="ml-auto flex items-center gap-2">
+              <Button onClick={doSearch} disabled={searching}>
+                {searching ? (<><Loader2 className="mr-2 h-4 w-4 animate-spin"/>Searching...</>) : (<><Search className="mr-2 h-4 w-4"/>Search</>)}
+              </Button>
+            </div>
+          </div>
+
+          {error && <div className="text-sm text-red-600">{error}</div>}
+        </CardContent>
+      </Card>
+
+      <Card className="shadow-sm">
+        <CardHeader className="pb-3 flex items-center justify-between">
+          <CardTitle className="flex items-center gap-2"><Database className="h-5 w-5"/>Results ({hits.length})</CardTitle>
+          <div className="flex items-center gap-2">
+            <Button variant="secondary" onClick={exportSelectedAsJSON}><ExternalLink className="mr-2 h-4 w-4"/>Export selected JSON</Button>
+            <div className="text-xs text-slate-500 flex items-center gap-1">
+              <Rocket className="h-4 w-4"/>
+              d5.7.8는 CLI ingest만 지원
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <div className="rounded-md border overflow-hidden">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-10"><Checkbox checked={allSelected} onCheckedChange={(v)=>setSelected(v?Object.fromEntries(hits.map(h=>[key(h),true])):{})} /></TableHead>
+                  <TableHead>Server</TableHead>
+                  <TableHead>Role</TableHead>
+                  <TableHead>Level</TableHead>
+                  <TableHead>Path</TableHead>
+                  <TableHead>Recipe</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {hits.map((h) => (
+                  <TableRow key={key(h)} className="hover:bg-slate-50">
+                    <TableCell><Checkbox checked={!!selected[key(h)]} onCheckedChange={(v)=>setSelected((m)=>({ ...m, [key(h)]: !!v }))} /></TableCell>
+                    <TableCell className="font-medium">{h.server}</TableCell>
+                    <TableCell><Badge variant={h.role==="film"?"secondary":"default"}>{h.role}</Badge></TableCell>
+                    <TableCell className="text-xs text-slate-600">{h.level || ""}</TableCell>
+                    <TableCell className="text-xs font-mono break-all">{h.path}</TableCell>
+                    <TableCell className="text-xs">
+                      {h.recipe_linked ? (
+                        <div className="flex items-center gap-1">
+                          <Link className="h-3 w-3" />
+                          <span title={(h.recipe_paths||[]).join("\n")}>
+                            {h.recipe_name || ""} {h.recipe_primary ? `(${h.recipe_server||""})` : ""}
+                          </span>
+                        </div>
+                      ) : (h.role==="film" ? (h.recipe_name || "") : "")}
+                    </TableCell>
+                  </TableRow>
+                ))}
+                {hits.length===0 && (
+                  <TableRow><TableCell colSpan={6} className="text-center text-sm text-slate-500 py-10">검색 결과가 비어 있습니다.</TableCell></TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </div>
+        </CardContent>
+      </Card>
+
+      <footer className="pt-2 text-xs text-slate-500 text-center">
+        JSON 저장 후 다운로더에서<br/>
+        <code>.\d5.7.8.exe ingest --server-file .\servers.txt --file .\exported.json --dest-root D:\DATA_ROOT</code>
+        를 실행하세요.
+      </footer>
+    </div>
+  );
+}
+
+6.6 개발 서버 실행
+
+npm run dev
+
+브라우저에서 http://localhost:5173 접속
+(프록시 덕분에 /scanner/... 호출이 자동으로 127.0.0.1:8081로 전달)
+
+
+---
+
+7) 테스트 시나리오
+
+1. Scanner 부팅: v19996ab.exe --mode serve ...
+
+
+2. UI 접속: npm run dev → 폼에 role=scan, film=원하는 키워드, link recipe 체크 → Search
+
+결과에 level=film hit가 나오고, recipe_linked=true, recipe_primary가 보이면 OK
+
+
+
+3. 선택 → Export selected JSON
+
+
+4. Downloader ingest: 위 JSON으로 d5.7.8.exe ingest ... 실행
+
+저장 경로가 class/wafer 데이터/film 데이터/lot/date로 생성되고, _recipe/asXXXX/... 폴더가 통째로 내려왔는지 확인
+
+
+
+
+
+---
+
+8) 문제 해결(자주 발생)
+
+d5.7.8.exe: invalid choice 'serve'
+→ 정상 메시지. d5.7.8은 ingest만 지원.
+
+UI에서 CORS 에러
+→ vite.config.ts의 proxy 설정을 꼭 적용하고, UI는 **/scanner/...**로 호출하세요.
+
+PowerShell이 npm/npx 실행 차단
+→ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned 후 VSCode 재실행.
+
+검색은 되는데 레시피 링크가 비어있음
+→ film role 서버에 대해 bootstrap/update를 먼저 수행해 레시피 인덱스를 생성하세요:
+.\v19996ab.exe --mode bootstrap --role film --server-file .\servers.txt --out .\out
+
+
+
+---
+
+필요한 코드(위 App.tsx, vite.config.ts, tailwind/index.css 등)는 전부 포함했어.
+새 채팅창에서도 이 핸드오프 하나만 보면 설치 → 실행 → 테스트까지 진행 가능할 거야.

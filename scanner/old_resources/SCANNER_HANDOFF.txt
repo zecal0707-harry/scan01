@@ -1,0 +1,1083 @@
+좋아, 안정성 우선 베이스라인을 새로 정리했어.
+이 버전은 v19996ab의 ‘속도 트릭(풀/워밍/복잡한 캐시)’을 전부 제거하고, v19996aa의 “항상 film 레벨 출력 + 레서피 링크” 기능만 유지한 깔끔한 구조야.
+파일명은 예시로 scanner_v19996ac.py 라고 했고, 6개 파트로 나눴어. 각 파트는 그대로 이어붙여 저장하면 동작해.
+
+
+---
+
+PART 1 / 6 — 헤더·상수·유틸·서버파서
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Scanner v19996ac — 안정화 베이스라인
+- 항상 film-level 출력(LOCAL: films_index map / SERVER: LOT 하위 film 나열)
+- --link-recipe: recipes_index(by_recipe)로 O(1) 링크(추가 네트워크 없음)
+- HTTP/API 및 CLI 형식은 v19996aa 호환
+- 속도 최적화(세션 풀/워밍/복잡 캐시) 제거 → 단순, 신뢰성 우선
+"""
+
+import os, sys, re, csv, json, time, posixpath, ftplib, socket, argparse, threading, traceback, logging, atexit, unicodedata, random
+from datetime import datetime, timezone, timedelta
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from collections import defaultdict
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import socketserver
+from typing import List, Tuple, Dict, Optional, Set
+
+# -------------------- Defaults --------------------
+DEFAULT_USER = "FTP_TEST"
+DEFAULT_PASS = "FTP_TEST"
+DEFAULT_TIMEOUT = 15
+DEFAULT_OP_DEADLINE = 25.0
+DEFAULT_PORT = 21
+
+# Film(Recipes)
+DEFAULT_FILM_ROOT = "/Film List"
+DEFAULT_PREFIX = "as"
+TARGET_LINE_INDEX = 3 # strategy.ini 파싱시 앞에서 N줄까지
+DEFAULT_FILM_MAX_DEPTH = 2 # as0* ~ as9* (2단계까지)
+DEFAULT_FILM_SOFT_LIMIT = 5000 # 버킷이 커지면 하위로 분할
+
+# Scan
+TARGET_HOME_NAMES = {"auto scan", "auto scan data"}
+
+# HTTP
+DEFAULT_HTTP_ADDR = "127.0.0.1"
+DEFAULT_HTTP_PORT = 8081
+
+# Dircache(매우 단순, 안정성 위주)
+DEFAULT_DIRCACHE_MAX = 8000
+DEFAULT_DIRCACHE_TTL = 900 # seconds
+
+# films_index 정책
+DEFAULT_BUILD_FILMS_INDEX_MODE = "auto" # auto|map|names|skip
+DEFAULT_FILMS_INDEX_LOT_THRESHOLD = 12000
+DEFAULT_FILMS_INDEX_MAX_LOTS = 50000
+DEFAULT_FILMS_INDEX_STABILITY = 800
+
+# -------------------- Logging --------------------
+def ensure_dir(p: str):
+    if p: os.makedirs(p, exist_ok=True)
+
+def setup_logger(out_dir: str, verbose: bool=False) -> logging.Logger:
+    ensure_dir(out_dir)
+    logger = logging.getLogger("scanner")
+    if logger.handlers:
+        return logger
+    logger.setLevel(logging.DEBUG if verbose else logging.INFO)
+    ch = logging.StreamHandler(sys.stdout)
+    ch.setLevel(logging.DEBUG if verbose else logging.INFO)
+    ch.setFormatter(logging.Formatter("[%(asctime)s] %(levelname)s - %(message)s"))
+    logger.addHandler(ch)
+    log_dir = os.path.join(out_dir, "logs"); ensure_dir(log_dir)
+    fh = logging.FileHandler(os.path.join(log_dir, "scanner.log"), encoding="utf-8")
+    fh.setLevel(logging.DEBUG if verbose else logging.INFO)
+    fh.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(name)s %(message)s"))
+    logger.addHandler(fh)
+    return logger
+
+# -------------------- Utils (정규화/매칭) --------------------
+def join_path(base: str, name: str) -> str:
+    if base in ("", "/"): return "/" + (name or "").strip("/")
+    return posixpath.join(base, name or "")
+
+def now_kst_iso(): return datetime.now(timezone(timedelta(hours=9))).isoformat(timespec="seconds")
+def ts_minute(): return datetime.now().strftime("%Y%m%d_%H%M")
+def ts_second(): return datetime.now().strftime("%Y%m%d_%H%M%S")
+
+def save_json(path: str, obj, pretty=True):
+    ensure_dir(os.path.dirname(path) or ".")
+    with open(path, "w", encoding="utf-8") as f:
+        if pretty: json.dump(obj, f, ensure_ascii=False, indent=2)
+        else: json.dump(obj, f, ensure_ascii=False, separators=(",",":"))
+
+def load_json(path: str, default=None):
+    if not os.path.isfile(path): return default
+    with open(path, "r", encoding="utf-8") as f: return json.load(f)
+
+def _normalize_unicode(s: Optional[str]) -> str:
+    if s is None: return ""
+    return unicodedata.normalize("NFKC", s)
+
+_WS_RX = re.compile(r"\s+", re.UNICODE)
+def ws_norm(s: Optional[str]) -> str:
+    s = _normalize_unicode(s or "")
+    s = _WS_RX.sub(" ", s).strip()
+    return s
+
+def norm_name(s):
+    ss = _normalize_unicode(s)
+    ss = (ss or "").strip().lower().replace("_", " ").replace("-", " ")
+    ss = _WS_RX.sub(" ", ss)
+    return " ".join(ss.split())
+
+def expand_terms(terms: List[str]) -> List[str]:
+    terms = [t for t in (terms or []) if isinstance(t, str) and t.strip()!=""]
+    if not terms: return []
+    out = list(dict.fromkeys(terms))
+    if len(terms) >= 2:
+        phrase = " ".join(terms)
+        if phrase not in out: out.append(phrase)
+    return out
+
+def match_text(val: Optional[str], patterns: List[str],
+               exact=False, regex=False, case_sensitive=False,
+               do_unicode_norm=True, normalize_spaces=True) -> bool:
+    if not patterns: return True
+    if val is None: return False
+    if do_unicode_norm: val = _normalize_unicode(val)
+    if normalize_spaces: val = ws_norm(val)
+    valc = val if case_sensitive else val.casefold()
+    if regex:
+        for p in patterns:
+            if p is None: continue
+            pp = p if case_sensitive else p.casefold()
+            try: rx = re.compile(pp)
+            except re.error: continue
+            if rx.search(valc): return True
+        return False
+    pats=[]
+    for p in patterns:
+        if p is None: continue
+        pp = _normalize_unicode(p) if do_unicode_norm else (p or "")
+        if normalize_spaces: pp = ws_norm(pp)
+        pp = pp if case_sensitive else pp.casefold()
+        pats.append(pp)
+    if exact: return any(valc==p for p in pats)
+    return any(p in valc for p in pats)
+
+def match_name_or_path(name: str, path: str, pats: List[str],
+                       exact: bool, regex: bool, cs: bool) -> bool:
+    if not pats: return True
+    return match_text(name, pats, exact, regex, cs) or match_text(path, pats, exact, regex, cs)
+
+LOT_STEM_SPLIT_RX = re.compile(r"[_\-\s]")
+def lot_stem(s: str) -> str:
+    s = ws_norm(s or "")
+    parts = LOT_STEM_SPLIT_RX.split(s, maxsplit=1)
+    head = parts[0] if parts else s
+    return head.upper()
+
+def lot_match_smart(lot_name: str, lot_path: str, patterns: List[str], case_sensitive: bool) -> bool:
+    if not patterns: return True
+    nm = ws_norm(lot_name or "")
+    base = posixpath.basename(ws_norm(lot_path or "")).strip()
+    if not case_sensitive:
+        nm = nm.casefold(); base = base.casefold()
+    for p in patterns:
+        if p is None: continue
+        pp = ws_norm(p); pp = pp if case_sensitive else pp.casefold()
+        if "_" in posixpath.basename(pp):
+            if nm == pp or base == pp: return True
+        else:
+            if lot_stem(nm) == lot_stem(pp) or lot_stem(base) == lot_stem(pp): return True
+    return False
+
+DATE_RX = re.compile(r"^\d{8}$|^\d{4}[_-]\d{2}[_-]\d{2}$")
+def extract_film_from_scan_path(p:str)->str:
+    parts = (p or "").rstrip("/").split("/")
+    if not parts: return ""
+    last = parts[-1]
+    if DATE_RX.fullmatch(last): return parts[-2] if len(parts)>=2 else last
+    return last
+
+# -------------------- servers.txt v2 Parser --------------------
+def _strip_inline_comment(line: str) -> str:
+    ix = line.find("#")
+    return line if ix < 0 else line[:ix]
+
+def _int_or_default(val: Optional[str], default: Optional[int]) -> Optional[int]:
+    if val is None: return default
+    v = val.strip()
+    if v == "": return default
+    try: return int(v)
+    except Exception: return default
+
+def read_server_list_v2(path: str) -> List[dict]:
+    if not os.path.isfile(path):
+        raise FileNotFoundError(f"server file not found: {path}")
+    out: List[dict] = []
+    with open(path, "r", encoding="utf-8-sig", newline="") as f:
+        lines = [ln.rstrip("\r\n") for ln in f]
+    cleaned = []
+    for i, ln in enumerate(lines, 1):
+        base = _strip_inline_comment(ln).strip()
+        if base: cleaned.append((i, base))
+    rdr = csv.reader((x[1] for x in cleaned))
+    for (i, _raw), row in zip(cleaned, rdr):
+        if not row: continue
+        row = [c.strip() for c in row if c is not None and c.strip()!=""]
+        if len(row) < 4: raise ValueError(f"line {i}: not enough fields (need >=4) → {row}")
+        name, ip, max_depth_s, save_level_s = row[:4]
+        user, pw, meta_tokens = DEFAULT_USER, DEFAULT_PASS, row[4:]
+        if len(row) >= 6:
+            user, pw = row[4], row[5]
+            meta_tokens = row[6:]
+        try:
+            int(max_depth_s); int(save_level_s)
+        except Exception:
+            raise ValueError(f"line {i}: max_depth/save_level must be integers → {row[:4]}")
+        meta: Dict[str, str] = {}
+        for tok in meta_tokens:
+            if "=" not in tok: raise ValueError(f"line {i}: meta token needs key=value → '{tok}'")
+            k, v = tok.split("=", 1)
+            k = k.strip().lower()
+            if k in meta: raise ValueError(f"line {i}: duplicate meta key '{k}'")
+            meta[k] = v.strip()
+        role = (meta.get("role") or "film").lower()
+        if role not in ("film","scan"):
+            raise ValueError(f"line {i}: role must be film|scan → role={role}")
+        group = meta.get("group") or name
+        root = (meta.get("root") or (DEFAULT_FILM_ROOT if role=="film" else "/auto scan data")).strip() or (DEFAULT_FILM_ROOT if role=="film" else "/auto scan data")
+        prefix = (meta.get("prefix") or DEFAULT_PREFIX).strip() or DEFAULT_PREFIX
+        port = _int_or_default(meta.get("port"), DEFAULT_PORT)
+        timeout = _int_or_default(meta.get("timeout"), DEFAULT_TIMEOUT)
+        op_deadline = float(meta.get("op_deadline") or DEFAULT_OP_DEADLINE)
+        pool_size = _int_or_default(meta.get("pool_size"), 6 if role=="film" else 3) # 단순 참조
+        out.append({
+            "name": name, "ip": ip, "port": port,
+            "user": user, "pass": pw, "role": role, "group": group,
+            "root": root, "prefix": prefix,
+            "timeout": timeout, "op_deadline": op_deadline, "pool_size": pool_size,
+            "line_no": i,
+        })
+    if not out: raise ValueError("no servers loaded from file")
+    return out
+
+
+---
+
+PART 2 / 6 — 단순 RobustFTP + 아주 가벼운 디렉터리 캐시
+
+# -------------------- Robust FTP (단순, 안정성 우선) --------------------
+class RobustFTP:
+    class _Stop(Exception): pass
+    def __init__(self, host, user, passwd, port=21, timeout=DEFAULT_TIMEOUT, op_deadline=DEFAULT_OP_DEADLINE, logger:Optional[logging.Logger]=None):
+        self.host=host; self.user=user; self.passwd=passwd; self.port=port
+        self.timeout=timeout; self.op_deadline=op_deadline
+        self.log = logger or logging.getLogger("scanner.ftp")
+        self.ftp: Optional[ftplib.FTP]=None
+        self._connect()
+
+    def _connect(self):
+        self.close()
+        ftp=ftplib.FTP()
+        ftp.connect(self.host, self.port, timeout=self.timeout)
+        ftp.login(self.user, self.passwd)
+        ftp.set_pasv(True)
+        try:
+            ftp.sock.settimeout(self.timeout)
+            ftp.sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+        except Exception: pass
+        self.ftp=ftp
+
+    def close(self):
+        if self.ftp:
+            try: self.ftp.quit()
+            except Exception:
+                try: self.ftp.close()
+                except Exception: pass
+        self.ftp=None
+
+    def _deadline(self, fn, *args, **kwargs):
+        out={}; err={}
+        def run():
+            try: out["v"]=fn(*args, **kwargs)
+            except Exception as e: err["e"]=e
+        t=threading.Thread(target=run, daemon=True)
+        t.start(); t.join(self.op_deadline)
+        if t.is_alive():
+            try:
+                if self.ftp: self.ftp.close()
+            except Exception: pass
+            t.join(0.05)
+            raise TimeoutError("FTP op deadline exceeded")
+        if "e" in err: raise err["e"]
+        return out.get("v")
+
+    def cwd(self, p:str): return self._deadline(self.ftp.cwd, p)
+
+    def nlst(self, pattern:str)->List[str]:
+        out=[]; self._deadline(self.ftp.retrlines, f"NLST {pattern}", out.append)
+        # 일부 서버는 절대경로를 NLST에 섞어 돌려줌 → basename 정리
+        return [posixpath.basename(n.rstrip("/")) for n in out if n and n not in (".","..")]
+
+    def retr_first_n(self, path:str, n:int=3)->List[str]:
+        lines=[]
+        def cb(s):
+            lines.append(s)
+            if len(lines)>=n: raise RobustFTP._Stop()
+        try:
+            self._deadline(self.ftp.retrlines, f"RETR {path}", cb)
+        except RobustFTP._Stop:
+            pass
+        except ftplib.error_perm:
+            return []
+        except Exception:
+            return []
+        return lines
+
+    def mdtm_exists(self, path:str)->bool:
+        try:
+            resp=self._deadline(self.ftp.sendcmd, f"MDTM {path}")
+            return str(resp).startswith("213")
+        except Exception:
+            return False
+
+# -------------------- 아주 가벼운 Dircache --------------------
+class DirCache:
+    def __init__(self, max_items:int=DEFAULT_DIRCACHE_MAX, ttl:int=DEFAULT_DIRCACHE_TTL):
+        self.cache: Dict[str, Tuple[List[str], float]] = {}
+        self.order: List[str] = []
+        self.lock=threading.Lock()
+        self.max_items = max(200, int(max_items))
+        self.ttl = max(60, int(ttl))
+
+    def _expire(self):
+        now=time.time()
+        stale=[k for k,(v,ts) in self.cache.items() if now-ts>self.ttl]
+        for k in stale:
+            self.cache.pop(k, None)
+            try: self.order.remove(k)
+            except ValueError: pass
+        while len(self.order) > self.max_items:
+            k=self.order.pop(0); self.cache.pop(k, None)
+
+    def get(self, k)->Optional[List[str]]:
+        with self.lock:
+            self._expire()
+            ent=self.cache.get(k)
+            if not ent: return None
+            v,_=ent
+            try:
+                self.order.remove(k)
+            except ValueError:
+                pass
+            self.order.append(k)
+            return list(v)
+
+    def put(self, k, v:List[str]):
+        with self.lock:
+            self.cache[k]=(list(v), time.time())
+            try: self.order.remove(k)
+            except ValueError: pass
+            self.order.append(k)
+            self._expire()
+
+
+---
+
+PART 3 / 6 — Film 인덱스(단순 버킷) + Scan 인덱스(부트스트랩/업데이트)
+
+# -------------------- Film(Recipes) 인덱스 --------------------
+def _parse_strategy_from_lines(first3: List[str]) -> Optional[str]:
+    if not first3: return None
+    candidates = first3[:]
+    if len(candidates)>=TARGET_LINE_INDEX:
+        candidates = [candidates[TARGET_LINE_INDEX-1]] + candidates[:TARGET_LINE_INDEX-1]
+    for ln in candidates:
+        if "StrategyName" in ln:
+            s = ln.split("=",1)[-1].strip().strip("'\"")
+            s = ws_norm(s)
+            return s or None
+    return None
+
+def film_paths(out_dir:str, server:str):
+    base=os.path.join(out_dir,"recipes")
+    return {
+        "index": os.path.join(base, f"{server}_recipes_index.json"),
+        "logs_dir": os.path.join(base, "logs"),
+        "search_dir": os.path.join(base, "search"),
+    }
+
+def film_load_index(out_dir, server):
+    p=film_paths(out_dir, server)["index"]
+    return load_json(p, {
+        "server": server, "recipes_root": DEFAULT_FILM_ROOT,
+        "generated_at": None, "updated_at": None,
+        "folders": {}, "by_recipe": {},
+        "stats": {"folders":0,"recipes":0},
+    })
+
+def film_save_index(out_dir, idx):
+    p=film_paths(out_dir, idx.get("server","unknown"))["index"]
+    ensure_dir(os.path.dirname(p)); save_json(p, idx)
+
+def _list_film_bucket(sess:RobustFTP, root:str, pattern:str)->List[str]:
+    try:
+        sess.cwd(root)
+        names = set(sess.nlst(pattern))
+        # NLST가 간헐적으로 누락시 1회 재시도
+        if names:
+            names |= set(sess.nlst(pattern))
+        return sorted(n for n in names if n)
+    except Exception:
+        return []
+
+def film_list_names_simple(cfg: dict, logger:logging.Logger)->List[str]:
+    """
+    as* 를 10진 버킷으로 단순 분할 (깊이 2, 최대 100 버킷), 안정성 우선
+    """
+    root=cfg["root"]; base_prefix=cfg["prefix"]
+    logger.info(f"[film:list] server={cfg['name']} root={root} prefix={base_prefix}")
+    buckets=[(base_prefix,0)]
+    names=set()
+    with ThreadPoolExecutor(max_workers=max(1, min(10, cfg.get("pool_size",6)))) as ex:
+        while buckets:
+            prefix, depth = buckets.pop(0)
+            pat=f"{prefix}*"
+            futs=[]
+            # depth 0 → as0*..as9*, depth 1 → as00*..as99*, depth 2 stop
+            if depth < DEFAULT_FILM_MAX_DEPTH:
+                for d in "0123456789":
+                    futs.append(ex.submit(_list_film_bucket,
+                                          RobustFTP(cfg["ip"], cfg["user"], cfg["pass"],
+                                                    port=cfg["port"], timeout=cfg["timeout"], op_deadline=cfg["op_deadline"], logger=logger),
+                                          root, f"{prefix}{d}*"))
+                subnames=set()
+                for fut in as_completed(futs):
+                    try:
+                        lst=fut.result()
+                        subnames |= set(lst)
+                    except Exception: pass
+                if len(subnames) >= DEFAULT_FILM_SOFT_LIMIT and depth+1 < DEFAULT_FILM_MAX_DEPTH:
+                    # 더 쪼개기
+                    for d in "0123456789":
+                        buckets.append((prefix+d, depth+1))
+                else:
+                    names |= subnames
+            else:
+                # 최대 깊이에서는 현재 버킷만 수집
+                lst=_list_film_bucket(RobustFTP(cfg["ip"], cfg["user"], cfg["pass"],
+                                                port=cfg["port"], timeout=cfg["timeout"], op_deadline=cfg["op_deadline"], logger=logger),
+                                      root, pat)
+                names |= set(lst)
+    out = sorted({n.rstrip("/") for n in names})
+    logger.info(f"[film:list] unique={len(out)}")
+    return out
+
+def film_bootstrap(args, cfg, logger:logging.Logger):
+    t0=time.time(); server=cfg["name"]; out=args.out
+    for d in film_paths(out, server).values():
+        if d.endswith(".json"): ensure_dir(os.path.dirname(d))
+        else: ensure_dir(d)
+    logger.info(f"=== [FILM] BOOTSTRAP {server} ({cfg['ip']}) root={cfg['root']} ===")
+    names = film_list_names_simple(cfg, logger=logger)
+    idx = film_load_index(out, server)
+    idx["server"]=server; idx["recipes_root"]=cfg["root"]
+    added=0
+    def worker(nm:str):
+        folder = join_path(cfg["root"], nm)
+        ini = join_path(folder, "strategy.ini")
+        s = RobustFTP(cfg["ip"], cfg["user"], cfg["pass"],
+                      port=cfg["port"], timeout=cfg["timeout"], op_deadline=cfg["op_deadline"], logger=logger)
+        try:
+            lines = s.retr_first_n(ini, n=TARGET_LINE_INDEX)
+            recipe = _parse_strategy_from_lines(lines)
+            if not recipe: return None
+            return (nm, {"path": folder, "recipe": recipe, "recipe_upper": recipe.upper()})
+        finally:
+            s.close()
+    with ThreadPoolExecutor(max_workers=max(1, min(16, cfg.get("pool_size",6)))) as ex:
+        futs={ex.submit(worker, nm): nm for nm in names}
+        for i, fut in enumerate(as_completed(futs),1):
+            res=fut.result()
+            if not res: continue
+            nm, meta = res
+            idx["folders"][nm]=meta
+            ru = ws_norm(meta["recipe"]).upper()
+            lst = idx["by_recipe"].setdefault(ru, [])
+            if meta["path"] not in lst: lst.append(meta["path"])
+            added += 1
+            if i%500==0: logger.info(f"[film:bootstrap] parsed {i}/{len(names)}")
+    idx["generated_at"]=now_kst_iso(); idx["updated_at"]=now_kst_iso()
+    idx["stats"]["folders"]=len(idx["folders"]); idx["stats"]["recipes"]=len(idx["by_recipe"])
+    film_save_index(out, idx)
+    logger.info(f"[FILM✓] bootstrap: folders={len(idx['folders'])} recipes={len(idx['by_recipe'])} added={added} time={time.time()-t0:.2f}s")
+    return {"folders":len(idx['folders']), "recipes":len(idx['by_recipe']), "added":added, "sec": round(time.time()-t0,2)}
+
+def film_update(args, cfg, logger:logging.Logger):
+    # 단순 구현: 전체 재빌드(안정성). 빠른 증분은 추후.
+    return film_bootstrap(args, cfg, logger)
+
+# -------------------- Scan 인덱스 --------------------
+def scan_paths(out_dir:str, server:str):
+    base=os.path.join(out_dir,"required")
+    return {
+        "wafers": os.path.join(base, f"{server}_wafers.json"),
+        "full": os.path.join(base, f"{server}_Full.json"),
+        "lots_index": os.path.join(base, f"{server}_lots_index.json"),
+        "films_index": os.path.join(base, f"{server}_films_index.json"),
+        "logs": os.path.join(out_dir, "logs"),
+        "search_dir": os.path.join(out_dir, "search_results"),
+    }
+
+def _scan_list_dirs_simple(conn: RobustFTP, path:str)->List[str]:
+    # MLSD/LIST가 서버마다 다름 → NLST + probe 대신 NLST 단순화(안정성)
+    try:
+        conn.cwd(path)
+        names = conn.nlst("*") or []
+        # 디렉터리/파일 판별 실패 시에도 film 폴더 가정 → 상위 로직에서 검증
+        return [n for n in names if n not in (".","..")]
+    except Exception:
+        return []
+
+def discover_scan_root(cfg)->str:
+    try:
+        s=RobustFTP(cfg["ip"], cfg["user"], cfg["pass"], port=cfg["port"], timeout=cfg["timeout"], op_deadline=cfg["op_deadline"])
+        try:
+            names = s.nlst("/*") or []
+        except Exception:
+            names = []
+        finally:
+            s.close()
+        for name in names:
+            if norm_name(name) in TARGET_HOME_NAMES:
+                return join_path("/", name)
+        return join_path("/", names[0]) if names else "/"
+    except Exception:
+        return "/"
+
+def scan_bootstrap(args, cfg, logger:logging.Logger):
+    t0=time.time(); server=cfg["name"]; out=args.out
+    paths=scan_paths(out, server)
+    for p in (paths["wafers"], paths["full"], paths["lots_index"], paths["films_index"]):
+        ensure_dir(os.path.dirname(p))
+    logger.info(f"=== [SCAN] BOOTSTRAP {server} ({cfg['ip']}) ===")
+    scan_root=discover_scan_root(cfg)
+    # wafer 후보: scan_root 하위 1층을 wafer로 가정
+    s=RobustFTP(cfg["ip"], cfg["user"], cfg["pass"], port=cfg["port"], timeout=cfg["timeout"], op_deadline=cfg["op_deadline"], logger=logger)
+    try:
+        wafer_names = _scan_list_dirs_simple(s, scan_root)
+        wafers = [join_path(scan_root, w) for w in wafer_names]
+    finally:
+        s.close()
+    wafers = sorted(set(wafers))
+    save_json(paths["wafers"], {"server":server,"scan_root":scan_root,"wafer_paths":wafers,"wafer_meta":{"generated_at":now_kst_iso()}})
+    # Full.json: wafer 하위 LOT 1층만 넣는 간단 트리
+    full={"server":server,"ip":cfg["ip"],"scan_root":scan_root,"scanned_at":now_kst_iso(),
+          "root":{"name": scan_root.rsplit("/",1)[-1] or "/", "path": scan_root, "children": [], "files_bytes": -1, "files_count": 0}}
+    s=RobustFTP(cfg["ip"], cfg["user"], cfg["pass"], port=cfg["port"], timeout=cfg["timeout"], op_deadline=cfg["op_deadline"], logger=logger)
+    try:
+        for wp in wafers:
+            wn={"name": wp.rsplit("/",1)[-1], "path": wp, "children": []}
+            try:
+                lot_names = _scan_list_dirs_simple(s, wp)
+            except Exception:
+                lot_names=[]
+            for ln in lot_names:
+                wn["children"].append({"name": ln, "path": join_path(wp, ln), "children": []})
+            full["root"]["children"].append(wn)
+    finally:
+        s.close()
+    save_json(paths["full"], full)
+    # lots_index
+    idx=defaultdict(list)
+    for wn in full.get("root",{}).get("children",[]) or []:
+        for ln in (wn.get("children") or []):
+            nm = ws_norm(ln.get("name",""))
+            p = (ln.get("path") or "").strip()
+            if nm and p: idx[nm].append(p)
+    save_json(paths["lots_index"], {"server":server,"generated_at":now_kst_iso(),"lots_index":dict(idx)})
+    # films_index: 기본은 auto → lots_count에 따라 map/names
+    lots_paths=[]
+    for plist in dict(idx).values():
+        for p in (plist or []):
+            if p: lots_paths.append(p)
+    mode=_decide_films_index_mode(args, lots_count=len(lots_paths))
+    doc={"server":server,"generated_at":now_kst_iso(),"mode":"skip","films_index":{},"film_names":[]}
+    if mode!="skip" and lots_paths:
+        # 단순 map: 모든 LOT에 대해 1층 film 나열
+        s=RobustFTP(cfg["ip"], cfg["user"], cfg["pass"], port=cfg["port"], timeout=cfg["timeout"], op_deadline=cfg["op_deadline"], logger=logger)
+        try:
+            films_map={}
+            for lp in lots_paths:
+                try:
+                    film_names = _scan_list_dirs_simple(s, lp)
+                except Exception:
+                    film_names=[]
+                films_map[lp] = [join_path(lp, n) for n in film_names]
+            doc={"server":server,"generated_at":now_kst_iso(),"mode":"map","films_index":films_map,"film_names":[],"lots_total":len(lots_paths)}
+        finally:
+            s.close()
+    save_json(paths["films_index"], doc)
+    lots_count = sum(len(wn.get("children",[])) for wn in (full.get("root",{}).get("children",[]) or []))
+    logger.info(f"[SCAN✓] bootstrap: wafers={len(wafers)} lots={lots_count} films_mode={doc['mode']} time={time.time()-t0:.2f}s")
+    return {"wafers":len(wafers), "lots":lots_count, "films_mode":doc["mode"], "sec": round(time.time()-t0,2)}
+
+def scan_update(args, cfg, logger:logging.Logger):
+    # 안정성 우선: bootstrap과 동일하게 다시 작성(증분은 추후)
+    return scan_bootstrap(args, cfg, logger)
+
+def _decide_films_index_mode(args, lots_count:int)->str:
+    mode = (getattr(args, "build_films_index", None) or DEFAULT_BUILD_FILMS_INDEX_MODE).lower()
+    if mode in ("map","names","skip"): return mode
+    thr = getattr(args, "films_index_lot_threshold", DEFAULT_FILMS_INDEX_LOT_THRESHOLD)
+    return "names" if lots_count > max(1,int(thr)) else "map"
+
+
+---
+
+PART 4 / 6 — 검색(LOCAL/SERVER) + 레서피 링크(O(1) 캐시)
+
+# -------------------- Search Helpers --------------------
+def _load_full_json_doc(out_dir: str, server: str) -> dict:
+    paths = scan_paths(out_dir, server)
+    return load_json(paths["full"], {}) or {}
+
+def _load_lots_index(out_dir: str, server: str) -> dict:
+    paths = scan_paths(out_dir, server)
+    doc = load_json(paths["lots_index"], {})
+    return (doc or {}).get("lots_index", {}) or {}
+
+def _collect_cache_nodes_from_full(full_doc: dict):
+    wafers, lots = [], []
+    try:
+        for wn in (full_doc.get("root", {}) or {}).get("children", []) or []:
+            wafers.append({"name": wn.get("name",""), "path": wn.get("path","")})
+            for ln in (wn.get("children") or []):
+                lots.append({"name": ln.get("name",""), "path": ln.get("path",""), "wafer": wn.get("path","")})
+    except Exception:
+        pass
+    return wafers, lots
+
+def _prepare_filters(filters: dict) -> dict:
+    out = dict(filters or {})
+    out["wafer"] = expand_terms(out.get("wafer") or [])
+    out["lot"] = expand_terms(out.get("lot") or [])
+    out["film"] = expand_terms(out.get("film") or [])
+    return out
+
+# -------------------- 레서피 링크(O(1)) --------------------
+def _film_servers_in_group(cfgs: List[dict], group:str)->List[dict]:
+    return [c for c in cfgs if c["role"]=="film" and c["group"]==group]
+
+def _build_ru_to_display(idx:dict)->Dict[str,str]:
+    ru2disp={}
+    for nm, meta in (idx.get("folders") or {}).items():
+        rec = ws_norm(meta.get("recipe",""))
+        if not rec: continue
+        ru = rec.upper()
+        if ru not in ru2disp: ru2disp[ru] = meta.get("recipe", rec)
+    return ru2disp
+
+def _choose_primary(paths:List[str])->Optional[str]:
+    if not paths: return None
+    return sorted(paths, key=lambda p:(len(p), p))[0]
+
+def link_recipe_for_film(args, cfgs, scan_cfg:dict, film_name:str)->Tuple[bool, Optional[str], List[str], Optional[str]]:
+    ru = ws_norm(film_name).upper()
+    cand_paths=[]; recipe_display=None; recipe_server=None
+    for fc in _film_servers_in_group(cfgs, scan_cfg["group"]):
+        idx = film_load_index(args.out, fc["name"])
+        byr = idx.get("by_recipe") or {}
+        ru2disp = _build_ru_to_display(idx)
+        paths = byr.get(ru) or []
+        if paths:
+            if recipe_display is None:
+                recipe_display = ru2disp.get(ru, film_name)
+            cand_paths.extend([p for p in paths if p])
+            if recipe_server is None: recipe_server = fc["name"]
+    cand_paths = list(dict.fromkeys(cand_paths))
+    return (len(cand_paths)>0, recipe_display, cand_paths, recipe_server)
+
+def _decide_result_kind(filters:dict)->str:
+    roles = [r.lower() for r in (filters.get("roles") or [])]
+    roles = [r for r in roles if r in ("film","scan")]
+    roles = sorted(set(roles))
+    if roles==["film"]: return "recipe"
+    if roles==["scan"]: return "scan"
+    return "mixed"
+
+# -------------------- LOCAL search (항상 film-level) --------------------
+def search_local(args, cfgs: List[dict], filters: dict, logger: logging.Logger) -> dict:
+    t0 = time.time()
+    filters = _prepare_filters(filters)
+    servers = set(filters.get("servers") or [])
+    roles = set([r.lower() for r in (filters.get("roles") or [])])
+    exact = filters.get("exact", False)
+    regex = filters.get("regex", False)
+    cs = filters.get("case_sensitive", False)
+    waf_pats = filters.get("wafer") or []
+    lot_pats = filters.get("lot") or []
+    film_pats = filters.get("film") or []
+    link_recipe = bool(filters.get("link_recipe", False))
+    hits = []
+    notices=[]
+    for c in cfgs:
+        if servers and c["name"] not in servers: continue
+        if roles and c["role"] not in roles: continue
+        if c["role"] == "scan":
+            full = _load_full_json_doc(args.out, c["name"])
+            wafers, _lots = _collect_cache_nodes_from_full(full)
+            if waf_pats:
+                wafers = [w for w in wafers if match_name_or_path(w["name"], w["path"], waf_pats, exact, regex, cs)]
+            allowed_wafer_paths = {w["path"] for w in wafers} if waf_pats else set()
+            fdoc = load_json(scan_paths(args.out, c["name"])["films_index"], {}) or {}
+            fimode = (fdoc.get("mode") or "map").lower()
+            if fimode != "map" or not isinstance(fdoc.get("films_index"), dict) or not fdoc["films_index"]:
+                notices.append(f"{c['name']}: films_index mode={fimode} → LOCAL에서는 film path 확장에 제한(bootstrap 권장)")
+                continue
+            fidx: Dict[str, List[str]] = fdoc["films_index"]
+            for lot_path, film_paths in fidx.items():
+                if allowed_wafer_paths and not any(lot_path.startswith(wp.rstrip('/')+'/') for wp in allowed_wafer_paths):
+                    continue
+                lot_name = posixpath.basename(lot_path.rstrip("/"))
+                if lot_pats and not lot_match_smart(lot_name, lot_path, lot_pats, cs):
+                    continue
+                if film_pats:
+                    fps = [fp for fp in (film_paths or []) if match_name_or_path(posixpath.basename(fp.rstrip("/")), fp, film_pats, exact, regex, cs)]
+                else:
+                    fps = list(film_paths or [])
+                for fp in fps:
+                    hit={"server": c["name"], "role":"scan", "kind":"scan", "level":"film", "path": fp}
+                    if link_recipe:
+                        film_for_link = extract_film_from_scan_path(fp)
+                        linked, rname, rpaths, rsv = link_recipe_for_film(args, cfgs, c, film_for_link)
+                        hit.update({"recipe_linked": bool(linked), "recipe_name": rname, "recipe_paths": rpaths, "recipe_primary": _choose_primary(rpaths), "recipe_server": rsv})
+                    hits.append(hit)
+        else:
+            # role == film : recipes_index.by_recipe 로만 검색
+            if not film_pats: continue
+            idx = film_load_index(args.out, c["name"])
+            by_recipe = idx.get("by_recipe") or {}
+            ru2disp = _build_ru_to_display(idx)
+            for ru, paths in by_recipe.items():
+                disp = ru2disp.get(ru, ru)
+                if match_text(disp, film_pats, exact, regex, cs) or match_text(ru, film_pats, exact, regex, cs):
+                    for p in (paths or []):
+                        hits.append({"server": c["name"], "role":"film", "kind":"recipe", "level":"folder", "recipe_name": disp, "path": p})
+    out_kind = _decide_result_kind(filters)
+    out = {"mode": "local", "kind": out_kind, "hits": hits, "count": len(hits), "generated_at": now_kst_iso()}
+    if notices: out["notices"]=notices
+    logger.info(f"[search-local] kind={out_kind} hits={len(hits)} time={time.time()-t0:.2f}s")
+    return out
+
+# -------------------- SERVER live search (항상 film-level) --------------------
+def search_server(args, cfgs:List[dict], filters:dict, logger:logging.Logger)->dict:
+    t0 = time.time()
+    filters = _prepare_filters(filters)
+    servers = set(filters.get("servers") or [])
+    roles = set([r.lower() for r in (filters.get("roles") or [])])
+    exact = filters.get("exact", False)
+    regex = filters.get("regex", False)
+    cs = filters.get("case_sensitive", False)
+    wafer = filters.get("wafer") or []
+    lot = filters.get("lot") or []
+    film = filters.get("film") or []
+    link_recipe = bool(filters.get("link_recipe", False))
+    hits = []
+    for c in cfgs:
+        try:
+            if servers and c["name"] not in servers: continue
+            if roles and c["role"] not in roles: continue
+            if c["role"] == "scan":
+                paths = scan_paths(args.out, c["name"])
+                allowed_wafer_paths: set = set()
+                if wafer:
+                    waf_doc = load_json(paths.get("wafers",""), {}) or {}
+                    for wp in (waf_doc.get("wafer_paths") or []):
+                        nm = os.path.basename((wp or "").rstrip("/"))
+                        if match_name_or_path(nm, wp, wafer, exact, regex, cs):
+                            allowed_wafer_paths.add(wp)
+                    scan_root = (waf_doc.get("scan_root") or "/")
+                    for wpat in wafer:
+                        if "/" in (wpat or ""):
+                            if wpat.startswith("/"): allowed_wafer_paths.add(wpat)
+                            else: allowed_wafer_paths.add(join_path(scan_root, wpat))
+                candidate_paths: List[str] = []
+                lots_idx_doc = load_json(paths.get("lots_index",""), {}) or {}
+                idx = lots_idx_doc.get("lots_index") or {}
+                if lot:
+                    for lot_name, plist in idx.items():
+                        for p in (plist or []):
+                            if allowed_wafer_paths and not p.startswith(tuple(wp.rstrip('/')+'/' for wp in allowed_wafer_paths)): continue
+                            if lot_match_smart(lot_name, p, lot, cs):
+                                candidate_paths.append(p)
+                    candidate_paths = sorted(set(candidate_paths))
+                elif wafer:
+                    candidate_paths = sorted(set(wp for wp in allowed_wafer_paths))
+                else:
+                    candidate_paths=[]
+                # LOT 하위 film 1층 나열 (필터 있으면 필터링)
+                s=RobustFTP(c["ip"], c["user"], c["pass"], port=c["port"], timeout=c["timeout"], op_deadline=c["op_deadline"], logger=logger)
+                try:
+                    for lp in candidate_paths:
+                        try:
+                            s.cwd(lp)
+                            names = s.nlst("*") or []
+                        except Exception:
+                            names=[]
+                        for nm in names:
+                            base = os.path.basename((nm or "").rstrip("/"))
+                            fp = join_path(lp, base)
+                            if film:
+                                if not match_text(base, film, exact, regex, cs): continue
+                            hit={"server":c["name"], "role":"scan", "kind":"scan", "level":"film", "path": fp}
+                            if link_recipe:
+                                film_for_link = extract_film_from_scan_path(fp)
+                                linked, rname, rpaths, rsv = link_recipe_for_film(args, cfgs, c, film_for_link)
+                                hit.update({"recipe_linked": bool(linked), "recipe_name": rname, "recipe_paths": rpaths, "recipe_primary": _choose_primary(rpaths), "recipe_server": rsv})
+                            hits.append(hit)
+                finally:
+                    s.close()
+            else:
+                if not film: continue
+                idx = film_load_index(args.out, c["name"])
+                by_recipe = idx.get("by_recipe") or {}
+                ru2disp = _build_ru_to_display(idx)
+                for ru, paths in by_recipe.items():
+                    disp = ru2disp.get(ru, ru)
+                    if match_text(disp, film, exact, regex, cs) or match_text(ru, film, exact, regex, cs):
+                        for p in (paths or []):
+                            hits.append({"server": c["name"], "role":"film", "kind":"recipe", "level":"folder", "recipe_name": disp, "path": p})
+        except Exception as e:
+            logger.warning(f"[search-server] '{c.get('name','?')}' exception: {e}")
+    out_kind = _decide_result_kind(filters)
+    out = {"mode":"server", "kind": out_kind, "hits":hits, "count":len(hits), "generated_at":now_kst_iso()}
+    logger.info(f"[search-server] kind={out_kind} hits={len(hits)} time={time.time()-t0:.2f}s")
+    return out
+
+
+---
+
+PART 5 / 6 — HTTP API (health / servers / bootstrap / update / search)
+
+# -------------------- HTTP Server --------------------
+class APIServer(BaseHTTPRequestHandler):
+    cfgs: List[dict] = []
+    args: argparse.Namespace = None
+    logger: logging.Logger = logging.getLogger("scanner.api")
+
+    def _json(self, code:int, obj:dict):
+        body=json.dumps(obj, ensure_ascii=False).encode("utf-8")
+        self.send_response(code)
+        self.send_header("Content-Type","application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _parse_json(self)->dict:
+        try:
+            ln = int(self.headers.get("Content-Length","0"))
+            raw = self.rfile.read(ln) if ln>0 else b""
+            return json.loads(raw.decode("utf-8")) if raw else {}
+        except Exception:
+            return {}
+
+    def _auth(self, need_admin:bool=False)->bool:
+        return True
+
+    def do_GET(self):
+        try:
+            if self.path=="/health":
+                if not self._auth(False): return self._json(401, {"error":"unauthorized"})
+                return self._json(200, {"ok":True, "time":now_kst_iso()})
+            if self.path=="/v1/servers":
+                if not self._auth(False): return self._json(401, {"error":"unauthorized"})
+                brief=[{"name":c["name"],"role":c["role"],"ip":c["ip"],"group":c["group"],"root":c["root"]} for c in self.cfgs]
+                return self._json(200, {"servers":brief, "count":len(brief)})
+            return self._json(404, {"error":"not found"})
+        except Exception as e:
+            return self._json(500, {"error":str(e)})
+
+    def do_POST(self):
+        try:
+            if self.path=="/v1/tasks/bootstrap":
+                if not self._auth(True): return self._json(401, {"error":"unauthorized"})
+                body=self._parse_json()
+                servers=set(body.get("servers") or [])
+                roles=set([r.lower() for r in (body.get("roles") or [])])
+                res=[]
+                for c in self.cfgs:
+                    if servers and c["name"] not in servers: continue
+                    if roles and c["role"] not in roles: continue
+                    if c["role"]=="film": out = film_bootstrap(self.args, c, self.logger)
+                    else: out = scan_bootstrap(self.args, c, self.logger)
+                    res.append({"server":c["name"], "role":c["role"], "result":out})
+                return self._json(200, {"ok":True, "results":res})
+
+            if self.path=="/v1/tasks/update":
+                if not self._auth(True): return self._json(401, {"error":"unauthorized"})
+                body=self._parse_json()
+                servers=set(body.get("servers") or [])
+                roles=set([r.lower() for r in (body.get("roles") or [])])
+                res=[]
+                for c in self.cfgs:
+                    if servers and c["name"] not in servers: continue
+                    if roles and c["role"] not in roles: continue
+                    if c["role"]=="film": out = film_update(self.args, c, self.logger)
+                    else: out = scan_update(self.args, c, self.logger)
+                    res.append({"server":c["name"], "role":c["role"], "result":out})
+                return self._json(200, {"ok":True, "results":res})
+
+            if self.path=="/v1/search/local":
+                if not self._auth(False): return self._json(401, {"error":"unauthorized"})
+                body=self._parse_json() or {}
+                out = search_local(self.args, self.cfgs, body, self.logger)
+                return self._json(200, out)
+
+            if self.path=="/v1/search/server":
+                if not self._auth(False): return self._json(401, {"error":"unauthorized"})
+                body=self._parse_json() or {}
+                out = search_server(self.args, self.cfgs, body, self.logger)
+                return self._json(200, out)
+
+            return self._json(404, {"error":"not found"})
+        except Exception as e:
+            return self._json(500, {"error":str(e), "trace": traceback.format_exc()})
+
+
+---
+
+PART 6 / 6 — CLI 오케스트레이터
+
+# -------------------- CLI Orchestrator --------------------
+def parse_args():
+    p=argparse.ArgumentParser(description="scanner v19996ac — stable baseline (film-level search + recipe-link)")
+    p.add_argument("--mode", required=True, choices=["bootstrap","update","search-local","search-server","serve"])
+    p.add_argument("--server-file", default="servers.txt")
+    p.add_argument("--out", default="out")
+    p.add_argument("--verbose", action="store_true")
+    # HTTP
+    p.add_argument("--http-addr", default=DEFAULT_HTTP_ADDR)
+    p.add_argument("--http-port", type=int, default=DEFAULT_HTTP_PORT)
+    # 스코프 필터
+    p.add_argument("--server", nargs="*")
+    p.add_argument("--role", nargs="*", choices=["film","scan"])
+    # 검색 필터
+    p.add_argument("--wafer", nargs="*")
+    p.add_argument("--lot", nargs="*")
+    p.add_argument("--film", nargs="*")
+    p.add_argument("--date", nargs="*")
+    p.add_argument("--exact", action="store_true")
+    p.add_argument("--regex", action="store_true")
+    p.add_argument("--case-sensitive", action="store_true")
+    p.add_argument("--link-recipe", dest="link_recipe", action="store_true")
+    # films_index 정책
+    p.add_argument("--build-films-index", dest="build_films_index",
+                   choices=["auto","map","names","skip"], default=DEFAULT_BUILD_FILMS_INDEX_MODE)
+    p.add_argument("--films-index-lot-threshold", dest="films_index_lot_threshold",
+                   type=int, default=DEFAULT_FILMS_INDEX_LOT_THRESHOLD)
+    p.add_argument("--films-index-max-lots", dest="films_index_max_lots",
+                   type=int, default=DEFAULT_FILMS_INDEX_MAX_LOTS)
+    p.add_argument("--films-index-stability", dest="films_index_stability",
+                   type=int, default=DEFAULT_FILMS_INDEX_STABILITY)
+    return p.parse_args()
+
+def _filter_cfgs(cfgs: List[dict], args) -> List[dict]:
+    servers = set(args.server or [])
+    roles = set([r.lower() for r in (args.role or [])])
+    out = []
+    for c in cfgs:
+        if servers and c["name"] not in servers: continue
+        if roles and c["role"] not in roles: continue
+        out.append(c)
+    return out
+
+def main():
+    args = parse_args()
+    logger = setup_logger(args.out, verbose=args.verbose)
+    try:
+        cfgs = read_server_list_v2(args.server_file)
+    except Exception as e:
+        logger.error(f"[config] failed to read servers: {e}")
+        sys.exit(2)
+
+    if args.mode == "serve":
+        APIServer.cfgs = cfgs; APIServer.args = args; APIServer.logger = logger
+        class ThreadingHTTPServer(socketserver.ThreadingMixIn, HTTPServer):
+            daemon_threads = True; allow_reuse_address = True
+        srv = ThreadingHTTPServer((args.http_addr, args.http_port), APIServer)
+        print(f"[HTTP] listening on http://{args.http_addr}:{args.http_port}")
+        try: srv.serve_forever()
+        except KeyboardInterrupt: pass
+        finally:
+            print("[HTTP] shutdown")
+            try: srv.shutdown()
+            except Exception: pass
+        return
+
+    # CLI modes
+    scope = _filter_cfgs(cfgs, args)
+    if args.mode == "bootstrap":
+        for c in scope:
+            if c["role"] == "film": film_bootstrap(args, c, logger)
+            else: scan_bootstrap(args, c, logger)
+    elif args.mode == "update":
+        for c in scope:
+            if c["role"] == "film": film_update(args, c, logger)
+            else: scan_update(args, c, logger)
+    elif args.mode == "search-local":
+        filters = {
+            "servers": args.server or [],
+            "roles": args.role or [],
+            "wafer": args.wafer or [],
+            "lot": args.lot or [],
+            "film": args.film or [],
+            "date": args.date or [],
+            "exact": args.exact,
+            "regex": args.regex,
+            "case_sensitive": args.case_sensitive,
+            "link_recipe": getattr(args, "link_recipe", False),
+        }
+        out = search_local(args, cfgs, filters, logger)
+        outp = os.path.join(args.out, "search_results"); ensure_dir(outp)
+        kind = out.get("kind") or "scan"
+        path = os.path.join(outp, f"search_local_{kind}_{ts_second()}.json")
+        save_json(path, out); logger.info(f"[search-local] json={path}")
+    elif args.mode == "search-server":
+        filters = {
+            "servers": args.server or [],
+            "roles": args.role or [],
+            "wafer": args.wafer or [],
+            "lot": args.lot or [],
+            "film": args.film or [],
+            "date": args.date or [],
+            "exact": args.exact,
+            "regex": args.regex,
+            "case_sensitive": args.case_sensitive,
+            "link_recipe": getattr(args, "link_recipe", False),
+        }
+        out = search_server(args, cfgs, filters, logger)
+        outp = os.path.join(args.out, "search_results"); ensure_dir(outp)
+        kind = out.get("kind") or "scan"
+        path = os.path.join(outp, f"search_server_{kind}_{ts_second()}.json")
+        save_json(path, out); logger.info(f"[search-server] json={path}")
+    logger.info("[✓] done.")
+
+if __name__ == "__main__":
+    main()
+
+
+---
+
+어떻게 쓰면 좋나 (간단 테스트)
+
+1. 인덱스 생성(필수 1회):
+
+
+
+python scanner_v19996ac.py --mode bootstrap --server-file servers.txt --out out --role film
+python scanner_v19996ac.py --mode bootstrap --server-file servers.txt --out out --role scan
+
+2. 로컬 검색(캐시만, 항상 film 레벨):
+
+
+
+python scanner_v19996ac.py --mode search-local --server-file servers.txt --out out \
+  --role scan --wafer WAF123 --lot LOT_A --film AS0088 --link-recipe
+
+3. 서버 라이브 검색(LOT→film 확장, 항상 film 레벨):
+
+
+
+python scanner_v19996ac.py --mode search-server --server-file servers.txt --out out \
+  --role scan --wafer WAF123 --lot LOT_A --link-recipe
+
+4. HTTP:
+
+
+
+python scanner_v19996ac.py --mode serve --server-file

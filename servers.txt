@@ -1,0 +1,3 @@
+S_FILM_FTP, 127.0.0.1, 0, 0, FTP_TEST, FTP_TEST, port=2121, root=/
+S_SCAN_FTP, 127.0.0.1, 0, 0, FTP_TEST, FTP_TEST, port=2121, root=/, role=scan
+LOCAL_SCAN, 127.0.0.1, 0, 0, x, x, role=scan, root=d:/github/scanner-project/scanner-project/scanner/MOCK_ROOT/auto scan data, local=1

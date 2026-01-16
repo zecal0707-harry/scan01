@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "npm: install (UI)",
+            "type": "shell",
+            "command": "npm install",
+            "options": {
+                "cwd": "${workspaceFolder}/scanner/ui"
+            },
+            "problemMatcher": [],
+            "detail": "Install UI dependencies"
+        },
+        {
+            "label": "npm: build (UI)",
+            "type": "shell",
+            "command": "npm run build",
+            "options": {
+                "cwd": "${workspaceFolder}/scanner/ui"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "npm: install (UI)",
+            "detail": "Build the UI for production"
+        }
+    ]
+}

@@ -1,0 +1,233 @@
+좋아—현재 세트(스캐너 V19996ab + 다운로더 d5.7.8 + UI1)의 목적, 설계, 운영 시 주의점을 한눈에 정리해 줄게. (Windows/EXE 기준)
+
+
+---
+
+1) 프로그램 목적
+
+스캐너(V19996ab)
+여러 FTP 서버의 구조를 빠르게 훑어 Wafer → Lot → Film(필름 데이터) 계층을 색인하고, 필름 레서피(‘Film List’의 asXXXX 폴더) 를 strategy.ini의 StrategyName으로 정규화해 레서피 이름 기준(by_recipe) 인덱스를 만든다.
+→ 검색 시 link_recipe 옵션을 켜면 필름 데이터 이름 ↔ 레서피(by_recipe) 를 자동 매칭해 정확한 레서피 폴더 경로를 결과에 함께 담아 준다.
+
+다운로더(d5.7.8)
+스캐너가 뱉은 search_*.json을 읽어, 필름 데이터 폴더 + 그 결과에 링크된 레서피 폴더(들) 만 골라서 로컬에 규칙적인 레이아웃으로 받는다.
+→ “레서피 전체가 아니라, 검색 JSON에 나온 recipe_primary(또는 recipe_paths)만 받는 것”이 핵심.
+
+UI1(콘솔)
+스캐너 HTTP API로 검색하고, 선택 결과를 JSON으로 내보내서 d5.7.8 ingest CLI에 바로 투입(또는 d5 잡 API 사용 시 잡 생성).
+
+
+
+---
+
+2) 핵심 설계(아키텍처)
+
+(A) 스캐너 V19996ab
+
+인덱스
+
+required/<server>_Full.json : 스캔 트리(wafer/lot) 요약
+
+required/<server>_lots_index.json : lot 이름 → 경로[]
+
+recipes/<server>_recipes_index.json : by_recipe[레서피명] → asXXXX 폴더 절대경로[]
+
+
+검색 모드
+
+local: 위 캐시 파일로만 빠르게 검색
+
+server: 캐시 + 실시간 검증(필요 구간만 FTP 조회)
+
+
+레서피 링크 규칙
+
+film_name(필름 데이터 폴더명)을 정규화해 by_recipe에서 동일 키를 찾는다.
+
+다수 경로가 나오면 길이/문자순 등 안정 규칙으로 recipe_primary를 고른다(필요하면 recipe_paths 전체도 결과에 포함).
+
+
+검색 결과(JSON) 스키마(요지)
+
+{
+  "mode": "server|local",
+  "kind": "scan|recipe|mixed",
+  "hits": [
+    {
+      "server": "S1",
+      "role": "scan",
+      "level": "film|lot|film_name",
+      "path": "/auto scan data/.../LOT/FILM/DATE",
+      "recipe_linked": true,
+      "recipe_name": "FILM",
+      "recipe_paths": ["/Film List/as0001", "..."],
+      "recipe_primary": "/Film List/as0001",
+      "recipe_server": "F1"
+    }
+  ]
+}
+
+
+(B) 다운로더 d5.7.8
+
+입력: 위 검색 JSON(선택본이면 더 좋음)
+
+동시성: 파일(JSON) 단위 병렬 + (서버, 역할) 단위 워커 풀
+
+세션 재사용: 워커 스레드별 FTP 세션 캐시
+
+재시도/복구: .part 이어받기(resume), 크기 검증, 실패코드 표준화
+
+저장 레이아웃(확정판)
+검색 hit.path를 “/”로 파싱해서 뒤에서부터 해석:
+
+마지막: DATE
+
+그 앞: FILM 데이터 이름
+
+그 앞: LOT
+
+그 앞: WAFER
+
+그보다 앞(루트~WAFER 직전까지): CLASS (서버별 상위 폴더 계층; 그대로 보존)
+
+최종 저장(배치 루트 기준):
+
+<dest_root>/<batch>/<CLASS...>/<WAFER>/<FILM>/<LOT>/<DATE> # 필름 데이터
+<dest_root>/<batch>/<CLASS...>/<WAFER>/<FILM>/_recipe/<asXXXX>/... # 레서피 폴더
+
+포인트: “Scan data” 같은 상위 폴더명은 CLASS로 흡수되며, WAFER부터 아래 구조가 분명해진다.
+
+
+무결성 파일: <batch>/__manifest.json, 리포트 out/downloader/reports/*.json
+
+
+
+---
+
+3) 운영/주의할 점
+
+(1) “레서피는 링크된 것만” 받기
+
+d5.7.8은 검색 JSON의 recipe_primary(또는 recipe_paths)만 내려준다.
+과거처럼 --recipe-mode ini를 쓰면 ini만 받고 폴더를 놓치는 오동작이 생길 수 있으니 사용 금지. (d5.7.8은 기본이 폴더 다운로드)
+
+
+(2) 저장 경로 길이/문자
+
+Windows는 경로가 길면 문제될 수 있어요(보통 240~260자 부근).
+가능한 dest_root 짧게, CLASS 깊이 관리 권장.
+
+파일명에 Windows 금지 문자는 다운로더가 자동 치환(<>:"\|?* → _).
+
+
+(3) 스캐너 대량 삭제 가드
+
+필름 인덱스 업데이트 시 샘플 생존 확인을 통과하면 그 라운드의 삭제를 전면 중단(토글/오탐 방지).
+즉, 레서피 폴더가 잠깐 안 보였다가 다시 나오는 상황에서도 색인 안정성 유지.
+
+
+(4) FTP 나열 방식/성능
+
+서버에 따라 NLST가 불안정할 수 있어 film 서버는 stat-first 모드 지원.
+servers.txt의 list_method=stat-first로 조정 가능.
+
+풀/캐시/백오프 파라미터는 서버별로 다르게 둬 오탐/타임아웃 최소화.
+
+
+(5) 결과 일관성(LOCAL vs SERVER)
+
+스캐너는 LOT만 찾는 경우/필름을 지정한 경우 결과 레벨을 구분해 뜻하지 않은 LOT 결과 혼입 방지.
+UI에서 “필름 검색”을 하면 film-level만 보도록 설계됨.
+
+
+(6) 보안/구성 관리
+
+servers.txt에 계정이 들어가므로 사내 비공개 보관, 백업·형상관리 시 암호화/예외처리 권장.
+
+UI는 로컬 브라우저에서 수행하더라도 CORS/네트워크 접근권이 필요. 사내망 포트 방화벽 정책 확인.
+
+
+(7) EXE 차이
+
+스캐너(V19996ab.exe): --mode serve 지원 → UI가 직접 검색 호출 가능.
+
+다운로더(d5.7.8.exe): ingest만 지원 (잡 서버 없음) → UI에서 JSON 내보내기 → CLI ingest로 흐름 진행.
+
+
+(8) 다중 레서피 매칭
+
+같은 필름 이름에 여러 asXXXX 경로가 매칭되면:
+
+기본은 recipe_primary 1개 폴더만 받는다(안전/중복 방지).
+
+필요 시 d5 옵션으로 모든 recipe_paths 받도록 확장 가능(폴더명 충돌 시 서버명/해시를 suffix로 붙이는 전략).
+
+
+
+
+---
+
+4) 권장 실행 순서(Windows/EXE)
+
+1. 스캐너 색인
+
+
+
+REM 최초/수정 후
+V19996ab.exe --mode bootstrap --server-file servers.txt --out out
+
+REM 주기 갱신
+V19996ab.exe --mode update --server-file servers.txt --out out
+
+2. 스캐너 HTTP 서버(선택, UI 사용 시)
+
+
+
+V19996ab.exe --mode serve --server-file servers.txt --out out --http-addr 127.0.0.1 --http-port 8081
+
+3. 검색
+
+
+
+REM 로컬 캐시 기반
+V19996ab.exe --mode search-local --role scan --film FILM1 --link-recipe --out out
+
+REM 라이브(서버) 검증
+V19996ab.exe --mode search-server --role scan --wafer W1 --lot LOT1 --film FILM1 --link-recipe --out out
+REM 결과 JSON: out\search_results\search_server_scan_YYYYMMDD_HHMMSS.json
+
+4. 다운로드
+
+
+
+REM 선택한 search_*.json 파일만 투입
+d5.7.8.exe ingest --server-file servers.txt --out out ^
+  --file out\search_results\search_server_scan_YYYYMMDD_HHMMSS.json ^
+  --dest-root D:\DATA --parallel 6 --per-server 3 --overwrite resume
+
+완료 후 배치 루트(<dest_root>\<search_json_이름>\) 아래에 필름 데이터 + _recipe가 저장되고, 매니페스트/리포트가 생성됨.
+
+
+
+---
+
+5) 장애·체크리스트
+
+레서피가 폴더째 안 받아질 때
+→ 검색 JSON에 recipe_primary가 비어있지 않은지 확인. UI에서 link_recipe가 꺼져 있지 않은지 확인. d5.7.8에 --recipe-mode ini 쓰지 말 것.
+
+경로가 기대와 다를 때
+→ hit.path가 WAFER/LOT/FILM/DATE 규칙을 따르는지 확인. 상위 CLASS가 길게 붙으면 경로가 길어질 수 있으니 dest_root 짧게.
+
+FTP timeout/권한 오류
+→ 리포트/로그 확인(out\logs, out\downloader\reports). servers.txt의 timeout, op_deadline, pool_size 조정.
+
+대량 삭제 발생 위험
+→ 스캐너는 샘플 생존 감지 시 삭제 중단. 그래도 의심되면 recipes_index.json 백업 후 수동 검증.
+
+
+
+---
+
+필요하면 UI1도 최신 스캐너 엔드포인트(/v1/search/local, /v1/search/server)와 d5.7.8 동작(Export→CLI ingest) 기준으로 조정해서 넘겨줄게. 운영 중 생기는 특정 로그/JSON 한 장만 주면, 그 라인 기준으로 바로 디버깅 포인트 짚어드릴 수 있어.
