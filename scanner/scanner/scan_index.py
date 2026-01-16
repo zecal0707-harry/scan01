@@ -104,13 +104,14 @@ def _find_date_folders_local_optimized(root_abs: str, cfg_root: str, logger) -> 
                         dirname = entry.name
                         if DATE_RX.fullmatch(dirname):
                             # Found date folder, parse structure
+                            # Structure: wafer/film/lot/date (lot is parent of date)
                             date_abs = entry.path
-                            film_abs = dir_path
-                            lot_abs = os.path.dirname(film_abs)
-                            wafer_abs = os.path.dirname(lot_abs)
+                            lot_abs = dir_path                      # 날짜의 부모 = lot
+                            film_abs = os.path.dirname(lot_abs)     # lot의 부모 = film
+                            wafer_abs = os.path.dirname(film_abs)   # film의 부모 = wafer
 
-                            film_name = os.path.basename(film_abs)
                             lot_name = os.path.basename(lot_abs)
+                            film_name = os.path.basename(film_abs)
                             wafer_name = os.path.basename(wafer_abs)
 
                             rel_path = os.path.relpath(date_abs, root_abs)
@@ -189,13 +190,14 @@ def _find_date_folders_ftp_parallel(cfg: ServerConfig, logger) -> List[Tuple[str
             child_path = join_path(current_path, d)
             if DATE_RX.fullmatch(d):
                 # Found date folder
+                # Structure: wafer/film/lot/date
                 parts = child_path.split("/")
                 if len(parts) >= 5:
                     date_path = child_path
-                    film_name = parts[-2]
-                    lot_name = parts[-3]
-                    wafer_name = parts[-4]
-                    lot_path = "/".join(parts[:-2])
+                    lot_name = parts[-2]      # 날짜의 부모 = lot
+                    film_name = parts[-3]     # lot의 부모 = film
+                    wafer_name = parts[-4]    # film의 부모 = wafer
+                    lot_path = "/".join(parts[:-1])  # lot까지의 경로
 
                     local_results.append((date_path, film_name, lot_name, wafer_name, lot_path))
             else:

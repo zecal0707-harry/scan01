@@ -145,21 +145,24 @@ DATE_RX = re.compile(r"^\d{8}$|^\d{4}[_-]\d{2}[_-]\d{2}$")
 
 
 def extract_film_from_scan_path(p: str) -> str:
-    parts = (p or "").rstrip("/").split("/")
+    """Extract film name from scan path. Structure: wafer/film/lot/date"""
+    parts = (p or "").replace("\\", "/").rstrip("/").split("/")
     if not parts:
         return ""
     last = parts[-1]
     if DATE_RX.fullmatch(last):
-        return parts[-2] if len(parts) >= 2 else last
-    return last
+        # 날짜가 마지막이면: lot=[-2], film=[-3]
+        return parts[-3] if len(parts) >= 3 else (parts[-2] if len(parts) >= 2 else last)
+    # 날짜가 없으면: lot=[-1], film=[-2]
+    return parts[-2] if len(parts) >= 2 else last
 
 
 def parse_scan_path(p: str) -> dict:
     """
     Parse scan data path to extract wafer, lot, film, date.
 
-    Path structure: .../class/wafer/lot/film/date
-    Example: /auto scan data/CLN/BS/CN2T_CLN_METALDEP1_TEST/CN2T6800/VBMQ_CLN_POLY_240929/20240222
+    Path structure: .../class/wafer/film/lot/date
+    Example: /MTMI01_SCAN/CMP/RGZF/RGZF_M0CWCMP_PRE_CM002/RGBT017_10/20241014
 
     Returns: {"wafer": ..., "lot": ..., "film": ..., "date": ...}
     """
@@ -175,12 +178,11 @@ def parse_scan_path(p: str) -> dict:
         result["date"] = last
         parts = parts[:-1]
 
-    # Now parts should end with film, lot, wafer, class, ...
-    # From the end: film, lot, wafer
+    # Structure: wafer/film/lot (from the end: lot, film, wafer)
     if len(parts) >= 1:
-        result["film"] = parts[-1]
+        result["lot"] = parts[-1]
     if len(parts) >= 2:
-        result["lot"] = parts[-2]
+        result["film"] = parts[-2]
     if len(parts) >= 3:
         result["wafer"] = parts[-3]
 
